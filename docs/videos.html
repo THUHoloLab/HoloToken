@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" href="assets/holotoken-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #ffffff;
@@ -45,7 +45,9 @@
   /* nav */
   .nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .nav .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1e2630; font-size: .95rem; letter-spacing: .2em; }
+  .brand .hair { width: 1px; height: 22px; background: #C9D0D7; display: block; }
+  .brand b { font-weight: 700; } .brand .lt { font-weight: 300; }
   .brand img { width: 30px; height: 30px; }
   .nav-links { display: flex; gap: 26px; margin-left: auto; font-size: .94rem; align-items: center; }
   .nav-links a { color: var(--muted); text-decoration: none; }
@@ -302,7 +304,7 @@
   .bar.final { background: #B98F63 !important; color: #fff !important; }
   footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: .92rem; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
-  footer .brand { font-size: 1rem; color: var(--text); }
+  footer .brand { font-size: .9rem; color: #1e2630; }
   @media (max-width: 400px) { .nav-links a:not(:last-child) { display: none; } }
 </style>
 </head>
@@ -310,7 +312,7 @@
 
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/holotoken-mark.png" alt="">HoloToken</a>
+    <a class="brand" href="index.html"><img src="assets/holotoken-mark.png" alt=""><i class="hair"></i><span aria-label="HoloToken"><b>HOLO</b><span class="lt">TOKEN</span></span></a>
     <div class="nav-links">
       <a class="opt" href="index.html#model">Model</a>
       <a class="opt" href="index.html#harness">Harness</a>
@@ -353,7 +355,7 @@
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/holotoken-mark.png" alt="">HoloToken</a>
+    <a class="brand" href="index.html"><img src="assets/holotoken-mark.png" alt=""><i class="hair"></i><span aria-label="HoloToken"><b>HOLO</b><span class="lt">TOKEN</span></span></a>
     <span><a href="http://www.holoddd.com/" style="color:inherit">HoloLab</a>, Tsinghua University</span>
   </div>
 </footer>
