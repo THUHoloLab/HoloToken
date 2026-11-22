@@ -53,6 +53,7 @@
   .nav-links a:hover { color: var(--text); }
   @media (max-width: 760px) { .nav-links .opt { display: none; } .nav-links { gap: 14px; } }
   @media (max-width: 620px) { .nav-links .opt2 { display: none; } }
+  @media (max-width: 400px) { .nav-links a:not(:last-child) { display: none; } }
 
   /* hero */
   .hero { padding: 72px 0 40px; }
@@ -74,8 +75,8 @@
   .btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
   .btn:hover { border-color: var(--blue); }
 
-  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
-  .badges img { height: 30px; width: auto; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+  .badges img { height: 22px; width: auto; display: block; }
   .leanmark { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: .86rem; letter-spacing: .04em; padding: 1px 5px; border-radius: 4px; background: var(--surface-2); color: var(--text); }
   .flinks { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
   .flinks a { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; }
@@ -270,11 +271,12 @@
       versus tuned conventional methods.
     </p>
     <div class="badges">
-      <a href="https://thuhololab.github.io/HoloToken/"><img src="https://img.shields.io/badge/Project-Page-1e2630?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Project page"></a>
-      <a href="https://huggingface.co/HololabTHU/HoloModel-Research"><img src="https://img.shields.io/badge/Hugging%20Face-HoloModel-ffd21e?style=for-the-badge&amp;logo=huggingface&amp;logoColor=black" alt="Hugging Face: HoloModel"></a>
-      <a href="https://github.com/THUHoloLab/HoloToken"><img src="https://img.shields.io/badge/GitHub-Code-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub: code"></a>
-      <a href="ep-absorber/blueprint/index.html"><img src="https://img.shields.io/badge/Lean%204-Formal%20proofs-4f6f95?style=for-the-badge" alt="Lean 4: formal proofs"></a>
-      <a href="#videos"><img src="https://img.shields.io/badge/Videos-2-b98f63?style=for-the-badge&amp;logo=youtube&amp;logoColor=white" alt="Videos"></a>
+      <a href="https://thuhololab.github.io/HoloToken/"><img src="https://img.shields.io/badge/project-page-1e2630?logo=googlechrome&amp;logoColor=white" alt="project page"></a>
+      <a href="https://huggingface.co/HololabTHU/HoloModel-Research"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20huggingface-HoloModel-ffd21e" alt="Hugging Face: HoloModel"></a>
+      <a href="https://github.com/THUHoloLab/HoloToken"><img src="https://img.shields.io/badge/github-code-181717?logo=github&amp;logoColor=white" alt="GitHub: code"></a>
+      <a href="https://github.com/THUHoloLab/HoloToken/actions/workflows/lean-ep-absorber.yml"><img src="https://github.com/THUHoloLab/HoloToken/actions/workflows/lean-ep-absorber.yml/badge.svg" alt="Lean proofs build status"></a>
+      <a href="ep-absorber/blueprint/index.html"><img src="https://img.shields.io/badge/lean%204-15%20theorems-4f6f95" alt="Lean 4: 15 theorems"></a>
+      <a href="#videos"><img src="https://img.shields.io/badge/videos-2-b98f63?logo=youtube&amp;logoColor=white" alt="videos"></a>
     </div>
     </div>
     </div>
