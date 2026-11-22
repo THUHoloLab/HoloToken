@@ -74,6 +74,19 @@
   .btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
   .btn:hover { border-color: var(--blue); }
 
+  .badges { display: flex; flex-wrap: wrap; gap: 10px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 9px; padding: 9px 16px 9px 13px; border-radius: 10px;
+    background: var(--text); color: #fff; text-decoration: none; font-weight: 600; font-size: .93rem;
+  }
+  .badge:hover { background: #33404f; }
+  .badge.play { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+  .badge .hf { font-size: 1.15rem; line-height: 1; }
+  .leanmark { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: .86rem; letter-spacing: .04em; padding: 1px 5px; border-radius: 4px; background: #fff; color: var(--text); }
+  .flinks { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .flinks a { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; }
+  .flinks a:hover { color: var(--text); }
+  .flinks .leanmark { background: var(--surface-2); }
   .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 48px 0 0; }
   .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
   .stat b { display: block; font-family: "Source Serif 4", Georgia, serif; font-size: 2rem; font-weight: 600; line-height: 1.1; }
@@ -218,10 +231,12 @@
       optical-physics benchmarks, so the research stays open to scrutiny, can be reproduced, and can run
       where the data cannot leave the laboratory.
     </p>
-    <div class="cta">
-      <a class="btn primary" href="#videos">Watch the videos</a>
-      <a class="btn" href="https://huggingface.co/HololabTHU/HoloModel-Research">HoloModel on Hugging Face</a>
-      <a class="btn" href="https://github.com/THUHoloLab/HoloToken">Code on GitHub</a>
+    <div class="badges">
+      <a class="badge" href="https://thuhololab.github.io/HoloToken/"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c2.6 2.6 3.9 5.7 3.9 9.2s-1.3 6.6-3.9 9.2c-2.6-2.6-3.9-5.7-3.9-9.2S9.4 5.4 12 2.8z"/></svg><span>Project page</span></a>
+      <a class="badge" href="https://huggingface.co/HololabTHU/HoloModel-Research"><span class="hf" aria-hidden="true">🤗</span><span>Hugging Face</span></a>
+      <a class="badge" href="https://github.com/THUHoloLab/HoloToken"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a>
+      <a class="badge" href="ep-absorber/blueprint/index.html"><span class="leanmark" aria-hidden="true">L∃∀N</span><span>Lean proofs</span></a>
+      <a class="badge play" href="#videos"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg><span>Videos</span></a>
     </div>
     </div>
     </div>
@@ -479,7 +494,11 @@ lake exe cache get &amp;&amp; lake build</pre>
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/holotoken-mark.png" alt="">HoloToken</a>
     <span>THUHoloLab · Department of Precision Instrument, Tsinghua University</span>
-    <span><a href="https://github.com/THUHoloLab/HoloToken">GitHub</a> · <a href="https://huggingface.co/HololabTHU/HoloModel-Research">Hugging Face</a></span>
+    <span class="flinks">
+      <a href="https://github.com/THUHoloLab/HoloToken"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+      <a href="https://huggingface.co/HololabTHU/HoloModel-Research"><span class="hf" aria-hidden="true">🤗</span>Hugging Face</a>
+      <a href="ep-absorber/blueprint/index.html"><span class="leanmark" aria-hidden="true">L∃∀N</span>Lean</a>
+    </span>
   </div>
 </footer>
 
