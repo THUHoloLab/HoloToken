@@ -244,6 +244,38 @@
   .seg button.on { background: var(--text); color: #fff; }
   .steps button i { background: #fff; border: 1px solid var(--line); }
   .steps button.on i { background: #fff; color: var(--text); border-color: #fff; }
+  .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 24px; margin: 8px 0 48px; }
+  @media (max-width: 900px) { .pgrid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .pgrid { grid-template-columns: 1fr; } }
+  .pn { margin: 0; }
+  .pn img { width: 100%; height: 220px; object-fit: contain; }
+  .pn figcaption { color: var(--muted); font-size: .9rem; margin-top: 10px; line-height: 1.5; }
+  .pn.wide { margin: -16px 0 48px; }
+  .pn.wide img { height: auto; max-width: 760px; margin: 0 auto; }
+  .pn.wide figcaption { text-align: center; }
+  .mgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin: 0 0 40px; }
+  @media (max-width: 760px) { .mgrid { grid-template-columns: 1fr; } }
+  .mgrid .pn img { height: auto; }
+  .grp-h { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.35rem; margin: 0 0 4px; }
+  .grp-h.rf { color: #4f6f95; } .grp-h.sb { color: #a67c52; } .grp-h.rc { color: #5f8b84; }
+  .grp-p { color: var(--muted); margin: 0 0 20px; }
+  .vtabs { display: flex; justify-content: center; gap: 8px; margin: 0 0 24px; flex-wrap: wrap; }
+  .vtabs button { font: inherit; font-size: .95rem; cursor: pointer; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 8px 16px; }
+  .vtabs button.on { background: var(--text); color: #fff; border-color: var(--text); }
+  .player { display: grid; grid-template-columns: 1.75fr 1fr; gap: 24px; align-items: start; }
+  @media (max-width: 900px) { .player { grid-template-columns: 1fr; } }
+  .now { border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin-top: 14px; min-height: 120px; }
+  .now-step { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--beige); margin-bottom: 6px; }
+  .now p { margin: 0 0 8px; }
+  .now-roles { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .86rem; color: var(--blue); font-weight: 600; }
+  .chapters { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 12px; max-height: 560px; overflow-y: auto; }
+  .chapters li { display: grid; grid-template-columns: 52px 1fr; gap: 10px; padding: 12px 14px; border-top: 1px solid var(--line); cursor: pointer; font-size: .92rem; }
+  .chapters li:first-child { border-top: 0; }
+  .chapters li:hover { background: #fafbfc; }
+  .chapters li.on { background: var(--text); color: #fff; }
+  .chapters li.on .ct, .chapters li.on .cn { color: #c9cdd4; }
+  .chapters .ct { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .chapters .cn { display: block; font-size: .76rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--beige); margin-bottom: 2px; }
   footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: .92rem; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
   footer .brand { font-size: 1rem; color: var(--text); }
@@ -442,6 +474,7 @@ lake exe cache get &amp;&amp; lake build</pre>
         <p>From a theory question to a sharp bound and a proposed test structure.</p>
       </div>
     </div>
+    <p style="text-align:center;margin:40px 0 0"><a class="btn dark" href="videos.html">Open the interactive walkthrough →</a></p>
   </div>
 </section>
 
@@ -460,8 +493,10 @@ lake exe cache get &amp;&amp; lake build</pre>
         <div class="big">4.6 dB<small>better reconstruction</small></div>
         <p>TiO₂ pillar dimers at four orientations halve the condition number of the sensing matrix from 201 to 94; independent verification confirmed the design on eight unseen test scenes.</p>
       </div>
-      <figure><img src="assets/fig/encoder.jpg" alt="Snapshot encoding with TiO2 pillar dimers, unit cell, design search, convergence, transmission matrices and reconstruction quality" loading="lazy"></figure>
+      <figure><img src="assets/fig/panels/enc_a.jpg" alt="Snapshot encoding with TiO2 pillar-dimer cells tiled as 2 by 2 macro-pixels" loading="lazy"></figure>
     </div>
+    <div class="pgrid"><figure class="pn"><img src="assets/fig/panels/enc_b.jpg" alt="The unit cell: two pillars 210 nm apart in a 420-nm cell, rotated by θ." loading="lazy"><figcaption>The unit cell: two pillars 210 nm apart in a 420-nm cell, rotated by θ.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_c.jpg" alt="RCWA search over 344 candidate designs; the star marks the selected set." loading="lazy"><figcaption>RCWA search over 344 candidate designs; the star marks the selected set.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_d.jpg" alt="Convergence against the 81-order solution." loading="lazy"><figcaption>Convergence against the 81-order solution.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_e.jpg" alt="Transmission matrices of the dimer encoder and a single-layer baseline." loading="lazy"><figcaption>Transmission matrices of the dimer encoder and a single-layer baseline.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_f.jpg" alt="Reconstruction PSNR on eight test scenes versus noise." loading="lazy"><figcaption>Reconstruction PSNR on eight test scenes versus noise.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_g.jpg" alt="Per-scene PSNR gain of the dimer encoder." loading="lazy"><figcaption>Per-scene PSNR gain of the dimer encoder.</figcaption></figure></div>
+
     <div class="interactive" id="encoder-steps">
       <div class="ihead">
         <h3>Follow the discovery step by step</h3>
@@ -492,8 +527,10 @@ lake exe cache get &amp;&amp; lake build</pre>
         <div class="big">1.633 <i>L</i><small>29.9% of the Bode–Fano limit</small></div>
         <p>Splitting the zeros instead reaches 2.720 <i>L</i> with two modes. Part of this result is <a class="link-arrow" href="#lean">machine-checked in Lean 4</a>.</p>
       </div>
-      <figure><img src="assets/fig/ep.jpg" alt="Coupled-mode picture, bandwidth limit, absorption spectra and test structure of the exceptional-point absorber" loading="lazy"></figure>
+      <figure><img src="assets/fig/panels/ep_a.jpg" alt="Proposed test structure: a silver-backed Si/SiO2 multilayer with a thin Cr absorber and a wedged Si coupling layer" loading="lazy"></figure>
     </div>
+    <div class="pgrid"><figure class="pn"><img src="assets/fig/panels/ep_b.jpg" alt="Coupled modes: the zeros merge at the EP (g = L) or split (g > L)." loading="lazy"><figcaption>Coupled modes: the zeros merge at the EP (g = L) or split (g > L).</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_c.jpg" alt="The 90% band at fixed loss versus the number of modes N." loading="lazy"><figcaption>The 90% band at fixed loss versus the number of modes N.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_d.jpg" alt="Absorption at equal loss: second-order EP and two split zeros." loading="lazy"><figcaption>Absorption at equal loss: second-order EP and two split zeros.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_e.jpg" alt="Share of the absorption integral inside, beyond and outside the 90% band." loading="lazy"><figcaption>Share of the absorption integral inside, beyond and outside the 90% band.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_f.jpg" alt="Band of a merged zero raised above the real axis." loading="lazy"><figcaption>Band of a merged zero raised above the real axis.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_g.jpg" alt="90% band of dispersive Maxwell absorbers at equal loss." loading="lazy"><figcaption>90% band of dispersive Maxwell absorbers at equal loss.</figcaption></figure></div><figure class="pn wide"><img src="assets/fig/panels/ep_h.jpg" alt="Optical path for multimode absorption" loading="lazy"><figcaption>Optical path for multimode absorption, after the layout proposed by Hörner et al.</figcaption></figure>
+
     <div class="interactive" id="ep-explorer">
       <div class="ihead">
         <h3>Explore the absorption band: merged versus split zeros</h3>
@@ -544,7 +581,7 @@ lake exe cache get &amp;&amp; lake build</pre>
       <div class="grow" data-mode="sb"><div>Two-port ridge splitter<span class="gq">efficiency</span></div><div class="gtrack"><div class="sb" style="width:2.1%"></div></div><div class="gv">1.07×</div></div>
       </div>
     </div>
-    <figure style="margin:0"><img src="assets/fig/methods.jpg" alt="Optical paths and one result for eight further methods, grouped by reframing, subtraction and recombination" loading="lazy"></figure>
+    <h3 class="sub-h" style="margin-top:56px">Eight further methods</h3><h4 class="grp-h rf">Reframing</h4><p class="grp-p">An assumption the field shares becomes something to design or estimate.</p><div class="mgrid"><figure class="pn"><img src="assets/fig/panels/m_scaling.jpg" alt="Scaling-law spectrometer" loading="lazy"></figure><figure class="pn"><img src="assets/fig/panels/m_codedpupil.jpg" alt="Coded-pupil phase imaging" loading="lazy"></figure><figure class="pn"><img src="assets/fig/panels/m_blindref.jpg" alt="Blind-reference holography" loading="lazy"></figure><figure class="pn"><img src="assets/fig/panels/m_fibre.jpg" alt="Fibre-array despeckling" loading="lazy"></figure></div><h4 class="grp-h sb">Subtraction</h4><p class="grp-p">A component the standard method treats as necessary is removed.</p><div class="mgrid"><figure class="pn"><img src="assets/fig/panels/m_threeport.jpg" alt="Three-port ridge splitter" loading="lazy"></figure></div><h4 class="grp-h rc">Recombination</h4><p class="grp-p">Known methods are paired so that one covers the weakness of the other.</p><div class="mgrid"><figure class="pn"><img src="assets/fig/panels/m_angle.jpg" alt="Holographic angle sensing" loading="lazy"></figure><figure class="pn"><img src="assets/fig/panels/m_fastholo.jpg" alt="Fast holographic retrieval" loading="lazy"></figure><figure class="pn"><img src="assets/fig/panels/m_drift.jpg" alt="Drift-tolerant spectrometer" loading="lazy"></figure></div>
   </div>
 </section>
 
@@ -684,5 +721,6 @@ lake exe cache get &amp;&amp; lake build</pre>
   });
 })();
 </script>
+
 </body>
 </html>
