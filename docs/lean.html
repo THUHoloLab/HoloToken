@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>HoloToken · Lean proofs</title>
+<meta name="description" content="Lean 4 proofs of the bandwidth ceiling of perfectly absorbing exceptional points: 15 theorems, no sorry, standard axioms only.">
+<link rel="icon" type="image/png" href="assets/holotoken-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --soft: #f6f7f9;
+    --soft-2: #e9ebef;
+    --line: #e6e8ec;
+    --text: #191919;
+    --muted: #5b6270;
+    --blue: #4f6f95;
+    --blue-soft: #dce5ef;
+    --beige: #a67c52;
+    --beige-soft: #f3e7d9;
+    --green: #2e7d5b;
+    --green-soft: #e3f1ea;
+    --code-bg: #f7f8fa;
+    --radius: 18px;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text); overflow-wrap: break-word;
+    font: 17px/1.6 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 16px; }
+  .narrow { max-width: 880px; margin: 0 auto; }
+  .serif { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; }
+  .m { font-family: "Source Serif 4", Georgia, serif; font-style: italic; }
+  code, .mono { font-family: var(--mono); font-size: .86em; }
+
+  /* nav (same as the main page) */
+  .nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; }
+  .brand img { width: 30px; height: 30px; }
+  .nav-links { display: flex; gap: 26px; margin-left: auto; font-size: .94rem; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; }
+  .nav-links a:hover, .nav-links a.on { color: var(--text); }
+  @media (max-width: 860px) { .nav-links .opt { display: none; } }
+
+  /* hero */
+  .hero { padding: 72px 0 40px; text-align: center; }
+  .eyebrow { display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--green); background: var(--green-soft); padding: 5px 12px; border-radius: 999px; }
+  .hero h1 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: clamp(2rem, 4.6vw, 3.1rem); line-height: 1.15; letter-spacing: -.015em; margin: 20px auto 16px; max-width: 900px; }
+  .hero .lead { color: var(--muted); font-size: 1.08rem; max-width: 720px; margin: 0 auto; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 760px; margin: 36px auto 0; }
+  .stat { border: 1px solid var(--line); border-radius: 14px; padding: 16px 10px; }
+  .stat b { display: block; font-size: 1.7rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
+  .stat span { color: var(--muted); font-size: .86rem; }
+  @media (max-width: 620px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 30px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 10px; font-weight: 600; font-size: .95rem; text-decoration: none; border: 1.5px solid transparent; }
+  .btn.dark { background: #2E3742; color: #fff; }
+  .btn.dark:hover { background: #46515e; }
+  .btn.soft { background: #fff; color: #2E3742; border-color: #C9D0D7; box-shadow: inset 0 -2px 0 #e3e6ea; }
+  .btn.soft:hover { background: var(--soft); }
+  .btn svg { width: 17px; height: 17px; }
+  @media (max-width: 560px) { .btns { flex-direction: column; align-items: center; } .btn { width: 100%; max-width: 320px; justify-content: center; } }
+
+  /* sections */
+  .sec { padding: 56px 0; border-top: 1px solid var(--line); }
+  .sec-head { margin-bottom: 28px; }
+  .sec-head h2 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.9rem; letter-spacing: -.01em; margin: 0 0 8px; }
+  .sec-head p { color: var(--muted); margin: 0; max-width: 720px; }
+
+  /* result cards */
+  .results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .rcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .rcard .big { font-family: "Source Serif 4", Georgia, serif; font-size: 2rem; line-height: 1.15; }
+  .rcard p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .rcard .foot { margin-top: auto; padding-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: .82rem; color: var(--muted); }
+  @media (max-width: 860px) { .results { grid-template-columns: 1fr; } }
+
+  .tag { display: inline-block; font-size: .74rem; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+  .tag.ok { color: var(--green); background: var(--green-soft); }
+  .tag.open { color: var(--beige); background: var(--beige-soft); }
+
+  /* theorem list */
+  .file { border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 16px; overflow: hidden; }
+  .file-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 20px; background: var(--soft); border-bottom: 1px solid var(--line); }
+  .file-head h3 { margin: 0; font-size: 1.02rem; font-weight: 600; }
+  .file-head a { font-family: var(--mono); font-size: .8rem; color: var(--muted); text-decoration: none; }
+  .file-head a:hover { color: var(--text); text-decoration: underline; }
+  .thm { display: grid; grid-template-columns: 250px 1fr auto; gap: 16px; align-items: baseline; padding: 13px 20px; border-top: 1px solid var(--line); }
+  .thm:first-of-type { border-top: 0; }
+  .thm a.name { font-family: var(--mono); font-size: .82rem; color: var(--blue); text-decoration: none; word-break: break-all; }
+  .thm a.name:hover { text-decoration: underline; }
+  .thm .st { font-size: .96rem; }
+  @media (max-width: 760px) { .thm { grid-template-columns: 1fr auto; gap: 4px 12px; } .thm .st { grid-column: 1 / -1; grid-row: 2; } }
+
+  /* code */
+  .code { position: relative; background: var(--code-bg); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .code-bar { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; border-bottom: 1px solid var(--line); font-size: .8rem; color: var(--muted); font-family: var(--mono); }
+  .code-bar button { font: 600 .78rem Inter, sans-serif; color: #2E3742; background: #fff; border: 1px solid #C9D0D7; border-radius: 7px; padding: 4px 10px; cursor: pointer; }
+  .code pre { margin: 0; padding: 16px 18px; overflow-x: auto; font-family: var(--mono); font-size: .84rem; line-height: 1.65; }
+  .kw { color: #8a3f8f; font-weight: 500; }
+  .ty { color: #2e6b8f; }
+  .nm { color: #1d5c3f; font-weight: 500; }
+  .cm { color: #8a8f98; }
+  .tac { color: #a05a1c; }
+  .explain { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  .explain .txt p { margin: 0 0 12px; }
+  .explain .txt p:last-child { margin: 0; }
+  @media (max-width: 860px) { .explain { grid-template-columns: 1fr; } }
+
+  /* open items */
+  .open-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .open-list li { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: baseline; border: 1px dashed #d8c4ad; border-radius: 14px; padding: 14px 18px; }
+  .open-list li p { margin: 0; }
+  .open-list li small { display: block; color: var(--muted); font-size: .88rem; margin-top: 2px; }
+
+  .note { color: var(--muted); font-size: .95rem; }
+  .axioms { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .axioms code { background: var(--soft); border: 1px solid var(--line); padding: 3px 9px; border-radius: 7px; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: .9rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; }
+  footer .brand { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/holotoken-mark.png" alt="">HoloToken</a>
+    <div class="nav-links">
+      <a class="opt" href="index.html#model">Model</a>
+      <a class="opt" href="index.html#harness">Harness</a>
+      <a class="opt" href="index.html#skills">Skills</a>
+      <a class="on" href="lean.html">Lean</a>
+      <a class="opt" href="index.html#discoveries">Discoveries</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Lean 4 · Mathlib</span>
+    <h1>Bandwidth ceiling of perfectly absorbing exceptional points, checked by machine</h1>
+    <p class="lead">At equal intrinsic loss <span class="m">L</span>, the 90% absorption band of a perfectly absorbing exceptional point is at most 2√(2/3)&#8239;<span class="m">L</span>&nbsp;≈&nbsp;1.633&#8239;<span class="m">L</span>. The theorems below compile in Lean&nbsp;4, and every change to the repository rebuilds them.</p>
+    <div class="stats">
+      <div class="stat"><b>15</b><span>theorems</span></div>
+      <div class="stat"><b>5</b><span>Lean files</span></div>
+      <div class="stat"><b>0</b><span><code>sorry</code></span></div>
+      <div class="stat"><b>3</b><span>standard axioms</span></div>
+    </div>
+    <div class="btns">
+      <a class="btn dark" href="https://github.com/THUHoloLab/HoloToken/tree/main/lean/EPAbsorber"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Lean source</a>
+      <a class="btn soft" href="ep-absorber/blueprint/dep_graph_document.html">Dependency graph</a>
+      <a class="btn soft" href="ep-absorber/blueprint/index.html">Blueprint</a>
+      <a class="btn soft" href="ep-absorber/blueprint.pdf">Blueprint PDF</a>
+    </div>
+    <p style="margin:22px 0 0"><a href="https://github.com/THUHoloLab/HoloToken/actions/workflows/lean-ep-absorber.yml"><img style="display:inline-block" src="https://github.com/THUHoloLab/HoloToken/actions/workflows/lean-ep-absorber.yml/badge.svg" alt="Lean build status"></a></p>
+  </div>
+</header>
+
+<section class="sec" id="results">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <h2>Three numbers</h2>
+      <p>The headline values of the Letter and where each one is proved.</p>
+    </div>
+    <div class="results">
+      <div class="rcard">
+        <div class="big">2√(2/3)&#8239;<span class="m">L</span></div>
+        <p>The second-order EP attains this band exactly: |<span class="m">r</span>(<span class="m">ω</span>)|² ≤ 1/10 on [−√(2/3)&#8239;<span class="m">L</span>, √(2/3)&#8239;<span class="m">L</span>].</p>
+        <div class="foot"><span class="tag ok">Lean</span><code>EP.band_N2</code></div>
+      </div>
+      <div class="rcard">
+        <div class="big">29.9%</div>
+        <p>Share of the Bode–Fano ceiling 4π<span class="m">L</span>/ln&nbsp;10 that an EP can reach: 0.2985 &lt; ratio &lt; 0.2995.</p>
+        <div class="foot"><span class="tag ok">Lean</span><code>EP.Ratio.ratio_bounds</code></div>
+      </div>
+      <div class="rcard">
+        <div class="big">2.720&#8239;<span class="m">L</span></div>
+        <p>Two modes with split zeros go past the EP: the dimer bound (4/3)√(1+√10) holds and is attained at <span class="m">g</span> = (1+√10)/3.</p>
+        <div class="foot"><span class="tag ok">Lean</span><code>dimer_bound</code> · <code>dimer_attained</code></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="theorems">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <h2>All 15 theorems</h2>
+      <p>Each name links to its line in the Lean source.</p>
+    </div>
+
+    <div class="file">
+      <div class="file-head"><h3>Second-order EP</h3><a href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/N2.lean">EPAbsorber/N2.lean</a></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/N2.lean#L9">EP.P2_factor</a><span class="st"><span class="m">P</span>(<span class="m">ω</span>) = <span class="m">ω</span>² + 2i<span class="m">Lω</span> − 2<span class="m">L</span>² has poles ±<span class="m">L</span> − i<span class="m">L</span></span><span class="tag ok">Lean</span></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/N2.lean#L16">EP.P2_trace</a><span class="st">this absorber has intrinsic loss exactly <span class="m">L</span></span><span class="tag ok">Lean</span></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/N2.lean#L21">EP.P2_normSq</a><span class="st">|<span class="m">P</span>(<span class="m">ω</span>)|² = <span class="m">ω</span>⁴ + 4<span class="m">L</span>⁴ for real <span class="m">ω</span></span><span class="tag ok">Lean</span></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/N2.lean#L25">EP.r2_normSq</a><span class="st">|<span class="m">r</span>(<span class="m">ω</span>)|² = <span class="m">ω</span>⁴ / (<span class="m">ω</span>⁴ + 4<span class="m">L</span>⁴)</span><span class="tag ok">Lean</span></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/N2.lean#L30">EP.band_N2</a><span class="st">the 90% band is exactly [−√(2/3)&#8239;<span class="m">L</span>, √(2/3)&#8239;<span class="m">L</span>], so <span class="m">B</span> = 2√(2/3)&#8239;<span class="m">L</span></span><span class="tag ok">Lean</span></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/N2.lean#L54">EP.width_N2_bounds</a><span class="st">1.6329 &lt; 2√(2/3) &lt; 1.6330</span><span class="tag ok">Lean</span></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/N2.lean#L63">EP.reach_lt</a><span class="st"><span class="m">X<sub>N</sub></span> = 2<span class="m">L</span> / (<span class="m">N</span> sinh(asinh 3 / <span class="m">N</span>)) &lt; 2<span class="m">L</span> / asinh 3 for every <span class="m">N</span></span><span class="tag ok">Lean</span></div>
+    </div>
+
+    <div class="file">
+      <div class="file-head"><h3>Envelope and one-sided reach</h3><a href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/Envelope.lean">EPAbsorber/Envelope.lean</a></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/Envelope.lean#L87">EP.envelope_prod</a><span class="st">the envelope inequality, Eq. (5), for the canonical EP</span><span class="tag ok">Lean</span></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/Envelope.lean#L104">EP.envelope_jensen</a><span class="st">Jensen step: Σ asinh(2<span class="m">γ<sub>j</sub></span>/|<span class="m">ω</span>|) ≤ <span class="m">N</span> asinh(2<span class="m">L</span>/(<span class="m">N</span>|<span class="m">ω</span>|))</span><span class="tag ok">Lean</span></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/Envelope.lean#L121">EP.reach</a><span class="st">inside the 90% band, |<span class="m">ω</span>| ≤ <span class="m">X<sub>N</sub></span> (one-sided reach, Eq. (6))</span><span class="tag ok">Lean</span></div>
+    </div>
+
+    <div class="file">
+      <div class="file-head"><h3>Share of the Bode–Fano ceiling</h3><a href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/Ratio.lean">EPAbsorber/Ratio.lean</a></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/Ratio.lean#L9">EP.Ratio.ratio_bounds</a><span class="st">0.2985 &lt; 2√(2/3) / (4π / ln 10) &lt; 0.2995</span><span class="tag ok">Lean</span></div>
+    </div>
+
+    <div class="file">
+      <div class="file-head"><h3>Split zeros: the dimer</h3><a href="https://github.com/THUHoloLab/HoloToken/tree/main/lean/EPAbsorber/EPAbsorber">DimerBound.lean · DimerAttained.lean</a></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/DimerBound.lean#L21">EP.DimerBound.rD_normSq</a><span class="st">closed form of |<span class="m">r<sub>D</sub></span>(<span class="m">ω</span>)|² for the dimer (<span class="m">L</span> = 1)</span><span class="tag ok">Lean</span></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/DimerBound.lean#L32">EP.DimerBound.dimer_bound</a><span class="st">no connected 90% band containing the CPA zero is wider than (4/3)√(1+√10)</span><span class="tag ok">Lean</span></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/DimerAttained.lean#L22">EP.DimerAttained.dimer_attained</a><span class="st">the bound is attained at <span class="m">g</span> = (1+√10)/3</span><span class="tag ok">Lean</span></div>
+      <div class="thm"><a class="name" href="https://github.com/THUHoloLab/HoloToken/blob/main/lean/EPAbsorber/EPAbsorber/DimerAttained.lean#L71">EP.DimerAttained.dimer_value_bounds</a><span class="st">2.720 &lt; (4/3)√(1+√10) &lt; 2.7203</span><span class="tag ok">Lean</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="example">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <h2>What a statement looks like</h2>
+      <p>The band of the second-order EP, as written in Lean.</p>
+    </div>
+    <div class="explain">
+      <div class="code">
+        <div class="code-bar"><span>N2.lean · line 30</span></div>
+<pre><span class="kw">theorem</span> <span class="nm">band_N2</span> {L : <span class="ty">ℝ</span>} (hL : 0 &lt; L) :
+    {ω : <span class="ty">ℝ</span> | normSq ((ω:<span class="ty">ℂ</span>) ^ 2 / P2 L ω) ≤ 1 / 10}
+      = Icc (-(√(2 / 3) * L)) (√(2 / 3) * L) := <span class="kw">by</span>
+  <span class="tac">set</span> s := √(2 / 3) * L <span class="kw">with</span> hs
+  <span class="cm">-- s² = (2/3) L²</span>
+  <span class="tac">have</span> hs2 : s ^ 2 = 2 / 3 * L ^ 2 := <span class="kw">by</span>
+    <span class="tac">rw</span> [hs, mul_pow, Real.sq_sqrt (<span class="kw">by</span> <span class="tac">norm_num</span>)]
+  <span class="tac">ext</span> ω
+  <span class="tac">rw</span> [r2_normSq hL]
+  <span class="cm">-- ... both directions by nlinarith</span></pre>
+      </div>
+      <div class="txt">
+        <p>The left side is the set of real frequencies where the reflected power |<span class="m">r</span>|² is at most 1/10, which is where 90% or more is absorbed.</p>
+        <p>The right side is a closed interval. Equality of the two sets means the band is exactly that interval, so its width is 2√(2/3)&#8239;<span class="m">L</span>.</p>
+        <p class="note">Lean accepts the theorem only if every step checks. The build also prints the axioms each theorem uses; all 15 use only:</p>
+        <div class="axioms"><code>propext</code><code>Classical.choice</code><code>Quot.sound</code></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="open">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <h2>Proved on paper, not yet in Lean</h2>
+      <p>These steps are proved in the Supplemental Material of the Letter and appear as open nodes in the blueprint. The bound for every order rests on them.</p>
+    </div>
+    <ul class="open-list">
+      <li><span class="tag open">Paper</span><p>Reduction of every full-order EP to the canonical form, Eq. (4)<small>Rank-one reduction, Schur form, Darlington synthesis</small></p></li>
+      <li><span class="tag open">Paper</span><p>The Bode–Fano ceiling <span class="m">B</span> ≤ 4π<span class="m">L</span>/ln&nbsp;10</p></li>
+      <li><span class="tag open">Paper</span><p>The sharp supremum sup <span class="m">B</span><sub>EP</sub> = 2√(2/3)&#8239;<span class="m">L</span> for every order <span class="m">N</span> ≥ 2<small>Schwarz chain, entropy dual, interval-arithmetic certificate</small></p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="reproduce">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <h2>Check it yourself</h2>
+      <p>Needs <a href="https://github.com/leanprover/elan">elan</a>. Lean 4.37.0-rc1 and the Mathlib version are pinned in the repository.</p>
+    </div>
+    <div class="code">
+      <div class="code-bar"><span>terminal</span><button type="button" id="copy">Copy</button></div>
+<pre id="cmds">git clone https://github.com/THUHoloLab/HoloToken.git
+cd HoloToken/lean/EPAbsorber
+lake exe cache get
+lake build
+lake env lean scripts/check_axioms.lean</pre>
+    </div>
+    <p class="note" style="margin-top:20px">Scope: the theorems are statements about the coupled-mode model of the Letter: <span class="m">N</span> resonant modes with frequency-independent couplings, a passive rational scattering matrix with lossless background, intrinsic loss <span class="m">L</span> = tr Γ<sub>i</sub>, and the 90% band on the connected interval that contains a CPA frequency. Dimer results are stated at <span class="m">L</span> = 1; <span class="m">B</span>/<span class="m">L</span> does not depend on scale.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/holotoken-mark.png" alt="">HoloToken</a>
+    <span>THUHoloLab · Department of Precision Instrument, Tsinghua University</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('copy').addEventListener('click', function () {
+    var b = this, t = document.getElementById('cmds').innerText;
+    try {
+      navigator.clipboard.writeText(t).then(function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1500); });
+    } catch (e) {}
+  });
+</script>
+</body>
+</html>

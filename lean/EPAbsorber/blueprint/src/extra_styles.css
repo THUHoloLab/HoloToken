@@ -1,0 +1,92 @@
+/* HoloToken look for the plasTeX blueprint (loaded after theme-white.css) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap");
+
+:root {
+  --ht-text: #191919;
+  --ht-muted: #5b6270;
+  --ht-line: #e6e8ec;
+  --ht-soft: #f6f7f9;
+  --ht-blue: #4f6f95;
+  --ht-green: #2e7d5b;
+  --ht-green-soft: #e3f1ea;
+  --ht-beige: #a67c52;
+  --ht-beige-soft: #f3e7d9;
+}
+
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--ht-text);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; color: var(--ht-text); letter-spacing: -.01em; }
+
+/* top bar */
+body > header {
+  background: rgba(255, 255, 255, .94);
+  border-bottom: 1px solid var(--ht-line);
+  padding: .7rem 1rem;
+  min-height: 60px;
+}
+h1#doc_title { font-size: 1.15rem; line-height: 1.35; font-weight: 600; font-family: Inter, sans-serif; letter-spacing: -.005em; }
+#doc_title a, #doc_title a:visited { color: var(--ht-text); }
+#toc-toggle { fill: var(--ht-muted); }
+
+/* side contents */
+nav.toc { background: var(--ht-soft); border-right: 1px solid var(--ht-line); padding: 1rem .6rem 1rem .8rem; }
+.toc ul li, .toc ul li.current { background: transparent; }
+.toc ul a { font-size: .95rem; line-height: 1.4; color: var(--ht-muted); padding: .45rem .6rem; border-radius: 8px; max-width: 100%; }
+.toc ul a:hover { background: #eceef2; color: var(--ht-text); }
+.toc ul li.current > a, .toc ul li.active > a { color: var(--ht-text); background: #fff; box-shadow: 0 0 0 1px var(--ht-line); font-weight: 600; }
+.toc_ref { color: var(--ht-blue); font-weight: 600; margin-right: .25rem; }
+
+/* main column */
+div.main-text { max-width: 860px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; font-size: 1rem; line-height: 1.65; }
+div.main-text > h1 { font-size: 1.9rem; line-height: 1.25; margin: .5rem 0 1.5rem; }
+div.main-text p { margin: .6rem 0; }
+div.main-text a { color: var(--ht-blue); }
+
+/* statement cards */
+div[class*="_thmwrapper"] {
+  border: 1px solid var(--ht-line);
+  border-radius: 14px;
+  padding: .9rem 1.1rem 1rem;
+  margin: 1rem 0;
+  background: #fff;
+}
+div[class$="_thmheading"] { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem; font-size: .95rem; }
+span[class$="_thmcaption"] { font-weight: 700; color: var(--ht-text); }
+span[class$="_thmlabel"] { font-weight: 600; color: var(--ht-muted); }
+.thm_header_extras { color: var(--ht-green); font-weight: 700; }
+div[class$="_thmcontent"] { margin-top: .4rem; }
+div.theorem_thmwrapper { border-left: 4px solid var(--ht-blue); }
+div.definition_thmwrapper { border-left: 4px solid var(--ht-beige); }
+div.lemma_thmwrapper { border-left: 4px solid #9aa7b6; }
+
+/* proofs */
+div.proof_wrapper { margin: -.4rem 0 1rem; padding: .2rem 1.1rem .5rem; border: 1px solid var(--ht-line); border-top: 0; border-radius: 0 0 14px 14px; background: var(--ht-soft); }
+div.proof_heading { font-size: .9rem; color: var(--ht-muted); cursor: pointer; }
+span.proof_caption { font-style: normal; font-weight: 600; }
+
+/* Lean button and modals */
+button.modal.lean {
+  font: 600 .72rem/1 Inter, sans-serif;
+  color: var(--ht-green);
+  background: var(--ht-green-soft);
+  border: 0;
+  border-radius: 999px;
+  padding: .3rem .6rem;
+  cursor: pointer;
+}
+.modal-content, .dep-modal-content { border-radius: 14px; border: 1px solid var(--ht-line); box-shadow: 0 12px 40px rgba(20, 30, 45, .14); font-family: Inter, sans-serif; }
+.modal-content header h1, .dep-modal-content h1 { font-size: 1.1rem; }
+
+/* landing page contents list */
+div.main-text > ul, .main-text ul.sub-toc-0 { list-style: none; padding: 0; }
+div.main-text ul li a { text-decoration: none; }
+
+@media (max-width: 700px) {
+  div.main-text { padding: 1rem .9rem 2.5rem; }
+  div.main-text > h1 { font-size: 1.5rem; }
+  h1#doc_title { font-size: 1rem; }
+}
