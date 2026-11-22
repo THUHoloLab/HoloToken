@@ -169,6 +169,15 @@
   .readout span { display: block; font-size: .8rem; color: var(--muted); }
   .readout b { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.35rem; }
   @media (max-width: 700px) { .readout { grid-template-columns: repeat(2, 1fr); } }
+  .epgrid { display: grid; grid-template-columns: 1fr 2fr; gap: 28px 24px; align-items: start; margin: 8px 0 56px; }
+  .epgrid .epleft { display: grid; gap: 28px; }
+  .epgrid .pn img { height: 280px; }
+  @media (max-width: 900px) { .epgrid .pn img { height: 220px; } }
+  .epgrid .interactive { margin: 0; padding: 22px; }
+  .epgrid .ihead h3 { font-size: 1.3rem; }
+  .epgrid .readout b { font-size: 1.15rem; }
+  @media (max-width: 900px) { .epgrid { grid-template-columns: 1fr; } .epgrid .epleft { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .epgrid .epleft { grid-template-columns: 1fr; } .epgrid .readout { grid-template-columns: repeat(2, 1fr); } }
   .bars { margin-top: 14px; display: grid; gap: 6px; }
   .bars .br { display: grid; grid-template-columns: 170px 1fr; gap: 10px; align-items: center; font-size: .86rem; color: var(--muted); }
   .bars .bt { height: 12px; background: #fff; border-radius: 4px; overflow: hidden; }
@@ -560,8 +569,8 @@ lake exe cache get &amp;&amp; lake build</pre>
       </div>
       <figure><img src="assets/fig/panels/ep_a.jpg" alt="Proposed test structure: a silver-backed Si/SiO2 multilayer with a thin Cr absorber and a wedged Si coupling layer" loading="lazy"></figure>
     </div>
-    <div class="pgrid"><figure class="pn"><img src="assets/fig/panels/ep_b.jpg" alt="Coupled modes: the zeros merge at the EP (g = L) or split (g > L)." loading="lazy"><figcaption>Coupled modes: the zeros merge at the EP (g = L) or split (g > L).</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_c.jpg" alt="The 90% band at fixed loss versus the number of modes N." loading="lazy"><figcaption>The 90% band at fixed loss versus the number of modes N.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_d.jpg" alt="Absorption at equal loss: second-order EP and two split zeros." loading="lazy"><figcaption>Absorption at equal loss: second-order EP and two split zeros.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_e.jpg" alt="Share of the absorption integral inside, beyond and outside the 90% band." loading="lazy"><figcaption>Share of the absorption integral inside, beyond and outside the 90% band.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_f.jpg" alt="Band of a merged zero raised above the real axis." loading="lazy"><figcaption>Band of a merged zero raised above the real axis.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_h.jpg" alt="Optical path for multimode absorption" loading="lazy"><figcaption>Optical path for multimode absorption, after the layout proposed by Hörner et al.</figcaption></figure></div>
-
+    <div class="epgrid">
+      <div class="epleft"><figure class="pn"><img src="assets/fig/panels/ep_b.jpg" alt="Coupled modes: the zeros merge at the EP (g = L) or split (g > L)." loading="lazy"><figcaption>Coupled modes: the zeros merge at the EP (g = L) or split (g > L).</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_h.jpg" alt="Optical path for multimode absorption" loading="lazy"><figcaption>Optical path for multimode absorption, after the layout proposed by Hörner et al.</figcaption></figure></div>
     <div class="interactive" id="ep-explorer">
       <div class="ihead">
         <h3>Explore the absorption band: merged versus split zeros</h3>
@@ -579,8 +588,8 @@ lake exe cache get &amp;&amp; lake build</pre>
         <div><span>Best split zeros (dimer)</span><b>2.720 <i>L</i></b></div>
         <div><span>Bode–Fano limit</span><b>5.458 <i>L</i></b></div>
       </div>
-      <div class="bars" id="bars"></div>
       <p class="note small">The absorption, band edges and the 2.720 <i>L</i> optimum all follow theorems checked in Lean.</p>
+    </div>
     </div>
 
     <div class="interactive" style="background:#fff">
@@ -706,7 +715,7 @@ lake exe cache get &amp;&amp; lake build</pre>
       s += '<rect x="' + (lx + 100) + '" y="' + (ly - 6) + '" width="20" height="12" fill="#dce5ef"/><text x="' + (lx + 126) + '" y="' + (ly + 4) + '">90% band</text></g>';
       svg.innerHTML = s;
       var rows = [["This absorber", B, "#4f6f95"], ["EP ceiling", 1.633, "#b98f63"], ["Best dimer", 2.720, "#7fa7a0"], ["Bode–Fano limit", 5.458, "#7D8792"]];
-      document.getElementById("bars").innerHTML = rows.map(function (r) {
+      var barsEl = document.getElementById("bars"); if (barsEl) barsEl.innerHTML = rows.map(function (r) {
         return '<div class="br"><span>' + r[0] + ' · ' + r[1].toFixed(3) + ' L</span><div class="bt"><div style="width:' + (r[1] / 5.458 * 100).toFixed(1) + '%;background:' + r[2] + '"></div></div></div>';
       }).join("");
     }
