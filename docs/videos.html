@@ -276,6 +276,17 @@
   .chapters li.on .ct, .chapters li.on .cn { color: #c9cdd4; }
   .chapters .ct { color: var(--muted); font-variant-numeric: tabular-nums; }
   .chapters .cn { display: block; font-size: .76rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--beige); margin-bottom: 2px; }
+  /* buttons: equal size, steel-blue scheme */
+  .btn { box-sizing: border-box; justify-content: center; min-width: 240px; height: 50px; padding: 0 22px; border-radius: 10px; border: 1.5px solid transparent; font-weight: 600; }
+  .btn.dark { background: #3d5f86; border-color: #3d5f86; color: #fff; }
+  .btn.dark:hover { background: #2f4c6d; border-color: #2f4c6d; }
+  .btn.soft { background: #fff !important; border: 1.5px solid #3d5f86 !important; color: #3d5f86; }
+  .btn.soft:hover { background: #eef3f9 !important; }
+  .nav-links .cta-sm { background: #3d5f86; }
+  .nav-links .cta-sm:hover { background: #2f4c6d; color: #fff; }
+  .vtabs button.on, .steps button.on, .filters button.on, .seg button.on, .chapters li.on { background: #3d5f86 !important; border-color: #3d5f86 !important; color: #fff; }
+  .link-arrow { color: #3d5f86; }
+  @media (max-width: 560px) { .btns { flex-direction: column; align-items: center; } .btn { width: 100%; max-width: 320px; } }
   footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: .92rem; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
   footer .brand { font-size: 1rem; color: var(--text); }
