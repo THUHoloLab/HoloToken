@@ -302,8 +302,8 @@
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/holotoken-mark.png" alt="">HoloToken</a>
     <div class="nav-links">
-      <a class="opt" href="#harness">Harness</a>
       <a class="opt" href="#model">Model</a>
+      <a class="opt" href="#harness">Harness</a>
       <a class="opt" href="#skills">Skills</a>
       <a class="opt" href="#lean">Lean</a>
       <a class="opt" href="#discoveries">Discoveries</a>
@@ -347,11 +347,37 @@
 <section class="sec" id="layers">
   <div class="wrap">
     <div class="layers">
-      <a class="layer" href="#harness"><span class="ln">01</span><h3>Harness</h3><p>The pipeline, agents, tools, research record and checks that carry a question to a verified result.</p></a>
-      <a class="layer" href="#model"><span class="ln">02</span><h3>Model</h3><p>HoloModel: local 27B models that write the research code and supply optics knowledge.</p></a>
+      <a class="layer" href="#model"><span class="ln">01</span><h3>Model</h3><p>HoloModel: local 27B models that write the research code and supply optics knowledge.</p></a>
+      <a class="layer" href="#harness"><span class="ln">02</span><h3>Harness</h3><p>The pipeline, agents, tools, research record and checks that carry a question to a verified result.</p></a>
       <a class="layer" href="#skills"><span class="ln">03</span><h3>Skills</h3><p>Recurring research procedures, written down once and shared by every agent.</p></a>
       <a class="layer" href="#lean"><span class="ln">04</span><h3>Lean</h3><p>Machine-checked proofs of the theory results, rebuilt on every change.</p></a>
     </div>
+  </div>
+</section>
+
+<section class="sec" id="model">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Model</h2>
+      <p><b>HoloModel</b>: two models post-trained from the same 27-billion-parameter base, Qwen3.8-27B, run every agent locally on a single graphics card.</p>
+    </div>
+    <div class="cols2">
+      <div class="panel">
+        <h3>HoloModel-Research</h3>
+        <p>Post-trained by reinforcement learning on verified rewards to write the research code. It scores highest on all five in-house benchmarks, ahead of DeepSeek V4.1 Flash (552B), GLM-5.3 and Kimi K3.1 Pro.</p>
+        <div class="metric"><b>69.1%</b><span>of Optics-Phy-Bench problems solved</span></div>
+        <div class="meter"><div style="width:69.1%;background:var(--text)"></div></div>
+        <div class="meter"><div style="width:46.5%;background:#b9b7ae"></div></div>
+        <div class="mlab"><span>HoloModel-Research 69.1%</span><span>base model 46.5%</span></div>
+      </div>
+      <div class="panel">
+        <h3>HoloModel-Knowledge</h3>
+        <p>The knowledge model of the system, trained on 39,355 optics publications. It supplies the agents with material data and with evidence linked to its source passages.</p>
+        <div class="metric"><b>39,355</b><span>optics publications</span></div>
+        <p style="margin-top:14px">On eight computational-imaging tasks, the agent team solved up to 8 of 8 against 5 for a general-purpose agent framework, using 3.4- to 10-fold fewer tokens.</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin:36px 0 0"><a class="link-arrow" href="https://huggingface.co/HololabTHU/HoloModel-Research">Get HoloModel-Research on Hugging Face →</a></p>
   </div>
 </section>
 
@@ -397,32 +423,6 @@
       <div class="agent"><div class="grp g3">Verification</div><h3>Independent recomputation</h3><p>Selected results are recomputed at higher fidelity, with code and settings the proposing agents did not control, before they become claims.</p></div>
       <div class="agent"><div class="grp g2">Coordination</div><h3>Orchestration strategies</h3><p>A fixed standard operating procedure, an adaptive strategy and consensus fusion; on eight imaging tasks they solved up to 8 of 8.</p></div>
     
-  </div>
-</section>
-
-<section class="sec" id="model">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>Model</h2>
-      <p><b>HoloModel</b>: two models post-trained from the same 27-billion-parameter base, Qwen3.8-27B, run every agent locally on a single graphics card.</p>
-    </div>
-    <div class="cols2">
-      <div class="panel">
-        <h3>HoloModel-Research</h3>
-        <p>Post-trained by reinforcement learning on verified rewards to write the research code. It scores highest on all five in-house benchmarks, ahead of DeepSeek V4.1 Flash (552B), GLM-5.3 and Kimi K3.1 Pro.</p>
-        <div class="metric"><b>69.1%</b><span>of Optics-Phy-Bench problems solved</span></div>
-        <div class="meter"><div style="width:69.1%;background:var(--text)"></div></div>
-        <div class="meter"><div style="width:46.5%;background:#b9b7ae"></div></div>
-        <div class="mlab"><span>HoloModel-Research 69.1%</span><span>base model 46.5%</span></div>
-      </div>
-      <div class="panel">
-        <h3>HoloModel-Knowledge</h3>
-        <p>The knowledge model of the system, trained on 39,355 optics publications. It supplies the agents with material data and with evidence linked to its source passages.</p>
-        <div class="metric"><b>39,355</b><span>optics publications</span></div>
-        <p style="margin-top:14px">On eight computational-imaging tasks, the agent team solved up to 8 of 8 against 5 for a general-purpose agent framework, using 3.4- to 10-fold fewer tokens.</p>
-      </div>
-    </div>
-    <p style="text-align:center;margin:36px 0 0"><a class="link-arrow" href="https://huggingface.co/HololabTHU/HoloModel-Research">Get HoloModel-Research on Hugging Face →</a></p>
   </div>
 </section>
 
