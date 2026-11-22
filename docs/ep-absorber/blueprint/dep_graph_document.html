@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dependency graph</title>
+  <meta name="generator" content="plasTeX" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/theme-white.css" />
+  <link rel="stylesheet" href="styles/dep_graph.css" />
+  
+  <script type="text/x-mathjax-config">
+  
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  
+  </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  </script>
+
+
+<link rel="stylesheet" href="styles/extra_styles.css" />
+
+</head>
+
+<body>
+<header>
+  <a class="toc" href="index.html">Home</a>
+  <h1 id="doc_title">Dependencies</h1>
+</header>
+<div class="wrapper">
+<div class="content">
+  <div id="Legend">
+    <span id="legend_title" class="title">Legend
+    <div class="btn">
+       <div class="bar"></div>
+       <div class="bar"></div>
+       <div class="bar"></div>
+    </div></span> 
+    <dl class="legend">
+      
+      <dt>Boxes</dt><dd>definitions</dd>
+      
+      <dt>Ellipses</dt><dd>theorems and lemmas</dd>
+      
+      <dt>Blue border</dt><dd>the <em>statement</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Orange border</dt><dd>the <em>statement</em> of this result is not ready to be formalized; the blueprint needs more work</dd>
+      
+      <dt>Blue background</dt><dd>the <em>proof</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Green border</dt><dd>the <em>statement</em> of this result is formalized</dd>
+      
+      <dt>Green background</dt><dd>the <em>proof</em> of this result is formalized</dd>
+      
+      <dt>Dark green background</dt><dd>the <em>proof</em> of this result and all its ancestors are formalized</dd>
+      
+      <dt>Dark green border</dt><dd>this is in Mathlib</dd>
+      
+    </dl>
+  </div>
+    <div id="graph"></div>
+<div id="statements">
+
+    
+    <div class="dep-modal-container" id="cor:edge_all_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="cor:edge_all" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">5.7</span></div>
+    <div class="thm_thmcontent"><p>  Every perfectly absorbing full-order EP of any order has \(B\le 2X_N{\lt}4L/\operatorname {asinh}3\approx 2.200\, L\). </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#cor:edge_all">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:Mfac_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:Mfac" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">5.1</span></div>
+    <div class="thm_thmcontent"><p> \(J_\theta =\begin{pmatrix} 1
+
+& e^{i\theta }
+
+\\ -e^{-i\theta }
+
+& -1
+
+\end{pmatrix}\) and the elementary transfer step \(M_j(\omega )=I+\frac{2i\gamma _j}{\omega }J_{\theta _j}\), with loss weights \(\gamma _j\ge 0\), \(\sum _j\gamma _j=L\) and phases \(\theta _j\). In the canonical form of a full-order EP, \(P(\omega )/\omega ^N=\big(\prod _j M_j(\omega )\big)_{11}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#def:Mfac">LaTeX</a>
+    
+    
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.Jθ" class="lean_decl">EP.Jθ</a></li>
+        
+           <li><a href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.Mfac" class="lean_decl">EP.Mfac</a></li>
+        
+      </ul>
+  </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:P2_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:P2" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">2.1</span></div>
+    <div class="thm_thmcontent"><p> For \(L{\gt}0\) let \(P(\omega )=\omega ^2+2iL\omega -2L^2\) and \(r(\omega )=\omega ^2/P(\omega )\), the reflection of a second-order EP with its double CPA zero at \(\omega =0\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#def:P2">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.P2">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:rD_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:rD" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">4.1</span></div>
+    <div class="thm_thmcontent"><p> With \(L=1\) and coupling \(g\ge 1\), the dimer reflection is \(r_g(\omega )=(\omega ^2+1-g^2)/(\omega ^2+2i\omega -1-g^2)\), with real CPA zeros \(\pm \sqrt{g^2-1}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#def:rD">LaTeX</a>
+    
+    
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.DimerBound.rD" class="lean_decl">EP.DimerBound.rD</a></li>
+        
+           <li><a href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.DimerAttained.rD" class="lean_decl">EP.DimerAttained.rD</a></li>
+        
+      </ul>
+  </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:dimer_value_bounds_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:dimer_value_bounds" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">4.5</span></div>
+    <div class="thm_thmcontent"><p> \(2.720{\lt}(4/3)\sqrt{1+\sqrt{10}}{\lt}2.7203\). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#lem:dimer_value_bounds">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.DimerAttained.dimer_value_bounds">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:envelope_jensen_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:envelope_jensen" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">5.4</span></div>
+    <div class="thm_thmcontent"><p> \(\sum _j\operatorname {asinh}(2\gamma _j/|\omega |)\le N\operatorname {asinh}\big(2L/(N|\omega |)\big)\). </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#lem:envelope_jensen">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.envelope_jensen">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:envelope_prod_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:envelope_prod" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">5.3</span></div>
+    <div class="thm_thmcontent"><p>  For real \(\omega \ne 0\), \(\big|\big(\prod _j M_j(\omega )\big)_{11}\big|\le \cosh \sum _j\operatorname {asinh}(2\gamma _j/|\omega |)\). </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#lem:envelope_prod">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.envelope_prod">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:P2_factor_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:P2_factor" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">2.2</span></div>
+    <div class="thm_thmcontent"><p>  \(P(\omega )=(\omega -(L-iL))(\omega -(-L-iL))\): the poles are \(\pm L-iL\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lem:P2_factor">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.P2_factor">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:P2_normSq_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:P2_normSq" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">2.4</span></div>
+    <div class="thm_thmcontent"><p>  For real \(\omega \), \(|P(\omega )|^2=\omega ^4+4L^4\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lem:P2_normSq">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.P2_normSq">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:P2_trace_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:P2_trace" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">2.3</span></div>
+    <div class="thm_thmcontent"><p>  The trace identity \(L=-\tfrac 12\sum _j(\operatorname {Im}p_j+\operatorname {Im}z_j)\) holds with poles \(\pm L-iL\) and the double zero at \(0\), so this absorber has intrinsic loss exactly \(L\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lem:P2_trace">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.P2_trace">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:r2_normSq_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:r2_normSq" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">2.5</span></div>
+    <div class="thm_thmcontent"><p>  \(|r(\omega )|^2=\omega ^4/(\omega ^4+4L^4)\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lem:r2_normSq">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.r2_normSq">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:ratio_bounds_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:ratio_bounds" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">3.2</span></div>
+    <div class="thm_thmcontent"><p>  \(0.2985{\lt} 2\sqrt{2/3}\, \big/\, (4\pi /\ln 10) {\lt} 0.2995\), i.e. the EP ceiling is \(29.9\% \) of the Bode–Fano ceiling. </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lem:ratio_bounds">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.Ratio.ratio_bounds">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:rD_normSq_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:rD_normSq" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">4.2</span></div>
+    <div class="thm_thmcontent"><p>  With \(u=\omega ^2-(g^2-1)\), \(|r_g(\omega )|^2=u^2/(u^2+4g^2)\). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#lem:rD_normSq">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.DimerBound.rD_normSq">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:reach_lt_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:reach_lt" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">5.6</span></div>
+    <div class="thm_thmcontent"><p> For every \(N\ge 1\), \(X_N{\lt}2L/\operatorname {asinh}3\approx 1.100\, L\). </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#lem:reach_lt">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.reach_lt">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:width_N2_bounds_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:width_N2_bounds" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">2.7</span></div>
+    <div class="thm_thmcontent"><p> \(1.6329{\lt}2\sqrt{2/3}{\lt}1.6330\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lem:width_N2_bounds">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.width_N2_bounds">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:band_N2_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:band_N2" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">2.6</span></div>
+    <div class="thm_thmcontent"><p>  \(\{ \omega \in \mathbb {R}:|r(\omega )|^2\le 1/10\} =[-\sqrt{2/3}\, L,\  \sqrt{2/3}\, L]\). Hence the 90% band of this second-order EP is exactly \(2\sqrt{2/3}\, L\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#thm:band_N2">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.band_N2">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:bode_fano_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:bode_fano" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">3.1</span></div>
+    <div class="thm_thmcontent"><p> (Bode–Fano ceiling.) Every passive absorber with a rational scattering matrix, lossless background and intrinsic loss \(L\) has \(B\le 4\pi L/\ln 10\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#thm:bode_fano">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:canonical_form_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:canonical_form" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">5.2</span></div>
+    <div class="thm_thmcontent"><p>  (Canonical form.) Every perfectly absorbing full-order EP, with any number of ports and any loss matrix, reduces to the canonical form of Definition&#160;<a href="sect0005.html#def:Mfac">5.1</a> without changing \(L\). </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#thm:canonical_form">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:dimer_attained_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:dimer_attained" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">4.4</span></div>
+    <div class="thm_thmcontent"><p>  At \(g=(1+\sqrt{10})/3\) the interval \([-\tfrac 23\sqrt{1+\sqrt{10}},\  \tfrac 23\sqrt{1+\sqrt{10}}]\) lies in the 90% region and contains the CPA zero, so the bound of Theorem&#160;<a href="sect0004.html#thm:dimer_bound">4.3</a> is attained. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#thm:dimer_attained">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.DimerAttained.dimer_attained">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:dimer_bound_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:dimer_bound" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">4.3</span></div>
+    <div class="thm_thmcontent"><p>  For every \(g\ge 1\), every order-connected set \(I\subseteq \{ \omega :|r_g(\omega )|^2\le 1/10\} \) containing the CPA zero \(\sqrt{g^2-1}\) has width at most \((4/3)\sqrt{1+\sqrt{10}}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#thm:dimer_bound">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.DimerBound.dimer_bound">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:reach_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:reach" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">5.5</span></div>
+    <div class="thm_thmcontent"><p>  If \(|r(\omega )|^2\le 1/10\), i.e. \(\big|\big(\prod _jM_j\big)_{11}\big|\ge \sqrt{10}=\cosh (\operatorname {asinh}3)\), then \(|\omega |\le X_N=2L/\big(N\sinh (\operatorname {asinh}3/N)\big)\). </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#thm:reach">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://leanprover-community.github.io/mathlib4_docs/find/#doc/EP.reach">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:sup_EP_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:sup_EP" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">6.1</span></div>
+    <div class="thm_thmcontent"><p>  For every \(N\ge 2\), \(\sup B_{\mathrm{EP}}=2\sqrt{2/3}\, L\approx 1.633\, L\), attained at \(N=2\). </p>
+</div>
+
+    <a class="latex_link" href="sect0006.html#thm:sup_EP">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+</div>
+</div> <!-- content -->
+</div> <!-- wrapper -->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<script src="js/d3.min.js"></script>
+<script src="js/hpcc.min.js"></script>
+<script src="js/d3-graphviz.js"></script>
+
+<script type="text/javascript">
+const graphContainer = d3.select("#graph");
+const width = graphContainer.node().clientWidth;
+const height = graphContainer.node().clientHeight;
+
+
+graphContainer.graphviz({useWorker: true})
+    .width(width)
+    .height(height)
+    .fit(true)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:P2"	[color=green,		fillcolor="#B0ECA3",		label=P2,		shape=box,		style=filled];	"lem:P2_normSq"	[color=green,		fillcolor="#1CAC78",		label=P2_normSq,		shape=ellipse,		style=filled];	"def:P2" -> "lem:P2_normSq"	[style=dashed];	"lem:P2_factor"	[color=green,		fillcolor="#1CAC78",		label=P2_factor,		shape=ellipse,		style=filled];	"def:P2" -> "lem:P2_factor"	[style=dashed];	"lem:r2_normSq"	[color=green,		fillcolor="#1CAC78",		label=r2_normSq,		shape=ellipse,		style=filled];	"lem:P2_normSq" -> "lem:r2_normSq"	[style=dashed];	"lem:P2_trace"	[color=green,		fillcolor="#1CAC78",		label=P2_trace,		shape=ellipse,		style=filled];	"lem:P2_factor" -> "lem:P2_trace"	[style=dashed];	"thm:band_N2"	[color=green,		fillcolor="#1CAC78",		label=band_N2,		shape=ellipse,		style=filled];	"lem:r2_normSq" -> "thm:band_N2"	[style=dashed];	"def:Mfac"	[color=green,		fillcolor="#B0ECA3",		label=Mfac,		shape=box,		style=filled];	"thm:canonical_form"	[color=blue,		fillcolor="#A3D6FF",		label=canonical_form,		shape=ellipse,		style=filled];	"def:Mfac" -> "thm:canonical_form"	[style=dashed];	"lem:envelope_prod"	[color=green,		fillcolor="#1CAC78",		label=envelope_prod,		shape=ellipse,		style=filled];	"def:Mfac" -> "lem:envelope_prod"	[style=dashed];	"cor:edge_all"	[label=edge_all,		shape=ellipse];	"thm:canonical_form" -> "cor:edge_all"	[style=dashed];	"thm:reach"	[color=green,		fillcolor="#1CAC78",		label=reach,		shape=ellipse,		style=filled];	"lem:envelope_prod" -> "thm:reach"	[style=dashed];	"thm:sup_EP"	[label=sup_EP,		shape=ellipse];	"cor:edge_all" -> "thm:sup_EP"	[style=dashed];	"thm:reach" -> "cor:edge_all"	[style=dashed];	"lem:ratio_bounds"	[color=green,		fillcolor="#9CEC8B",		label=ratio_bounds,		shape=ellipse,		style=filled];	"lem:rD_normSq"	[color=green,		fillcolor="#1CAC78",		label=rD_normSq,		shape=ellipse,		style=filled];	"thm:dimer_bound"	[color=green,		fillcolor="#1CAC78",		label=dimer_bound,		shape=ellipse,		style=filled];	"lem:rD_normSq" -> "thm:dimer_bound"	[style=dashed];	"thm:dimer_attained"	[color=green,		fillcolor="#1CAC78",		label=dimer_attained,		shape=ellipse,		style=filled];	"lem:rD_normSq" -> "thm:dimer_attained"	[style=dashed];	"thm:bode_fano"	[color=blue,		fillcolor="#A3D6FF",		label=bode_fano,		shape=ellipse,		style=filled];	"thm:bode_fano" -> "lem:ratio_bounds"	[style=dashed];	"lem:reach_lt"	[color=green,		fillcolor="#1CAC78",		label=reach_lt,		shape=ellipse,		style=filled];	"lem:reach_lt" -> "cor:edge_all"	[style=dashed];	"lem:envelope_jensen"	[color=green,		fillcolor="#1CAC78",		label=envelope_jensen,		shape=ellipse,		style=filled];	"lem:envelope_jensen" -> "thm:reach"	[style=dashed];	"thm:band_N2" -> "lem:ratio_bounds"	[style=dashed];	"thm:band_N2" -> "thm:sup_EP"	[style=dashed];	"def:rD"	[color=green,		fillcolor="#B0ECA3",		label=rD,		shape=box,		style=filled];	"def:rD" -> "lem:rD_normSq"	[style=dashed];	"lem:width_N2_bounds"	[color=green,		fillcolor="#1CAC78",		label=width_N2_bounds,		shape=ellipse,		style=filled];	"lem:dimer_value_bounds"	[color=green,		fillcolor="#1CAC78",		label=dimer_value_bounds,		shape=ellipse,		style=filled];}`)
+    .on("end", interactive);
+
+latexLabelEscaper = function(label) {
+  return label.replace(/\./g, '\\.').replace(/:/g, '\\:')
+}
+
+clickNode = function() {
+  $("#statements div").hide()
+  var node_id = $('text', this).text();
+  $('.thm').hide();
+  $('#'+latexLabelEscaper(node_id)).show().children().show();
+}
+function interactive() {
+    $("span#legend_title").on("click", function () {
+           $(this).siblings('dl').toggle();
+        })
+
+    d3.selectAll('.node')
+        .attr('pointer-events', 'fill')
+        .on('click', function () {
+           var title = d3.select(this).selectAll('title').text().trim();
+           $('#statements > div').hide()
+           $('.thm').hide();
+           $('#'+latexLabelEscaper(title)+'_modal').show().children().show().children().show();
+           $('#statements').show()
+        });
+
+    d3.selectAll('.dep-closebtn').on('click', function() {
+        var modal =
+            d3.select(this).node().parentNode.parentNode.parentNode ;
+        d3.select(modal).style('display', 'none');
+    });
+}
+
+</script>
+
+</body>
+</html>

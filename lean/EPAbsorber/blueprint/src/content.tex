@@ -1,0 +1,234 @@
+\chapter{Setting}
+
+We consider passive absorbers described by $N$ resonant modes coupled to external channels,
+with intrinsic loss $L>0$ (the total intrinsic amplitude-decay rate of the modes).
+Frequencies are detunings in the same units as $L$, so bandwidths are quoted as $B/L$.
+The \emph{90\% bandwidth} $B$ is the width of the connected frequency interval that contains a
+coherent-perfect-absorption (CPA) frequency and on which the best input state absorbs at least
+90\%, i.e.\ $|r(\omega)|^2\le 1/10$ for a single channel.
+An exceptional point (EP) of full order $N$ is an $N$-mode absorber whose $N$ CPA zeros all
+coalesce at one real frequency.
+
+The main claims are:
+\begin{itemize}
+  \item every perfectly absorbing full-order EP has $B\le 2\sqrt{2/3}\,L\approx 1.633\,L$, for every
+        order $N\ge2$, and the value is attained at $N=2$;
+  \item this is $29.9\%$ of the Bode--Fano ceiling $4\pi L/\ln 10\approx 5.458\,L$;
+  \item splitting the zeros already beats every perfectly absorbing EP: a two-mode dimer reaches
+        $(4/3)\sqrt{1+\sqrt{10}}\,L\approx 2.720\,L$.
+\end{itemize}
+Green nodes in the dependency graph are checked by Lean~4 with Mathlib; the remaining nodes are
+proved on paper (Supplemental Material of the Letter) but not yet formalized.
+
+\chapter{The second-order EP attains $2\sqrt{2/3}\,L$}
+
+\begin{definition}\label{def:P2}
+\lean{EP.P2}\leanok
+For $L>0$ let $P(\omega)=\omega^2+2iL\omega-2L^2$ and $r(\omega)=\omega^2/P(\omega)$, the reflection
+of a second-order EP with its double CPA zero at $\omega=0$.
+\end{definition}
+
+\begin{lemma}\label{lem:P2_factor}
+\lean{EP.P2_factor}\leanok
+\uses{def:P2}
+$P(\omega)=(\omega-(L-iL))(\omega-(-L-iL))$: the poles are $\pm L-iL$.
+\end{lemma}
+\begin{proof}\leanok
+Expand and use $i^2=-1$.
+\end{proof}
+
+\begin{lemma}\label{lem:P2_trace}
+\lean{EP.P2_trace}\leanok
+\uses{lem:P2_factor}
+The trace identity $L=-\tfrac12\sum_j(\operatorname{Im}p_j+\operatorname{Im}z_j)$ holds with poles
+$\pm L-iL$ and the double zero at $0$, so this absorber has intrinsic loss exactly $L$.
+\end{lemma}
+\begin{proof}\leanok
+Direct computation.
+\end{proof}
+
+\begin{lemma}\label{lem:P2_normSq}
+\lean{EP.P2_normSq}\leanok
+\uses{def:P2}
+For real $\omega$, $|P(\omega)|^2=\omega^4+4L^4$.
+\end{lemma}
+\begin{proof}\leanok
+$|P|^2=(\omega^2-2L^2)^2+(2L\omega)^2$.
+\end{proof}
+
+\begin{lemma}\label{lem:r2_normSq}
+\lean{EP.r2_normSq}\leanok
+\uses{lem:P2_normSq}
+$|r(\omega)|^2=\omega^4/(\omega^4+4L^4)$.
+\end{lemma}
+\begin{proof}\leanok
+Divide.
+\end{proof}
+
+\begin{theorem}\label{thm:band_N2}
+\lean{EP.band_N2}\leanok
+\uses{lem:r2_normSq}
+$\{\omega\in\R:|r(\omega)|^2\le 1/10\}=[-\sqrt{2/3}\,L,\ \sqrt{2/3}\,L]$. Hence the 90\% band of this
+second-order EP is exactly $2\sqrt{2/3}\,L$.
+\end{theorem}
+\begin{proof}\leanok
+$|r|^2\le 1/10\iff 9\omega^4\le 4L^4\iff \omega^2\le \tfrac23 L^2$.
+\end{proof}
+
+\begin{lemma}\label{lem:width_N2_bounds}
+\lean{EP.width_N2_bounds}\leanok
+$1.6329<2\sqrt{2/3}<1.6330$.
+\end{lemma}
+\begin{proof}\leanok
+Square both sides.
+\end{proof}
+
+\chapter{Share of the Bode--Fano ceiling}
+
+\begin{theorem}\label{thm:bode_fano}
+(Bode--Fano ceiling.) Every passive absorber with a rational scattering matrix, lossless background
+and intrinsic loss $L$ has $B\le 4\pi L/\ln 10$.
+\end{theorem}
+\begin{proof}
+Rank-one reduction, $\sigma_{\min}(S)\ge|\det S|$ and Jensen's formula give
+$\int_\R\ln|1/\det S|\,d\omega\le 2\pi L$; a 90\% band contributes at least $\tfrac12\ln 10$ per unit
+frequency. Not yet formalized.
+\end{proof}
+
+\begin{lemma}\label{lem:ratio_bounds}
+\lean{EP.Ratio.ratio_bounds}\leanok
+\uses{thm:band_N2, thm:bode_fano}
+$0.2985< 2\sqrt{2/3}\,\big/\,(4\pi/\ln 10) < 0.2995$, i.e.\ the EP ceiling is $29.9\%$ of the
+Bode--Fano ceiling.
+\end{lemma}
+\begin{proof}\leanok
+Rigorous bounds on $\pi$, $\ln 2$ and $\ln(5/4)$.
+\end{proof}
+
+\chapter{Split zeros: the dimer reaches $2.720\,L$}
+
+\begin{definition}\label{def:rD}
+\lean{EP.DimerBound.rD, EP.DimerAttained.rD}\leanok
+With $L=1$ and coupling $g\ge1$, the dimer reflection is
+$r_g(\omega)=(\omega^2+1-g^2)/(\omega^2+2i\omega-1-g^2)$, with real CPA zeros $\pm\sqrt{g^2-1}$.
+\end{definition}
+
+\begin{lemma}\label{lem:rD_normSq}
+\lean{EP.DimerBound.rD_normSq}\leanok
+\uses{def:rD}
+With $u=\omega^2-(g^2-1)$, $|r_g(\omega)|^2=u^2/(u^2+4g^2)$.
+\end{lemma}
+\begin{proof}\leanok
+Expand the modulus of the denominator.
+\end{proof}
+
+\begin{theorem}\label{thm:dimer_bound}
+\lean{EP.DimerBound.dimer_bound}\leanok
+\uses{lem:rD_normSq}
+For every $g\ge1$, every order-connected set $I\subseteq\{\omega:|r_g(\omega)|^2\le1/10\}$ containing the
+CPA zero $\sqrt{g^2-1}$ has width at most $(4/3)\sqrt{1+\sqrt{10}}$.
+\end{theorem}
+\begin{proof}\leanok
+$|r_g|^2\le1/10\iff|u|\le 2g/3$. For $g\le(1+\sqrt{10})/3$ the band is
+$[-\sqrt{g^2-1+2g/3},\sqrt{g^2-1+2g/3}]$, increasing in $g$; beyond, it splits into two pieces, each
+narrower.
+\end{proof}
+
+\begin{theorem}\label{thm:dimer_attained}
+\lean{EP.DimerAttained.dimer_attained}\leanok
+\uses{lem:rD_normSq}
+At $g=(1+\sqrt{10})/3$ the interval $[-\tfrac23\sqrt{1+\sqrt{10}},\ \tfrac23\sqrt{1+\sqrt{10}}]$ lies in
+the 90\% region and contains the CPA zero, so the bound of Theorem~\ref{thm:dimer_bound} is attained.
+\end{theorem}
+\begin{proof}\leanok
+At this $g$, $g^2-1=2g/3$, so the band edges are $\pm\sqrt{4g/3}$.
+\end{proof}
+
+\begin{lemma}\label{lem:dimer_value_bounds}
+\lean{EP.DimerAttained.dimer_value_bounds}\leanok
+$2.720<(4/3)\sqrt{1+\sqrt{10}}<2.7203$.
+\end{lemma}
+\begin{proof}\leanok
+Square twice.
+\end{proof}
+
+\chapter{The EP envelope and the one-sided reach}
+
+\begin{definition}\label{def:Mfac}
+\lean{EP.Jθ, EP.Mfac}\leanok
+$J_\theta=\begin{pmatrix}1&e^{i\theta}\\-e^{-i\theta}&-1\end{pmatrix}$ and the elementary transfer step
+$M_j(\omega)=I+\frac{2i\gamma_j}{\omega}J_{\theta_j}$, with loss weights $\gamma_j\ge0$,
+$\sum_j\gamma_j=L$ and phases $\theta_j$. In the canonical form of a full-order EP,
+$P(\omega)/\omega^N=\big(\prod_j M_j(\omega)\big)_{11}$.
+\end{definition}
+
+\begin{theorem}\label{thm:canonical_form}
+\uses{def:Mfac}
+(Canonical form.) Every perfectly absorbing full-order EP, with any number of ports and any loss
+matrix, reduces to the canonical form of Definition~\ref{def:Mfac} without changing $L$.
+\end{theorem}
+\begin{proof}
+Rank-one reduction by Darlington synthesis, a unitary Schur transformation making the zero operator
+strictly upper triangular, and a diagonal gauge. Not yet formalized.
+\end{proof}
+
+\begin{lemma}\label{lem:envelope_prod}
+\lean{EP.envelope_prod}\leanok
+\uses{def:Mfac}
+For real $\omega\ne0$,
+$\big|\big(\prod_j M_j(\omega)\big)_{11}\big|\le\cosh\sum_j\operatorname{asinh}(2\gamma_j/|\omega|)$.
+\end{lemma}
+\begin{proof}\leanok
+Each $M_j$ has diagonal entries of modulus $\cosh\rho_j$ and off-diagonal entries of modulus
+$\sinh\rho_j$, $\rho_j=\operatorname{asinh}(2\gamma_j/|\omega|)$; entry bounds of this form add under
+multiplication by $\cosh(a+b)=\cosh a\cosh b+\sinh a\sinh b$.
+\end{proof}
+
+\begin{lemma}\label{lem:envelope_jensen}
+\lean{EP.envelope_jensen}\leanok
+$\sum_j\operatorname{asinh}(2\gamma_j/|\omega|)\le N\operatorname{asinh}\big(2L/(N|\omega|)\big)$.
+\end{lemma}
+\begin{proof}\leanok
+$\operatorname{asinh}$ is concave on $[0,\infty)$ (its derivative $(1+x^2)^{-1/2}$ is decreasing);
+apply Jensen's inequality with equal weights.
+\end{proof}
+
+\begin{theorem}\label{thm:reach}
+\lean{EP.reach}\leanok
+\uses{lem:envelope_prod, lem:envelope_jensen}
+If $|r(\omega)|^2\le1/10$, i.e.\ $\big|\big(\prod_jM_j\big)_{11}\big|\ge\sqrt{10}=\cosh(\operatorname{asinh}3)$,
+then $|\omega|\le X_N=2L/\big(N\sinh(\operatorname{asinh}3/N)\big)$.
+\end{theorem}
+\begin{proof}\leanok
+Combine the two lemmas and invert $\cosh$ and $\sinh$, both increasing on $[0,\infty)$.
+\end{proof}
+
+\begin{lemma}\label{lem:reach_lt}
+\lean{EP.reach_lt}\leanok
+For every $N\ge1$, $X_N<2L/\operatorname{asinh}3\approx1.100\,L$.
+\end{lemma}
+\begin{proof}\leanok
+$N\sinh(\kappa/N)>\kappa$ because $\sinh x>x$ for $x>0$.
+\end{proof}
+
+\begin{corollary}\label{cor:edge_all}
+\uses{thm:canonical_form, thm:reach, lem:reach_lt}
+Every perfectly absorbing full-order EP of any order has $B\le 2X_N<4L/\operatorname{asinh}3\approx2.200\,L$.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:reach} applied on each side of the EP, after the reduction of
+Theorem~\ref{thm:canonical_form}.
+\end{proof}
+
+\chapter{The sharp ceiling for every order}
+
+\begin{theorem}\label{thm:sup_EP}
+\uses{thm:canonical_form, thm:band_N2, cor:edge_all}
+For every $N\ge2$, $\sup B_{\mathrm{EP}}=2\sqrt{2/3}\,L\approx1.633\,L$, attained at $N=2$.
+\end{theorem}
+\begin{proof}
+Attainment is Theorem~\ref{thm:band_N2}. The upper bound uses a Schwarz-chain representation of
+Hurwitz polynomials, convexity along adjacent chain couplings, an entropy dual for each multiplicity
+of the coalesced zero, a second-order expansion around the dimer and 984 cells checked in 160-bit
+interval arithmetic (Supplemental Material, Secs.~S5, S6 and S16). Not yet formalized.
+\end{proof}

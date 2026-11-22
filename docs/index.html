@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HoloToken</title>
+<meta name="description" content="Machine-checked results in optics theory from THUHoloLab, Tsinghua University: Lean 4 formalizations and blueprints.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f7f9;
+    --border: #dfe3e8;
+    --text: #1d232b;
+    --muted: #5a6573;
+    --accent: #2f5d8c;
+    --ok: #1c7c54;
+    --ok-bg: #e5f4ec;
+    --open: #2f6fb0;
+    --open-bg: #e6f0fa;
+    --code-bg: #eef1f4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12161b;
+      --surface: #1a2027;
+      --border: #2c343e;
+      --text: #e4e8ed;
+      --muted: #9aa5b1;
+      --accent: #7fb0e0;
+      --ok: #6fd3a3;
+      --ok-bg: #173226;
+      --open: #8cbcf0;
+      --open-bg: #172a3d;
+      --code-bg: #1f262e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12161b; --surface: #1a2027; --border: #2c343e; --text: #e4e8ed; --muted: #9aa5b1;
+    --accent: #7fb0e0; --ok: #6fd3a3; --ok-bg: #173226; --open: #8cbcf0; --open-bg: #172a3d; --code-bg: #1f262e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  main { max-width: 860px; margin: 0 auto; padding: 48px 16px 64px; }
+  header h1 { font-size: 2rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  header p { margin: 0; color: var(--muted); }
+  .lead { margin: 28px 0 36px; font-size: 1.05rem; }
+  a { color: var(--accent); }
+  .project {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 24px; margin-bottom: 28px;
+  }
+  .project h2 { font-size: 1.3rem; margin: 0 0 6px; line-height: 1.35; }
+  .source { color: var(--muted); font-size: 0.92rem; margin: 0 0 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .chip { font-size: 0.85rem; padding: 2px 10px; border-radius: 999px; }
+  .chip.ok { background: var(--ok-bg); color: var(--ok); }
+  .chip.open { background: var(--open-bg); color: var(--open); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 4px; }
+  .links a {
+    text-decoration: none; border: 1px solid var(--border); border-radius: 6px;
+    padding: 6px 12px; background: var(--bg); font-size: 0.93rem;
+  }
+  .links a:hover { border-color: var(--accent); }
+  h3 { font-size: 1rem; margin: 22px 0 8px; }
+  .table-wrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  td.status { white-space: nowrap; }
+  .ok-text { color: var(--ok); }
+  .open-text { color: var(--open); }
+  pre {
+    background: var(--code-bg); border-radius: 6px; padding: 12px 14px; overflow-x: auto;
+    font: 0.88rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin: 8px 0 0;
+  }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; }
+  footer { color: var(--muted); font-size: 0.88rem; border-top: 1px solid var(--border); padding-top: 18px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>HoloToken</h1>
+    <p>THUHoloLab, Department of Precision Instrument, Tsinghua University</p>
+  </header>
+
+  <p class="lead">
+    Machine-checked results in optics theory. Each project states the physical model, lists which
+    results are verified in Lean&nbsp;4 with Mathlib, and shows in a blueprint which results are still
+    proved only on paper.
+  </p>
+
+  <section class="project" id="ep-absorber">
+    <h2>Bandwidth ceiling of perfectly absorbing exceptional points</h2>
+    <p class="source">From the Letter <em>Sharp Bandwidth Ceiling of Perfectly Absorbing Exceptional Points</em></p>
+
+    <div class="chips">
+      <span class="chip ok">15 theorems checked in Lean 4</span>
+      <span class="chip ok">no sorry, standard axioms only</span>
+      <span class="chip open">3 results not yet formalized</span>
+    </div>
+
+    <p>
+      At equal intrinsic loss <i>L</i>, the 90% absorption band of a perfectly absorbing exceptional
+      point of any order is at most 2√(2/3)&nbsp;<i>L</i> ≈ 1.633&nbsp;<i>L</i>, which is 29.9% of the
+      Bode–Fano ceiling 4π<i>L</i>/ln&nbsp;10. Two modes with split zeros already reach 2.720&nbsp;<i>L</i>.
+    </p>
+
+    <div class="links">
+      <a href="ep-absorber/blueprint/index.html">Blueprint</a>
+      <a href="ep-absorber/blueprint/dep_graph_document.html">Dependency graph</a>
+      <a href="ep-absorber/blueprint.pdf">Blueprint (PDF)</a>
+      <a href="https://github.com/THUHoloLab/HoloToken/tree/main/lean/EPAbsorber">Lean source</a>
+      <a href="https://github.com/THUHoloLab/HoloToken/actions/workflows/lean-ep-absorber.yml">Build status</a>
+    </div>
+
+    <h3>Status</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Result</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>The second-order EP attains 2√(2/3) <i>L</i>: its 90% band is exactly [−√(2/3) <i>L</i>, √(2/3) <i>L</i>]</td><td class="status ok-text">Lean</td></tr>
+          <tr><td>29.9% of the Bode–Fano ceiling</td><td class="status ok-text">Lean</td></tr>
+          <tr><td>Dimer: no connected band exceeds (4/3)√(1+√10) <i>L</i> ≈ 2.720 <i>L</i>, and this value is attained</td><td class="status ok-text">Lean</td></tr>
+          <tr><td>Envelope inequality and one-sided reach <i>X<sub>N</sub></i> &lt; 2<i>L</i>/asinh 3 for canonical EPs</td><td class="status ok-text">Lean</td></tr>
+          <tr><td>Every full-order EP reduces to the canonical form</td><td class="status open-text">paper</td></tr>
+          <tr><td>Bode–Fano ceiling <i>B</i> ≤ 4π<i>L</i>/ln 10</td><td class="status open-text">paper</td></tr>
+          <tr><td>Sharp ceiling 2√(2/3) <i>L</i> for every order <i>N</i> ≥ 2</td><td class="status open-text">paper</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Reproduce</h3>
+    <pre>git clone https://github.com/THUHoloLab/HoloToken.git
+cd HoloToken/lean/EPAbsorber
+lake exe cache get
+lake build
+lake env lean scripts/check_axioms.lean</pre>
+  </section>
+
+  <footer>
+    Source: <a href="https://github.com/THUHoloLab/HoloToken">github.com/THUHoloLab/HoloToken</a>.
+    The theorems are statements about the coupled-mode model given in each blueprint.
+  </footer>
+</main>
+</body>
+</html>

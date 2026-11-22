@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Setting</title>
+<link rel="next" href="sect0002.html" title="The second-order EP attains 22/3 L" />
+<link rel="prev" href="index.html" title="Bandwidth ceiling of perfectly absorbing exceptional points: Lean 4 blueprint" />
+<link rel="up" href="index.html" title="Bandwidth ceiling of perfectly absorbing exceptional points: Lean 4 blueprint" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Bandwidth ceiling of perfectly absorbing exceptional points: Lean 4 blueprint</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class=" active current">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Setting</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">2</span> <span class="toc_entry">The second-order EP attains \(2\sqrt{2/3}\, L\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">3</span> <span class="toc_entry">Share of the Bode–Fano ceiling</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">4</span> <span class="toc_entry">Split zeros: the dimer reaches \(2.720\, L\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">5</span> <span class="toc_entry">The EP envelope and the one-sided reach</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html"><span class="toc_ref">6</span> <span class="toc_entry">The sharp ceiling for every order</span></a>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000002">1 Setting</h1>
+<p>We consider passive absorbers described by \(N\) resonant modes coupled to external channels, with intrinsic loss \(L{\gt}0\) (the total intrinsic amplitude-decay rate of the modes). Frequencies are detunings in the same units as \(L\), so bandwidths are quoted as \(B/L\). The <em>90% bandwidth</em> \(B\) is the width of the connected frequency interval that contains a coherent-perfect-absorption (CPA) frequency and on which the best input state absorbs at least 90%, i.e. \(|r(\omega )|^2\le 1/10\) for a single channel. An exceptional point (EP) of full order \(N\) is an \(N\)-mode absorber whose \(N\) CPA zeros all coalesce at one real frequency. </p>
+<p>The main claims are: </p>
+<ul class="itemize">
+  <li><p>every perfectly absorbing full-order EP has \(B\le 2\sqrt{2/3}\, L\approx 1.633\, L\), for every order \(N\ge 2\), and the value is attained at \(N=2\); </p>
+</li>
+  <li><p>this is \(29.9\% \) of the Bode–Fano ceiling \(4\pi L/\ln 10\approx 5.458\, L\); </p>
+</li>
+  <li><p>splitting the zeros already beats every perfectly absorbing EP: a two-mode dimer reaches \((4/3)\sqrt{1+\sqrt{10}}\, L\approx 2.720\, L\). </p>
+</li>
+</ul>
+<p> Green nodes in the dependency graph are checked by Lean&#160;4 with Mathlib; the remaining nodes are proved on paper (Supplemental Material of the Letter) but not yet formalized. </p>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="index.html" title="Bandwidth ceiling of perfectly absorbing exceptional points: Lean 4 blueprint"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Bandwidth ceiling of perfectly absorbing exceptional points: Lean 4 blueprint"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0002.html" title="The second-order EP attains \(2\sqrt{2/3}\, L\)"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>
