@@ -166,13 +166,15 @@
   #plot { width: 100%; height: auto; display: block; background: #fff; border-radius: 12px; }
   .readout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
   .readout div { background: #fff; border-radius: 10px; padding: 10px 14px; }
-  .readout span { display: block; font-size: .8rem; color: var(--muted); }
+  .readout > div > span { display: block; font-size: .8rem; color: var(--muted); }
   .readout b { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.35rem; }
   @media (max-width: 700px) { .readout { grid-template-columns: repeat(2, 1fr); } }
   .epgrid { display: grid; grid-template-columns: 1fr 2fr; gap: 28px 24px; align-items: start; margin: 8px 0 56px; }
-  .epgrid .epleft { display: grid; gap: 28px; }
-  .epgrid .pn img { height: 280px; }
-  @media (max-width: 900px) { .epgrid .pn img { height: 220px; } }
+  .epgrid .epleft { display: grid; gap: 14px; }
+  .epgrid .pn img { height: auto; }
+  .epgrid .pn figcaption { margin-top: 4px; }
+  .epgrid .readout > div > span { white-space: nowrap; }
+  .epgrid .note { margin-bottom: 6px; }
   .epgrid .interactive { margin: 0; padding: 22px; }
   .epgrid .ihead h3 { font-size: 1.3rem; }
   .epgrid .readout b { font-size: 1.15rem; }
@@ -325,7 +327,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.getElementById('lean'),{delimiters:[{left:'\\(',right:'\\)',display:false}],throwOnError:false})"></script>
+  onload="['lean','ep-explorer'].forEach(function(id){renderMathInElement(document.getElementById(id),{delimiters:[{left:'\\(',right:'\\)',display:false}],throwOnError:false})});window.epRender&&window.epRender()"></script>
 <style>.status .katex{font-size:1.08em}</style>
 </head>
 <body>
@@ -490,8 +492,6 @@
           <li><span class="s ok">Lean</span><span>Envelope inequality and one-sided reach for canonical EPs</span></li>
         </ul>
         <p style="margin:16px 0 0"><a class="link-arrow" href="lean.html">All 15 theorems and how to check them →</a></p>
-        <pre>cd HoloToken/lean/EPAbsorber
-lake exe cache get &amp;&amp; lake build</pre>
       
   </div>
 </section>
@@ -570,25 +570,25 @@ lake exe cache get &amp;&amp; lake build</pre>
       <figure><img src="assets/fig/panels/ep_a.jpg" alt="Proposed test structure: a silver-backed Si/SiO2 multilayer with a thin Cr absorber and a wedged Si coupling layer" loading="lazy"></figure>
     </div>
     <div class="epgrid">
-      <div class="epleft"><figure class="pn"><img src="assets/fig/panels/ep_b.jpg" alt="Coupled modes: the zeros merge at the EP (g = L) or split (g > L)." loading="lazy"><figcaption>Coupled modes: the zeros merge at the EP (g = L) or split (g > L).</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_h.jpg" alt="Optical path for multimode absorption" loading="lazy"><figcaption>Optical path for multimode absorption, after the layout proposed by Hörner et al.</figcaption></figure></div>
+      <div class="epleft"><figure class="pn"><img src="assets/fig/panels/ep_b.jpg" width="728" height="573" alt="Coupled modes: the zeros merge at the EP (g = L) or split (g > L)."><figcaption>Coupled modes: the zeros merge at the EP (g = L) or split (g > L).</figcaption></figure><figure class="pn"><img src="assets/fig/panels/ep_h.jpg" width="1152" height="575" alt="Optical path for multimode absorption"><figcaption>Optical path for multimode absorption, after the layout proposed by Hörner et al.</figcaption></figure></div>
     <div class="interactive" id="ep-explorer">
       <div class="ihead">
         <h3>Explore the absorption band: merged versus split zeros</h3>
       </div>
-      <p class="note">Drag <i>g</i>: at <i>g</i> = 1 the two CPA zeros merge into an exceptional point, and for <i>g</i> &gt; 1 they split to ±√(<i>g</i>² − 1).</p>
+      <p class="note">Drag \(g\): the CPA zeros merge at \(g = 1\) and split to \(\pm\sqrt{g^2-1}\) for \(g > 1\).</p>
       <div class="ctrl">
-        <label for="g">Coupling <i>g</i> = <b id="gval"></b></label>
+        <label for="g">Coupling \(g\) = <b id="gval"></b></label>
         <input type="range" id="g" min="1" max="2" step="any">
-        <button id="gopt">Optimal <i>g</i></button><button id="gep">EP (<i>g</i> = 1)</button>
+        <button id="gopt">Optimal \(g\)</button><button id="gep">EP (\(g = 1\))</button>
       </div>
-      <svg id="plot" viewBox="0 0 640 320" role="img" aria-label="Absorption versus detuning"></svg>
+      <svg id="plot" viewBox="0 0 640 260" role="img" aria-label="Absorption versus detuning"></svg>
       <div class="readout">
         <div><span>90% band</span><b id="bw"></b></div>
-        <div><span>EP ceiling</span><b>1.633 <i>L</i></b></div>
-        <div><span>Best split zeros (dimer)</span><b>2.720 <i>L</i></b></div>
-        <div><span>Bode–Fano limit</span><b>5.458 <i>L</i></b></div>
+        <div><span>EP ceiling</span><b>\(1.633\,L\)</b></div>
+        <div><span>Best split zeros</span><b>\(2.720\,L\)</b></div>
+        <div><span>Bode–Fano limit</span><b>\(5.458\,L\)</b></div>
       </div>
-      <p class="note small">The absorption, band edges and the 2.720 <i>L</i> optimum all follow theorems checked in Lean.</p>
+      <p class="note small">The absorption, band edges and the \(2.720\,L\) optimum all follow theorems checked in Lean.</p>
     </div>
     </div>
 
@@ -626,9 +626,9 @@ lake exe cache get &amp;&amp; lake build</pre>
   <div class="wrap">
     <h2>Explore HoloToken</h2>
     <div class="btns">
-      <a class="btn dark" href="https://github.com/THUHoloLab/HoloToken">View on GitHub</a>
-      <a class="btn soft" href="https://huggingface.co/HololabTHU/HoloModel-Research">HoloModel on Hugging Face</a>
-      <a class="btn soft" href="lean.html">Lean proofs</a>
+      <a class="btn dark" href="https://github.com/THUHoloLab/HoloToken">GitHub</a>
+      <a class="btn soft" href="https://huggingface.co/HololabTHU/HoloModel-Research">HoloModel</a>
+      <a class="btn soft" href="lean.html">Lean</a>
     </div>
   </div>
 </section>
@@ -636,7 +636,7 @@ lake exe cache get &amp;&amp; lake build</pre>
 <footer>
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/holotoken-mark.png" alt="">HoloToken</a>
-    <span>THUHoloLab · Department of Precision Instrument, Tsinghua University</span>
+    <span><a href="http://www.holoddd.com/" style="color:inherit">HoloLab</a>, Tsinghua University</span>
   </div>
 </footer>
 
@@ -679,7 +679,7 @@ lake exe cache get &amp;&amp; lake build</pre>
   var gIn = document.getElementById("g");
   if (gIn) {
     var GOPT = (1 + Math.sqrt(10)) / 3, svg = document.getElementById("plot");
-    var W = 640, H = 320, m = { l: 44, r: 14, t: 40, b: 36 }, X0 = -3, X1 = 3;
+    var W = 640, H = 260, m = { l: 44, r: 14, t: 40, b: 36 }, X0 = -3, X1 = 3;
     function xs(w) { return m.l + (w - X0) / (X1 - X0) * (W - m.l - m.r); }
     function ys(a) { return m.t + (1 - a) * (H - m.t - m.b); }
     function A(w, g) { var u = w * w - (g * g - 1); return 4 * g * g / (u * u + 4 * g * g); }
@@ -695,7 +695,7 @@ lake exe cache get &amp;&amp; lake build</pre>
     function render() {
       var g = +gIn.value, b = band(g), B = b[1] - b[0];
       document.getElementById("gval").textContent = g.toFixed(3);
-      document.getElementById("bw").innerHTML = B.toFixed(3) + " <i>L</i>";
+      document.getElementById("bw").innerHTML = window.katex ? katex.renderToString(B.toFixed(3) + "\\,L") : B.toFixed(3) + " <i>L</i>";
       var s = "";
       for (var k = 0; k <= 4; k++) { var yv = k / 4; s += '<line x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + ys(yv) + '" y2="' + ys(yv) + '" stroke="#eef0f3"/><text x="' + (m.l - 8) + '" y="' + (ys(yv) + 4) + '" font-size="11" text-anchor="end" fill="#1e2630">' + yv.toFixed(2).replace(/0$/, "") + '</text>'; }
       for (var x = -3; x <= 3; x++) s += '<text x="' + xs(x) + '" y="' + (H - m.b + 18) + '" font-size="11" text-anchor="middle" fill="#1e2630">' + x + '</text>';
@@ -721,6 +721,7 @@ lake exe cache get &amp;&amp; lake build</pre>
     }
     gIn.value = GOPT;
     gIn.oninput = render;
+    window.epRender = render;
     document.getElementById("gopt").onclick = function () { gIn.value = GOPT; render(); };
     document.getElementById("gep").onclick = function () { gIn.value = 1; render(); };
     render();
