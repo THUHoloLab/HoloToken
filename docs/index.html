@@ -299,6 +299,13 @@
   .chapters li.on .ct { color: #5b6270 !important; }
   .chapters li.on .cn { color: #8a6a48 !important; }
   .steps button.on i { background: #B98F63 !important; color: #fff !important; border-color: #B98F63 !important; }
+  /* highlights: version 2 language, no dark fills */
+  .btn.dark { background: #fff !important; color: #2E3742 !important; border: 1.5px solid #C9D0D7 !important; box-shadow: inset 0 -3px 0 #B98F63; font-weight: 700; }
+  .btn.dark:hover { background: #f7f8fa !important; }
+  .btn.soft { font-weight: 600; }
+  .nav-links .cta-sm { background: #fff !important; color: #2E3742 !important; border: 1.5px solid #C9D0D7; box-shadow: inset 0 -2px 0 #B98F63; font-weight: 600; }
+  .nav-links .cta-sm:hover { background: #f7f8fa !important; color: #2E3742 !important; }
+  .bar.final { background: #B98F63 !important; color: #fff !important; }
   footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: .92rem; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
   footer .brand { font-size: 1rem; color: var(--text); }
@@ -372,8 +379,8 @@
         <div class="mhead"><img src="assets/holomodel-research.png" alt="HoloModel-Research logo" width="64" height="64"><h3>HoloModel-Research</h3></div>
         <p>Post-trained by reinforcement learning on verified rewards to write the research code. It scores highest on all five in-house benchmarks, ahead of DeepSeek V4.1 Flash (552B), GLM-5.3 and Kimi K3.1 Pro.</p>
         <div class="metric"><b>69.1%</b><span>of Optics-Phy-Bench problems solved</span></div>
-        <div class="meter"><div style="width:69.1%;background:var(--text)"></div></div>
-        <div class="meter"><div style="width:46.5%;background:#b9b7ae"></div></div>
+        <div class="meter"><div style="width:69.1%;background:#5D80A9"></div></div>
+        <div class="meter"><div style="width:46.5%;background:#C9D0D7"></div></div>
         <div class="mlab"><span>HoloModel-Research 69.1%</span><span>base model 46.5%</span></div>
       </div>
       <div class="panel">
@@ -714,7 +721,7 @@ lake exe cache get &amp;&amp; lake build</pre>
       s += '<circle cx="' + (lx + 8) + '" cy="' + ly + '" r="4" fill="#1e2630"/><text x="' + (lx + 18) + '" y="' + (ly + 4) + '">CPA zeros</text>';
       s += '<rect x="' + (lx + 100) + '" y="' + (ly - 6) + '" width="20" height="12" fill="#dce5ef"/><text x="' + (lx + 126) + '" y="' + (ly + 4) + '">90% band</text></g>';
       svg.innerHTML = s;
-      var rows = [["This absorber", B, "#4f6f95"], ["EP ceiling", 1.633, "#b98f63"], ["Best dimer", 2.720, "#7fa7a0"], ["Bode–Fano limit", 5.458, "#1e2630"]];
+      var rows = [["This absorber", B, "#4f6f95"], ["EP ceiling", 1.633, "#b98f63"], ["Best dimer", 2.720, "#7fa7a0"], ["Bode–Fano limit", 5.458, "#7D8792"]];
       document.getElementById("bars").innerHTML = rows.map(function (r) {
         return '<div class="br"><span>' + r[0] + ' · ' + r[1].toFixed(3) + ' L</span><div class="bt"><div style="width:' + (r[1] / 5.458 * 100).toFixed(1) + '%;background:' + r[2] + '"></div></div></div>';
       }).join("");
