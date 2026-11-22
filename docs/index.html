@@ -290,6 +290,9 @@
   @media (max-width: 560px) { .btns { flex-direction: column; align-items: center; } .btn { width: 100%; max-width: 320px; } }
   .hero h1.title { font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.05; letter-spacing: -.01em; max-width: none; margin: 0 auto 14px; color: #2E3742; }
   .hero .subtitle { font-family: Inter, sans-serif; font-weight: 500; font-style: normal; font-size: clamp(1.05rem, 1.9vw, 1.3rem); line-height: 1.45; color: #2E3742; margin: 0 auto 28px; max-width: 50ch; }
+  .mhead { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+  .mhead img { width: 64px; height: 64px; object-fit: contain; flex: none; }
+  .mhead h3 { margin: 0 !important; }
   footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: .92rem; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
   footer .brand { font-size: 1rem; color: var(--text); }
@@ -364,7 +367,7 @@
     </div>
     <div class="cols2">
       <div class="panel">
-        <h3>HoloModel-Research</h3>
+        <div class="mhead"><img src="assets/holomodel-research.png" alt="HoloModel-Research logo" width="64" height="64"><h3>HoloModel-Research</h3></div>
         <p>Post-trained by reinforcement learning on verified rewards to write the research code. It scores highest on all five in-house benchmarks, ahead of DeepSeek V4.1 Flash (552B), GLM-5.3 and Kimi K3.1 Pro.</p>
         <div class="metric"><b>69.1%</b><span>of Optics-Phy-Bench problems solved</span></div>
         <div class="meter"><div style="width:69.1%;background:var(--text)"></div></div>
@@ -372,7 +375,7 @@
         <div class="mlab"><span>HoloModel-Research 69.1%</span><span>base model 46.5%</span></div>
       </div>
       <div class="panel">
-        <h3>HoloModel-Knowledge</h3>
+        <div class="mhead"><img src="assets/holomodel-knowledge.png" alt="HoloModel-Knowledge logo" width="64" height="64"><h3>HoloModel-Knowledge</h3></div>
         <p>The knowledge model of the system, trained on 39,355 optics publications. It supplies the agents with material data and with evidence linked to its source passages.</p>
         <div class="metric"><b>39,355</b><span>optics publications</span></div>
         <p style="margin-top:14px">On eight computational-imaging tasks, the agent team solved up to 8 of 8 against 5 for a general-purpose agent framework, using 3.4- to 10-fold fewer tokens.</p>
