@@ -522,7 +522,7 @@ lake exe cache get &amp;&amp; lake build</pre>
       </div>
       <figure><img src="assets/fig/panels/enc_a.jpg" alt="Snapshot encoding with TiO2 pillar-dimer cells tiled as 2 by 2 macro-pixels" loading="lazy"></figure>
     </div>
-    <div class="pgrid"><figure class="pn"><img src="assets/fig/panels/enc_b.jpg" alt="The unit cell: two pillars 210 nm apart in a 420-nm cell, rotated by θ." loading="lazy"><figcaption>The unit cell: two pillars 210 nm apart in a 420-nm cell, rotated by θ.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_c.jpg" alt="RCWA search over 344 candidate designs; the star marks the selected set." loading="lazy"><figcaption>RCWA search over 344 candidate designs; the star marks the selected set.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_d.jpg" alt="Convergence against the 81-order solution." loading="lazy"><figcaption>Convergence against the 81-order solution.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_e.jpg" alt="Transmission matrices of the dimer encoder and a single-layer baseline." loading="lazy"><figcaption>Transmission matrices of the dimer encoder and a single-layer baseline.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_f.jpg" alt="Reconstruction PSNR on eight test scenes versus noise." loading="lazy"><figcaption>Reconstruction PSNR on eight test scenes versus noise.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_g.jpg" alt="Per-scene PSNR gain of the dimer encoder." loading="lazy"><figcaption>Per-scene PSNR gain of the dimer encoder.</figcaption></figure></div>
+    <div class="pgrid"><figure class="pn"><img src="assets/fig/panels/enc_b.jpg" alt="Unit cell: two TiO2 pillars 210 nm apart in a 420-nm cell, rotated by θ" loading="lazy"><figcaption>Unit cell: a TiO₂ pillar dimer rotated by θ.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_c.jpg" alt="RCWA search over 344 candidate designs; the star marks the selected set" loading="lazy"><figcaption>RCWA search over 344 candidate designs.</figcaption></figure><figure class="pn"><img src="assets/fig/panels/enc_e.jpg" alt="Transmission matrices of the dimer encoder and a single-layer baseline" loading="lazy"><figcaption>Sensing matrices: dimer versus single layer.</figcaption></figure></div>
 
     <div class="interactive" id="encoder-steps">
       <div class="ihead">
@@ -562,9 +562,7 @@ lake exe cache get &amp;&amp; lake build</pre>
       <div class="ihead">
         <h3>Explore the absorption band: merged versus split zeros</h3>
       </div>
-      <p class="note">A two-mode absorber with intrinsic loss <i>L</i> = 1 and coupling <i>g</i>. At <i>g</i> = 1 its two
-        CPA zeros merge into a second-order exceptional point; for <i>g</i> &gt; 1 they split to ±√(<i>g</i>² − 1).
-        Drag the slider and watch the 90% band (shaded) change.</p>
+      <p class="note">Drag <i>g</i>: at <i>g</i> = 1 the two CPA zeros merge into an exceptional point, and for <i>g</i> &gt; 1 they split to ±√(<i>g</i>² − 1).</p>
       <div class="ctrl">
         <label for="g">Coupling <i>g</i> = <b id="gval"></b></label>
         <input type="range" id="g" min="1" max="2" step="any">
@@ -578,8 +576,7 @@ lake exe cache get &amp;&amp; lake build</pre>
         <div><span>Bode–Fano limit</span><b>5.458 <i>L</i></b></div>
       </div>
       <div class="bars" id="bars"></div>
-      <p class="note small">The absorption, band edges and the 2.720 <i>L</i> optimum follow the theorems checked in Lean
-        (<code>EP.DimerBound.rD_normSq</code>, <code>EP.DimerBound.dimer_bound</code>, <code>EP.DimerAttained.dimer_attained</code>).</p>
+      <p class="note small">The absorption, band edges and the 2.720 <i>L</i> optimum all follow theorems checked in Lean.</p>
     </div>
 
     <div class="interactive" style="background:#fff">
