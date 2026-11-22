@@ -270,10 +270,10 @@
   .mgrid .pn img { height: auto; }
   .grprow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
   .grprow > div:first-child { grid-column: span 2; }
-  .grprow .grp-p { min-height: 3.2em; }
   .mgrid.two { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 961px) and (max-width: 1200px) { .grprow .grp-p { min-height: 3.2em; } }
   .mgrid.one { grid-template-columns: 1fr; }
-  @media (max-width: 960px) { .grprow { grid-template-columns: 1fr; gap: 0; } .grprow > div:first-child { grid-column: auto; } .grprow .grp-p { min-height: 0; } .mgrid.one { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 960px) { .grprow { grid-template-columns: 1fr; gap: 0; } .grprow > div:first-child { grid-column: auto; } .mgrid.one { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .mgrid.two, .mgrid.one { grid-template-columns: 1fr; } }
   .grp-h { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.35rem; margin: 0 0 4px; }
   .grp-h.rf { color: #4f6f95; } .grp-h.sb { color: #a67c52; } .grp-h.rc { color: #5f8b84; }
@@ -600,7 +600,7 @@
     </div>
 
     
-    <h3 class="sub-h" style="margin-top:56px">Further auto-research results</h3><h4 class="grp-h rf">Reframing</h4><p class="grp-p">An assumption the field shares becomes something to design or estimate.</p><div class="mgrid"><figure class="pn"><img src="assets/fig/panels/m_scaling.jpg" alt="Scaling-law spectrometer" loading="lazy"></figure><figure class="pn"><img src="assets/fig/panels/m_codedpupil.jpg" alt="Coded-pupil phase imaging" loading="lazy"></figure><figure class="pn"><img src="assets/fig/panels/m_blindref.jpg" alt="Blind-reference holography" loading="lazy"></figure></div><div class="grprow"><div><h4 class="grp-h rc">Recombination</h4><p class="grp-p">Known methods are paired so that one covers the weakness of the other.</p><div class="mgrid two"><figure class="pn"><img src="assets/fig/panels/m_fastholo.jpg" alt="Fast holographic retrieval" loading="lazy"></figure><figure class="pn"><img src="assets/fig/panels/m_drift.jpg" alt="Drift-tolerant spectrometer" loading="lazy"></figure></div></div><div><h4 class="grp-h sb">Subtraction</h4><p class="grp-p">A component the standard method treats as necessary is removed.</p><div class="mgrid one"><figure class="pn"><img src="assets/fig/panels/m_threeport.jpg" alt="Three-port ridge splitter" loading="lazy"></figure></div></div></div>
+    <h3 class="sub-h" style="margin-top:56px">Further auto-research results</h3><h4 class="grp-h rf">Reframing</h4><p class="grp-p">An assumption the field shares becomes something to design or estimate.</p><div class="mgrid"><figure class="pn"><img src="assets/fig/panels/m_scaling.jpg" alt="Scaling-law spectrometer" loading="lazy"></figure><figure class="pn"><img src="assets/fig/panels/m_codedpupil.jpg" alt="Coded-pupil phase imaging" loading="lazy"></figure><figure class="pn"><img src="assets/fig/panels/m_blindref.jpg" alt="Blind-reference holography" loading="lazy"></figure></div><div class="grprow"><div><h4 class="grp-h rc">Recombination</h4><p class="grp-p">Known methods are paired so that one covers the weakness of the other.</p><div class="mgrid two"><figure class="pn"><img src="assets/fig/panels/m_fastholo.jpg" alt="Fast holographic retrieval" loading="lazy"></figure><figure class="pn"><img src="assets/fig/panels/m_drift.jpg" alt="Drift-tolerant spectrometer" loading="lazy"></figure></div></div><div><h4 class="grp-h sb">Subtraction</h4><p class="grp-p">Drops a part the standard method assumes.</p><div class="mgrid one"><figure class="pn"><img src="assets/fig/panels/m_threeport.jpg" alt="Three-port ridge splitter" loading="lazy"></figure></div></div></div>
 
     <div class="interactive" style="background:#fff;margin-top:8px">
       <div class="ihead"><h3>Gains of the 14 article-level methods</h3></div>
