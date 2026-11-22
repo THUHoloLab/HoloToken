@@ -5,235 +5,249 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>HoloToken · Agentic Optics Scientists</title>
-<meta name="description" content="HoloToken: a team of AI scientist agents, driven by local domain post-trained language models, that carries open-ended optics research to physics-verified discoveries.">
+<meta name="description" content="HoloToken: AI scientist agents, driven by local HoloModel language models, that carry open-ended optics research to physics-verified discoveries.">
 <link rel="icon" type="image/png" href="assets/holotoken-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #ffffff;
-    --surface: #ffffff;
-    --surface-2: #f4f5f7;
-    --border: #e6e8eb;
-    --text: #1e2630;
-    --muted: #5b6573;
+    --soft: #ffffff;
+    --soft-2: #e9ebef;
+    --line: #e6e8ec;
+    --text: #191919;
+    --muted: #5b6270;
     --blue: #4f6f95;
     --blue-soft: #dce5ef;
     --beige: #a67c52;
     --beige-soft: #f3e7d9;
     --green: #2e7d5b;
-    --green-soft: #e3f2ea;
-    --shadow: 0 1px 2px rgba(30,38,48,.05), 0 8px 24px rgba(30,38,48,.06);
-    --radius: 14px;
+    --surface: #ffffff;
+    --surface-2: #ffffff;
+    --border: #e6e8ec;
+    --radius: 18px;
+    --shadow: none;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    margin: 0; overflow-wrap: break-word; background: var(--bg); color: var(--text);
-    font: 16px/1.65 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0; background: var(--bg); color: var(--text); overflow-wrap: break-word;
+    font: 17px/1.6 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  a { color: var(--blue); }
+  a { color: inherit; }
   img { max-width: 100%; display: block; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 16px; }
+  .narrow { max-width: 760px; margin: 0 auto; }
+  .serif { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; }
 
   /* nav */
-  .nav {
-    position: sticky; top: 0; z-index: 10;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav .wrap { display: flex; align-items: center; gap: 20px; height: 60px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 800; font-size: 1.12rem; letter-spacing: -.01em; }
+  .nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 1.15rem; letter-spacing: -.01em; }
   .brand img { width: 30px; height: 30px; }
-  .nav-links { display: flex; gap: 22px; margin-left: auto; font-size: .93rem; }
+  .nav-links { display: flex; gap: 26px; margin-left: auto; font-size: .94rem; align-items: center; }
   .nav-links a { color: var(--muted); text-decoration: none; }
   .nav-links a:hover { color: var(--text); }
-  @media (max-width: 760px) { .nav-links .opt { display: none; } .nav-links { gap: 14px; } }
-  @media (max-width: 620px) { .nav-links .opt2 { display: none; } }
-  @media (max-width: 400px) { .nav-links a:not(:last-child) { display: none; } }
+  .nav-links .cta-sm { color: #fff; background: var(--text); padding: 8px 14px; border-radius: 8px; }
+  @media (max-width: 860px) { .nav-links .opt { display: none; } }
+
+  /* buttons */
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: .98rem; text-decoration: none; }
+  .btn.dark { background: var(--text); color: #fff; }
+  .btn.dark:hover { background: #333; }
+  .btn.soft { background: var(--soft-2); color: var(--text); }
+  .btn.soft:hover { background: #dfe2e7; }
+  .link-arrow { font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
 
   /* hero */
-  .hero { padding: 72px 0 40px; }
-  .hero-grid { display: block; }
-  .hero-mark { width: 300px; height: 300px; opacity: .95; filter: drop-shadow(0 18px 40px rgba(79,111,149,.18)); }
-  @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } .hero-mark { display: none; } }
-  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 1.02rem; font-weight: 600; color: var(--beige); margin: 0 0 14px; }
-  .hero h1 {
-    font-family: "Source Serif 4", Georgia, serif; font-weight: 600;
-    font-size: clamp(1.9rem, 4.2vw, 3.1rem); line-height: 1.14; letter-spacing: -.015em; margin: 0 0 20px; max-width: 32ch;
-  }
-  .hero .sub { font-size: clamp(1.1rem, 1.9vw, 1.3rem); line-height: 1.6; color: #3d4753; max-width: 70ch; margin: 0 0 30px; }
-  .cta { display: flex; flex-wrap: wrap; gap: 10px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 7px;
-    font-weight: 600; font-size: .93rem; text-decoration: none; border: 1px solid var(--border);
-    color: var(--text); background: var(--surface);
-  }
-  .btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
-  .btn:hover { border-color: var(--blue); }
+  .hero { text-align: center; padding: 96px 0 40px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: 1rem; font-weight: 600; color: var(--beige); margin: 0 0 18px; }
+  .hero h1 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 1.06; letter-spacing: -.02em; margin: 0 auto 22px; max-width: 16ch; }
+  .hero .sub { font-size: clamp(1.12rem, 2vw, 1.35rem); line-height: 1.55; color: var(--muted); max-width: 46rem; margin: 0 auto 14px; }
+  .hero .sub strong { color: var(--text); font-weight: 600; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 28px 0 0; }
+  .badges img { height: 22px; width: auto; }
+  .hero .btns { margin-top: 30px; }
 
-  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
-  .badges img { height: 22px; width: auto; display: block; }
-  .leanmark { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: .86rem; letter-spacing: .04em; padding: 1px 5px; border-radius: 4px; background: var(--surface-2); color: var(--text); }
-  .flinks { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-  .flinks a { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; }
-  .flinks a:hover { color: var(--text); }
-  .flinks .leanmark { background: var(--surface-2); }
+  .showcase { padding: 24px 0 72px; }
+  .showcase figure { margin: 0; }
+  .showcase figcaption { color: var(--muted); font-size: .95rem; max-width: 52rem; margin: 18px auto 0; text-align: center; }
 
   /* sections */
-  section.block { padding: 64px 0; border-top: 1px solid var(--border); }
-  .kicker { font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin: 0 0 8px; }
-  h2 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2; margin: 0 0 14px; letter-spacing: -.01em; }
-  .lede { color: var(--muted); max-width: 70ch; margin: 0 0 32px; font-size: 1.04rem; }
-  h3 { font-size: 1.08rem; margin: 0 0 8px; }
+  section.sec { padding: 88px 0; }
+  section.sec.alt { background: var(--soft); }
+  .sec-head { text-align: center; margin: 0 auto 48px; max-width: 46rem; }
+  .sec-head h2 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: clamp(2rem, 4.2vw, 3.05rem); line-height: 1.12; letter-spacing: -.015em; margin: 0 0 16px; }
+  .sec-head p { color: var(--muted); font-size: 1.12rem; margin: 0; }
 
-  figure { margin: 0; }
-  .figure { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); }
-  .figure img { border-radius: 6px; }
-  figcaption { color: var(--muted); font-size: .86rem; margin-top: 10px; padding: 0 4px; }
+  .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .cols2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  @media (max-width: 860px) { .cols3, .cols2 { grid-template-columns: 1fr; gap: 28px; } }
+  .feat h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.45rem; line-height: 1.25; margin: 0 0 10px; }
+  .feat p { color: var(--muted); margin: 0; }
+  .feat .num { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 2.6rem; line-height: 1; margin: 0 0 14px; color: var(--text); }
+  .feat .num small { font-family: Inter, sans-serif; font-size: .95rem; color: var(--muted); font-weight: 500; margin-left: 6px; }
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  @media (max-width: 860px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
-
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
-  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
-
-  /* funnel */
-  .funnel { display: grid; gap: 10px; margin: 8px 0 36px; }
-  .frow { display: grid; grid-template-columns: 210px 1fr; align-items: center; gap: 14px; }
-  .frow .lab { font-size: .9rem; color: var(--muted); text-align: right; }
-  .bar { height: 30px; border-radius: 6px; display: flex; align-items: center; padding: 0 12px; font-weight: 600; font-size: .9rem; white-space: nowrap; }
-  .bar.screen { background: var(--beige-soft); color: var(--beige); }
-  .bar.keep { background: var(--blue-soft); color: var(--blue); }
-  .bar.final { background: var(--text); color: var(--bg); }
-  @media (max-width: 620px) { .frow { grid-template-columns: 1fr; gap: 4px; } .frow .lab { text-align: left; } }
+  .panel { background: var(--soft); border-radius: var(--radius); padding: 30px; }
+  .alt .panel { background: #fff; }
+  .panel h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.6rem; margin: 0 0 10px; }
+  .panel p { color: var(--muted); margin: 0 0 12px; }
 
   /* agents */
-  .groups { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 16px; margin-bottom: 32px; }
-  @media (max-width: 860px) { .groups { grid-template-columns: 1fr; } }
-  .group { border-radius: var(--radius); padding: 18px 20px; border: 1px solid var(--border); background: var(--surface); }
-  .group .gname { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; margin-bottom: 10px; }
-  .group.g1 .gname { color: var(--beige); } .group.g2 .gname { color: var(--blue); } .group.g3 .gname { color: var(--green); }
-  .agent { padding: 8px 0; border-top: 1px dashed var(--border); }
-  .agent:first-of-type { border-top: 0; }
-  .agent b { display: block; font-size: .95rem; }
-  .agent span { color: var(--muted); font-size: .86rem; }
+  .agents { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 960px) { .agents { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .agents { grid-template-columns: 1fr; } }
+  .agent { background: #fff; border-radius: 14px; padding: 20px; }
+  .agent .grp { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+  .agent .grp.g1 { color: var(--beige); } .agent .grp.g2 { color: var(--blue); } .agent .grp.g3 { color: var(--green); }
+  .agent h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.25rem; margin: 0 0 6px; }
+  .agent p { color: var(--muted); font-size: .95rem; margin: 0; }
 
-  .loop { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 32px; }
-  .step { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 7px 14px 7px 7px; font-size: .9rem; font-weight: 500; }
-  .step i { font-style: normal; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: .82rem; font-weight: 700; }
-  .step.b i { background: var(--beige-soft); color: var(--beige); }
-  .step.u i { background: var(--blue-soft); color: var(--blue); }
-  .arrow { color: var(--muted); }
+  /* funnel */
+  .funnel { display: grid; gap: 10px; margin: 48px auto 0; max-width: 900px; }
+  .frow { display: grid; grid-template-columns: 220px 1fr; align-items: center; gap: 14px; }
+  .frow .lab { font-size: .93rem; color: var(--muted); text-align: right; }
+  .bar { height: 32px; border-radius: 6px; display: flex; align-items: center; padding: 0 12px; font-weight: 600; font-size: .92rem; white-space: nowrap; }
+  .bar.screen { background: var(--beige-soft); color: var(--beige); }
+  .bar.keep { background: var(--blue-soft); color: var(--blue); }
+  .bar.final { background: var(--text); color: #fff; }
+  @media (max-width: 620px) { .frow { grid-template-columns: 1fr; gap: 4px; } .frow .lab { text-align: left; } }
 
   /* models */
-  .metric { display: flex; align-items: baseline; gap: 10px; margin: 14px 0 4px; }
-  .metric b { font-family: "Source Serif 4", Georgia, serif; font-size: 2.1rem; font-weight: 600; }
-  .metric span { color: var(--muted); font-size: .9rem; }
-  .meter { height: 8px; border-radius: 4px; background: var(--surface-2); overflow: hidden; margin: 6px 0 2px; }
+  .metric { display: flex; align-items: baseline; gap: 10px; margin: 18px 0 6px; flex-wrap: wrap; }
+  .metric b { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 2.6rem; line-height: 1; }
+  .metric span { color: var(--muted); font-size: .95rem; }
+  .meter { height: 8px; border-radius: 4px; background: var(--soft-2); overflow: hidden; margin: 8px 0 4px; }
   .meter div { height: 100%; border-radius: 4px; }
-  .mlab { display: flex; justify-content: space-between; font-size: .82rem; color: var(--muted); }
+  .mlab { display: flex; justify-content: space-between; font-size: .85rem; color: var(--muted); }
 
   /* discoveries */
-  .feature { display: grid; grid-template-columns: 1fr 1.25fr; gap: 28px; align-items: center; margin-bottom: 40px; }
-  .feature.rev { grid-template-columns: 1.25fr 1fr; }
-  .feature.rev .ftext { order: 2; }
-  @media (max-width: 860px) { .feature, .feature.rev { grid-template-columns: 1fr; } .feature.rev .ftext { order: 0; } }
-  .tag { display: block; font-size: 1.02rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
-  .tag.dev { color: var(--blue); }
-  .tag.theo { color: var(--beige); }
-  .ftext h3 { font-family: "Source Serif 4", Georgia, serif; font-size: 1.5rem; font-weight: 600; line-height: 1.25; margin: 0 0 12px; }
-  .ftext p { color: var(--muted); margin: 0 0 12px; }
-  .ftext .big { font-family: "Source Serif 4", Georgia, serif; font-size: 2.4rem; font-weight: 600; color: var(--text); line-height: 1; margin: 4px 0 14px; }
-  .ftext .big small { font-family: Inter, sans-serif; font-size: .9rem; font-weight: 500; color: var(--muted); margin-left: 6px; }
+  .story { display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; align-items: center; margin-bottom: 40px; }
+  .story.rev .stxt { order: 2; }
+  @media (max-width: 900px) { .story { grid-template-columns: 1fr; gap: 24px; } .story.rev .stxt { order: 0; } }
+  .tag { display: block; font-size: 1rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
+  .tag.dev { color: var(--blue); } .tag.theo { color: var(--beige); }
+  .stxt h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.18; margin: 0 0 14px; }
+  .stxt p { color: var(--muted); margin: 0 0 14px; }
+  .big { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 3rem; line-height: 1; margin: 8px 0 16px; }
+  .big small { font-family: Inter, sans-serif; font-size: .95rem; font-weight: 500; color: var(--muted); margin-left: 8px; }
+  .story figure { margin: 0; }
 
-  .gains { display: grid; gap: 7px; }
-  .grow { display: grid; grid-template-columns: minmax(150px, 230px) 1fr 52px; gap: 12px; align-items: center; font-size: .9rem; }
-  .grow .gq { color: var(--muted); font-size: .8rem; display: block; }
-  .gtrack { height: 14px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+  /* interactive (reused) */
+  .interactive { background: var(--soft); border-radius: var(--radius); padding: 28px; margin: 0 0 56px; }
+  .ihead { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .ihead h3 { margin: 0; font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.5rem; }
+  .interactive button { font: inherit; cursor: pointer; }
+  .seg { display: inline-flex; background: var(--soft-2); border-radius: 10px; padding: 4px; }
+  .seg button { border: 0; background: none; padding: 6px 14px; border-radius: 7px; font-size: .9rem; color: var(--muted); }
+  .seg button.on { background: #fff; color: var(--text); font-weight: 600; }
+  .objective { font-size: .95rem; color: var(--muted); margin: 0 0 16px; }
+  .objective b { color: var(--text); }
+  .steps { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .steps button { display: flex; align-items: center; gap: 8px; border: 0; background: #fff; border-radius: 8px; padding: 8px 14px 8px 8px; font-size: .92rem; color: var(--text); }
+  .steps button i { font-style: normal; width: 24px; height: 24px; border-radius: 6px; display: grid; place-items: center; font-size: .8rem; font-weight: 700; background: var(--soft-2); }
+  .steps button.on { background: var(--text); color: #fff; }
+  .steps button.on i { background: #fff; color: var(--text); }
+  .detail { background: #fff; border-radius: 12px; padding: 18px 20px; min-height: 100px; }
+  .detail .who { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--beige); margin-bottom: 6px; }
+  .detail p { margin: 0; }
+  .nav2 { display: flex; gap: 8px; justify-content: flex-end; margin-top: 14px; }
+  .nav2 button { border: 0; background: var(--soft-2); border-radius: 8px; padding: 8px 14px; font-size: .9rem; }
+  .note { color: var(--muted); font-size: .95rem; margin: 0 0 12px; }
+  .note.small { font-size: .84rem; margin-top: 14px; }
+  .note code { font-size: .8rem; background: #fff; padding: 1px 5px; border-radius: 4px; }
+  .ctrl { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0 12px; }
+  .ctrl label { font-size: .98rem; min-width: 160px; }
+  .ctrl input[type=range] { flex: 1 1 220px; accent-color: var(--text); }
+  .ctrl button { border: 0; background: var(--soft-2); border-radius: 8px; padding: 7px 12px; font-size: .88rem; }
+  #plot { width: 100%; height: auto; display: block; background: #fff; border-radius: 12px; }
+  .readout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+  .readout div { background: #fff; border-radius: 10px; padding: 10px 14px; }
+  .readout span { display: block; font-size: .8rem; color: var(--muted); }
+  .readout b { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.35rem; }
+  @media (max-width: 700px) { .readout { grid-template-columns: repeat(2, 1fr); } }
+  .bars { margin-top: 14px; display: grid; gap: 6px; }
+  .bars .br { display: grid; grid-template-columns: 170px 1fr; gap: 10px; align-items: center; font-size: .86rem; color: var(--muted); }
+  .bars .bt { height: 12px; background: #fff; border-radius: 4px; overflow: hidden; }
+  .bars .bt div { height: 100%; border-radius: 4px; transition: width .15s; }
+
+  /* gains */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .filters button { font: inherit; font-size: .92rem; cursor: pointer; border: 0; background: var(--soft-2); border-radius: 8px; padding: 7px 14px; display: inline-flex; align-items: center; gap: 8px; }
+  .filters button.on { background: var(--text); color: #fff; }
+  .dot { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+  .dot.rf { background: #5d80a9; } .dot.sb { background: #b98f63; } .dot.rc { background: #7fa7a0; }
+  .gains { display: grid; gap: 8px; }
+  .grow { display: grid; grid-template-columns: minmax(160px, 250px) 1fr 56px; gap: 14px; align-items: center; font-size: .95rem; }
+  .grow .gq { color: var(--muted); font-size: .82rem; display: block; }
+  .gtrack { height: 14px; background: var(--soft-2); border-radius: 4px; overflow: hidden; }
   .gtrack div { height: 100%; border-radius: 4px; }
   .gtrack .rf { background: #5d80a9; } .gtrack .sb { background: #b98f63; } .gtrack .rc { background: #7fa7a0; }
   .grow .gv { font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
-  .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: .85rem; color: var(--muted); margin: 0 0 16px; }
-  .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
-  .legend .rf::before { background: #5d80a9; } .legend .sb::before { background: #b98f63; } .legend .rc::before { background: #7fa7a0; }
-  @media (max-width: 620px) { .grow { grid-template-columns: 1fr 44px; } .grow .gtrack { grid-column: 1 / -1; grid-row: 2; } }
+  .grow.hide { display: none; }
+  @media (max-width: 620px) { .grow { grid-template-columns: 1fr 48px; } .grow .gtrack { grid-column: 1 / -1; grid-row: 2; } }
 
   /* videos */
-  video { width: 100%; border-radius: 10px; background: #000; display: block; }
+  video { width: 100%; border-radius: 14px; background: #000; display: block; }
+  .vid h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.35rem; margin: 16px 0 6px; }
+  .vid p { color: var(--muted); margin: 0; }
 
   /* verification */
-  .verify { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-  @media (max-width: 860px) { .verify { grid-template-columns: 1fr; } }
-  .chips { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 10px 0 14px; font-size: .92rem; font-weight: 600; }
-  .chip.ok { color: var(--green); }
-  .chip.open { color: var(--blue); }
-  .chip.ok::before { content: "\2713\00a0"; }
-  .chip.open::before { content: "\25CB\00a0"; }
-  .status { list-style: none; padding: 0; margin: 12px 0 16px; font-size: .92rem; }
-  .status li { display: grid; grid-template-columns: 54px 1fr; gap: 10px; padding: 6px 0; border-top: 1px solid var(--border); }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 6px 0 14px; font-size: .95rem; font-weight: 600; }
+  .chip.ok { color: var(--green); } .chip.open { color: var(--blue); }
+  .chip.ok::before { content: "\2713\00a0"; } .chip.open::before { content: "\25CB\00a0"; }
+  .status { list-style: none; padding: 0; margin: 12px 0 18px; font-size: .95rem; }
+  .status li { display: grid; grid-template-columns: 58px 1fr; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); }
   .status li:first-child { border-top: 0; }
-  .status .s { font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding-top: 2px; }
+  .status .s { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding-top: 3px; }
   .status .s.ok { color: var(--green); } .status .s.open { color: var(--blue); }
-  .links { display: flex; flex-wrap: wrap; gap: 8px; }
-  .links a { font-size: .88rem; text-decoration: none; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); }
-  .links a:hover { border-color: var(--blue); }
-  pre { background: var(--surface-2); border-radius: 8px; padding: 12px 14px; overflow-x: auto; font: .84rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin: 12px 0 0; }
+  .tlinks { display: flex; flex-wrap: wrap; gap: 18px; }
+  .tlinks a { font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; font-size: .95rem; }
+  pre { background: #fff; border-radius: 10px; padding: 12px 14px; overflow-x: auto; font: .86rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin: 16px 0 0; }
 
-  .fig1 { padding: 8px 0 48px; }
-  .fig1 img { width: 100%; }
-  .fig1 figcaption { max-width: 900px; margin: 14px auto 0; text-align: left; font-size: .9rem; }
-  section.block.tight { padding-top: 48px; }
-  /* interactive */
-  .interactive { border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin: 0 0 44px; background: #fff; box-shadow: var(--shadow); }
-  .ihead { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-  .ihead h3 { margin: 0; }
-  .interactive button { font: inherit; cursor: pointer; }
-  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 7px; padding: 3px; }
-  .seg button { border: 0; background: none; padding: 5px 14px; border-radius: 7px; font-size: .88rem; color: var(--muted); }
+  /* faq */
+  details { border-top: 1px solid var(--line); padding: 20px 0; }
+  details:last-of-type { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.3rem; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-family: Inter, sans-serif; font-weight: 400; color: var(--muted); }
+  details[open] summary::after { content: "\2212"; }
+  details p { color: var(--muted); margin: 12px 0 0; }
+
+  .final { text-align: center; }
+  .final h2 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: clamp(2rem, 4.2vw, 3.05rem); margin: 0 0 28px; }
+
+  .layers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 960px) { .layers { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .layers { grid-template-columns: 1fr; } }
+  .layer { display: block; text-decoration: none; padding: 26px; }
+  .layer .ln { font-size: .85rem; font-weight: 600; color: var(--muted); letter-spacing: .08em; }
+  .layer h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.9rem; margin: 10px 0 8px; }
+  .layer p { color: var(--muted); margin: 0; font-size: .97rem; }
+  #layers { padding-top: 24px; }
+  #harness .agents { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 960px) { #harness .agents { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { #harness .agents { grid-template-columns: 1fr; } }
+  .sub-h { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; font-size: 1.6rem; text-align: center; margin: 72px 0 28px; }
+  /* pure white everywhere: no fills, structure from thin rules only */
+  section.sec, section.sec.alt, .panel, .alt .panel, .agent, .layer, .interactive, .detail, .readout div, #plot, .note code, pre { background: #fff !important; }
+  .panel, .agent, .layer, .interactive { border: 1px solid var(--line); border-radius: 14px; }
+  .layer:hover { border-color: #c9ced6; }
+  .detail, .readout div { border: 1px solid var(--line); }
+  section.sec + section.sec { border-top: 1px solid var(--line); }
+  .btn.soft, .seg, .nav2 button, .ctrl button, .filters button { background: #fff !important; border: 1px solid var(--line) !important; }
+  .steps button { background: #fff; border: 1px solid var(--line); }
+  .steps button.on, .filters button.on { background: var(--text) !important; color: #fff; border-color: var(--text) !important; }
   .seg button.on { background: var(--text); color: #fff; }
-  .objective { font-size: .92rem; color: var(--muted); margin: 0 0 14px; }
-  .objective b { color: var(--text); }
-  .steps { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-  .steps button { display: flex; align-items: center; gap: 8px; border: 1px solid var(--border); background: #fff; border-radius: 7px; padding: 6px 14px 6px 6px; font-size: .9rem; color: var(--text); }
-  .steps button i { font-style: normal; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: .8rem; font-weight: 700; background: var(--surface-2); }
-  .steps button.on { border-color: var(--blue); background: var(--blue-soft); }
-  .steps button.on i { background: var(--blue); color: #fff; }
-  .detail { background: var(--surface-2); border-radius: 10px; padding: 16px 18px; min-height: 96px; }
-  .detail .who { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--beige); margin-bottom: 6px; }
-  .detail p { margin: 0; }
-  .nav2 { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
-  .nav2 button { border: 1px solid var(--border); background: #fff; border-radius: 8px; padding: 6px 12px; font-size: .88rem; }
-  .note { color: var(--muted); font-size: .93rem; margin: 0 0 12px; }
-  .note.small { font-size: .82rem; margin-top: 12px; }
-  .note code { font-size: .8rem; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
-  .ctrl { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 6px 0 10px; }
-  .ctrl label { font-size: .95rem; min-width: 150px; }
-  .ctrl input[type=range] { flex: 1 1 220px; accent-color: var(--blue); }
-  .ctrl button { border: 1px solid var(--border); background: #fff; border-radius: 8px; padding: 5px 11px; font-size: .86rem; }
-  #plot { width: 100%; height: auto; display: block; }
-  .readout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
-  .readout div { background: var(--surface-2); border-radius: 8px; padding: 8px 12px; }
-  .readout span { display: block; font-size: .78rem; color: var(--muted); }
-  .readout b { font-family: "Source Serif 4", Georgia, serif; font-size: 1.25rem; }
-  @media (max-width: 700px) { .readout { grid-template-columns: repeat(2, 1fr); } }
-  .bars { margin-top: 12px; display: grid; gap: 6px; }
-  .bars .br { display: grid; grid-template-columns: 150px 1fr; gap: 10px; align-items: center; font-size: .84rem; color: var(--muted); }
-  .bars .bt { height: 12px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
-  .bars .bt div { height: 100%; border-radius: 4px; transition: width .15s; }
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
-  .filters button { font: inherit; font-size: .88rem; cursor: pointer; border: 1px solid var(--border); background: #fff; border-radius: 7px; padding: 5px 13px; display: inline-flex; align-items: center; gap: 7px; }
-  .filters button.on { background: var(--text); color: #fff; border-color: var(--text); }
-  .dot { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
-  .dot.rf { background: #5d80a9; } .dot.sb { background: #b98f63; } .dot.rc { background: #7fa7a0; }
-  .grow.hide { display: none; }
-  footer { border-top: 1px solid var(--border); padding: 36px 0 56px; color: var(--muted); font-size: .9rem; }
+  .steps button i { background: #fff; border: 1px solid var(--line); }
+  .steps button.on i { background: #fff; color: var(--text); border-color: #fff; }
+  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: .92rem; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
-  footer .brand { font-size: 1rem; }
+  footer .brand { font-size: 1rem; color: var(--text); }
+  @media (max-width: 400px) { .nav-links a:not(:last-child) { display: none; } }
 </style>
 </head>
 <body>
@@ -242,90 +256,82 @@
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/holotoken-mark.png" alt="">HoloToken</a>
     <div class="nav-links">
-      <a class="opt2" href="#system">System</a>
-      <a class="opt" href="#models">Models</a>
-      <a href="#discoveries">Discoveries</a>
-      <a class="opt" href="#videos">Videos</a>
-      <a class="opt2" href="#verification">Verification</a>
-      <a href="https://github.com/THUHoloLab/HoloToken">GitHub</a>
+      <a class="opt" href="#harness">Harness</a>
+      <a class="opt" href="#model">Model</a>
+      <a class="opt" href="#skills">Skills</a>
+      <a class="opt" href="#lean">Lean</a>
+      <a class="opt" href="#discoveries">Discoveries</a>
+      <a class="cta-sm" href="https://github.com/THUHoloLab/HoloToken">GitHub</a>
     </div>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="hero-grid">
-    <div>
     <p class="eyebrow">Agentic Optics Scientists</p>
-    <h1>Autonomous discovery in optics with local language models</h1>
+    <h1>Autonomous discovery in optics</h1>
     <p class="sub">
       <strong>HoloToken</strong> is a team of AI scientist agents that carries open-ended optics research
       from the literature to physics-verified results. It runs on <strong>HoloModel</strong>, domain
       post-trained language models that run on a single graphics card yet outscore flagship models on
-      optical-physics benchmarks, so the research stays open to scrutiny, can be reproduced, and can run
-      where the data cannot leave the laboratory.
+      optical-physics benchmarks.
     </p>
-    <p class="sub">
-      In a single <strong>70.5-hour</strong> run without human intervention, the agents turned
-      <strong>6,157</strong> open problems from the optics literature into <strong>14</strong> article-level
-      results, cutting error up to <strong>18.5-fold</strong>, or computation up to <strong>27-fold</strong>,
-      versus tuned conventional methods.
-    </p>
+    <div class="btns">
+      <a class="btn dark" href="#videos">Watch the agents at work</a>
+      <a class="btn soft" href="https://github.com/THUHoloLab/HoloToken">View on GitHub</a>
+    </div>
     <div class="badges">
       <a href="https://thuhololab.github.io/HoloToken/"><img src="https://img.shields.io/badge/project-page-1e2630?logo=googlechrome&amp;logoColor=white" alt="project page"></a>
       <a href="https://huggingface.co/HololabTHU/HoloModel-Research"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20huggingface-HoloModel-ffd21e" alt="Hugging Face: HoloModel"></a>
       <a href="https://github.com/THUHoloLab/HoloToken"><img src="https://img.shields.io/badge/github-code-181717?logo=github&amp;logoColor=white" alt="GitHub: code"></a>
       <a href="https://github.com/THUHoloLab/HoloToken/actions/workflows/lean-ep-absorber.yml"><img src="https://img.shields.io/github/actions/workflow/status/THUHoloLab/HoloToken/lean-ep-absorber.yml?branch=main&amp;label=Lean" alt="Lean: passing"></a>
     </div>
-    </div>
-    </div>
-
   </div>
 </header>
 
-<section class="fig1">
+<section class="showcase">
   <div class="wrap">
     <figure>
-      <img src="assets/fig/loop.jpg" alt="The research loop of seven scientist agents, with HoloModel-Knowledge supplying material data, literature and skills, design algorithms, physics solvers and imaging algorithms coded by HoloModel-Research, a grader and a verification scientist" loading="eager">
-      <figcaption><b>Figure 1 | The HoloToken research loop.</b> Seven scientist agents turn material data, literature and skills into candidates with design algorithms, physics solvers and imaging algorithms coded by HoloModel-Research; a grader scores each candidate, the principal scientist returns failures for revision, and the verification scientist recomputes the selected results before they leave the loop as verified claims.</figcaption>
+      <img src="assets/fig/loop.jpg" alt="The HoloToken research loop: scientist agents, HoloModel-Knowledge supplying material data, literature and skills, design algorithms, physics solvers and imaging algorithms coded by HoloModel-Research, a grader and a verification scientist">
+      <figcaption>The research loop. Scientist agents turn material data, literature and skills into candidates with design algorithms, physics solvers and imaging algorithms coded by HoloModel-Research. A grader scores each candidate, the principal scientist returns failures for revision, and the verification scientist recomputes the selected results before they leave the loop.</figcaption>
     </figure>
   </div>
 </section>
 
-<section class="block tight" id="videos">
+<section class="sec" id="layers">
   <div class="wrap">
-    <p class="kicker">Videos</p>
-    <h2>Watch the agents at work</h2>
-    <p class="lede">Each video follows one discovery through the five-step loop, showing which agent works at each step and what it adds to the research record.</p>
-    <div class="grid-2">
-      <div class="card">
-        <video controls preload="none" poster="assets/video/metasurface-encoder.jpg">
-          <source src="assets/video/metasurface-encoder.mp4" type="video/mp4">
-        </video>
-        <h3 style="margin-top:14px">Discovery of the metasurface encoder</h3>
-        <p>The agents correct their own objective and arrive at TiO₂ pillar dimers.</p>
-      </div>
-      <div class="card">
-        <video controls preload="none" poster="assets/video/ep-absorber.jpg">
-          <source src="assets/video/ep-absorber.mp4" type="video/mp4">
-        </video>
-        <h3 style="margin-top:14px">The bandwidth limit of exceptional-point absorbers</h3>
-        <p>From a theory question to a sharp bound and a proposed test structure.</p>
-      </div>
+    <div class="layers">
+      <a class="layer" href="#harness"><span class="ln">01</span><h3>Harness</h3><p>The pipeline, agents, tools, research record and checks that carry a question to a verified result.</p></a>
+      <a class="layer" href="#model"><span class="ln">02</span><h3>Model</h3><p>HoloModel: local 27B models that write the research code and supply optics knowledge.</p></a>
+      <a class="layer" href="#skills"><span class="ln">03</span><h3>Skills</h3><p>Recurring research procedures, written down once and shared by every agent.</p></a>
+      <a class="layer" href="#lean"><span class="ln">04</span><h3>Lean</h3><p>Machine-checked proofs of the theory results, rebuilt on every change.</p></a>
     </div>
   </div>
 </section>
 
-<section class="block" id="system">
+<section class="sec" id="harness">
   <div class="wrap">
-    <p class="kicker">System</p>
-    <h2>From 6,157 open problems to 14 article-level results</h2>
-    <p class="lede">
-      The agents mined open problems from the optics literature, proposed ideas for them, and screened
-      and verified those ideas at scale. At every stage, a check outside the control of the proposing
-      agents decides which candidates go on.
-    </p>
-
+    <div class="sec-head">
+      <h2>Harness</h2>
+      <p>The harness turns the optics literature into tested ideas and carries the best of them to verified results. In a single 70.5-hour run without human intervention, it went from open problems to article-level results.</p>
+    </div>
+    <div class="cols3">
+      <div class="feat">
+        <div class="num">6,157<small>open problems</small></div>
+        <h3>Mine ideas from the literature</h3>
+        <p>The agents distilled open problems from the optics literature and proposed 56,339 ideas for them.</p>
+      </div>
+      <div class="feat">
+        <div class="num">3,102<small>beat their baseline</small></div>
+        <h3>Screen and verify at scale</h3>
+        <p>A critic kept 15,105 ideas without a fatal flaw; each ran a short sandbox simulation against its own baseline.</p>
+      </div>
+      <div class="feat">
+        <div class="num">14<small>article-level results</small></div>
+        <h3>Develop in an iterative loop</h3>
+        <p>48 full studies, 32 exceeding tuned baselines, cutting error up to 18.5-fold or computation up to 27-fold.</p>
+      </div>
+    </div>
     <div class="funnel" aria-label="Screening funnel">
       <div class="frow"><div class="lab">Open problems from the literature</div><div class="bar screen" style="width:80%">6,157</div></div>
       <div class="frow"><div class="lab">Ideas proposed</div><div class="bar screen" style="width:100%">56,339</div></div>
@@ -335,92 +341,127 @@
       <div class="frow"><div class="lab">Exceed tuned baselines</div><div class="bar keep" style="width:32%">32</div></div>
       <div class="frow"><div class="lab">Article-level results</div><div class="bar final" style="width:25%">14</div></div>
     </div>
-
-    <h3>Seven scientist agents divide the work as a research group would</h3>
-    <div class="groups">
-      <div class="group g1">
-        <div class="gname">Gather evidence</div>
-        <div class="agent"><b>Review scientist</b><span>surveys the literature for precedents and open issues</span></div>
-        <div class="agent"><b>Materials scientist</b><span>supplies material constants with their sources</span></div>
-        <div class="agent"><b>Design scientist</b><span>turns a hypothesis into a device geometry or an algorithm</span></div>
-      </div>
-      <div class="group g2">
-        <div class="gname">Evaluate</div>
-        <div class="agent"><b>Simulation scientist</b><span>evaluates designs with RCWA and FDTD solvers</span></div>
-        <div class="agent"><b>System scientist</b><span>builds the end-to-end imaging model and its reconstruction</span></div>
-      </div>
-      <div class="group g3">
-        <div class="gname">Decide</div>
-        <div class="agent"><b>Principal scientist</b><span>diagnoses failures and decides the next step</span></div>
-        <div class="agent"><b>Verification scientist</b><span>independently recomputes the selected results</span></div>
-      </div>
-    </div>
-
+  
+    <h3 class="sub-h">What the harness is made of</h3>
+    <div class="agents">
+      <div class="agent"><div class="grp g1">Agents</div><h3>Scientist agents</h3><p>Review, materials, design, simulation, system, principal and verification roles, each with one responsibility and one source of evidence.</p></div>
+      <div class="agent"><div class="grp g2">Tools</div><h3>Design, physics and imaging tools</h3><p>Metasurface and inverse design, RCWA and FDTD solvers, and imaging algorithms that link an optical forward model to computational reconstruction.</p></div>
+      <div class="agent"><div class="grp g2">Memory</div><h3>Research record</h3><p>Each entry stores a candidate with its provenance and the outcome of every check it has passed; reports cite the entries that support them.</p></div>
+      <div class="agent"><div class="grp g3">Checks</div><h3>Grader and independent checks</h3><p>A grader scores every candidate on the objective, and checks outside the control of the proposing agents decide which candidates proceed.</p></div>
+      <div class="agent"><div class="grp g3">Verification</div><h3>Independent recomputation</h3><p>Selected results are recomputed at higher fidelity, with code and settings the proposing agents did not control, before they become claims.</p></div>
+      <div class="agent"><div class="grp g2">Coordination</div><h3>Orchestration strategies</h3><p>A fixed standard operating procedure, an adaptive strategy and consensus fusion; on eight imaging tasks they solved up to 8 of 8.</p></div>
+    
   </div>
 </section>
 
-<section class="block" id="models">
+<section class="sec" id="model">
   <div class="wrap">
-    <p class="kicker">Models</p>
-    <h2>The HoloModel family</h2>
-    <p class="lede">
-      Two models post-trained from the same 27-billion-parameter base, Qwen3.8-27B, run the agents.
-      HoloModel-Research writes the research code; HoloModel-Knowledge supplies source-grounded optics knowledge.
-    </p>
-
-    <div class="grid-2">
-      <div class="card">
+    <div class="sec-head">
+      <h2>Model</h2>
+      <p><b>HoloModel</b>: two models post-trained from the same 27-billion-parameter base, Qwen3.8-27B, run every agent locally on a single graphics card.</p>
+    </div>
+    <div class="cols2">
+      <div class="panel">
         <h3>HoloModel-Research</h3>
-        <p>Post-trained by reinforcement learning on verified rewards. Scores highest on all five in-house
-          benchmarks, ahead of DeepSeek V4.1 Flash (552B), GLM-5.3 and Kimi K3.1 Pro.</p>
+        <p>Post-trained by reinforcement learning on verified rewards to write the research code. It scores highest on all five in-house benchmarks, ahead of DeepSeek V4.1 Flash (552B), GLM-5.3 and Kimi K3.1 Pro.</p>
         <div class="metric"><b>69.1%</b><span>of Optics-Phy-Bench problems solved</span></div>
-        <div class="meter"><div style="width:69.1%;background:var(--blue)"></div></div>
+        <div class="meter"><div style="width:69.1%;background:var(--text)"></div></div>
+        <div class="meter"><div style="width:46.5%;background:#b9b7ae"></div></div>
         <div class="mlab"><span>HoloModel-Research 69.1%</span><span>base model 46.5%</span></div>
-        <div class="meter"><div style="width:46.5%;background:var(--beige)"></div></div>
-        <p style="margin-top:12px">Optics-Phy-Bench turns 217 papers from leading optics journals into multi-step
-          computations; a problem counts only when every step reproduces the published value.</p>
       </div>
-      <div class="card">
+      <div class="panel">
         <h3>HoloModel-Knowledge</h3>
-        <p>The knowledge model of the system, trained on 39,355 optics publications. It supplies the agents
-          with material data and with evidence linked to its source passages.</p>
+        <p>The knowledge model of the system, trained on 39,355 optics publications. It supplies the agents with material data and with evidence linked to its source passages.</p>
         <div class="metric"><b>39,355</b><span>optics publications</span></div>
-        <h3 style="margin-top:18px">Coordination</h3>
-        <p>On eight computational-imaging tasks, the agent team solved up to 8 of 8 against 5 for a
-          general-purpose agent framework, using 3.4- to 10-fold fewer tokens.</p>
+        <p style="margin-top:14px">On eight computational-imaging tasks, the agent team solved up to 8 of 8 against 5 for a general-purpose agent framework, using 3.4- to 10-fold fewer tokens.</p>
       </div>
     </div>
-
-    <figure class="figure" style="margin-top:22px">
-      <img src="assets/fig/models.jpg" alt="Benchmark scores of HoloModel-Research and three larger models, and the 14 article-level results by innovation mode" loading="lazy">
-      <figcaption>Left: HoloModel-Research against three larger hosted models on five benchmarks. Right: the 14 article-level results and their gains over tuned methods.</figcaption>
-    </figure>
+    <p style="text-align:center;margin:36px 0 0"><a class="link-arrow" href="https://huggingface.co/HololabTHU/HoloModel-Research">Get HoloModel-Research on Hugging Face →</a></p>
   </div>
 </section>
 
-<section class="block" id="discoveries">
-  <div class="wrap">
-    <p class="kicker">Discoveries</p>
-    <h2>What the agents found</h2>
-    <p class="lede">Two discoveries are followed in depth: a device whose objective the agents corrected themselves, and a theorem in optical absorption.</p>
+<section class="sec" id="skills">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <h2>Skills</h2>
+      <p>Recurring research procedures are written down once as local skills and shared by the whole team. The run used 20 local skills.</p>
+    </div>
+    <div class="cols2">
+      <div class="panel"><div class="metric" style="margin-top:0"><b>20</b><span>local skills</span></div><p>Each skill encodes one recurring procedure, so every agent follows the same steps instead of rediscovering them.</p></div>
+      <div class="panel"><h3>Local by design</h3><p>Skills run alongside HoloModel on the laboratory's own machine, together with the material data and literature the agents draw on.</p></div>
+    </div>
+  </div>
+</section>
 
-    <div class="feature">
-      <div class="ftext">
+<section class="sec" id="lean">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <h2>Lean</h2>
+      <p>Theory results are checked by a machine. The proofs compile in Lean 4 with Mathlib, and a build on every change confirms they still hold.</p>
+    </div>
+    <div class="panel">
+        <h3>Exceptional-point absorber</h3>
+        <div class="chips">
+          <span class="chip ok">15 theorems checked</span>
+          <span class="chip ok">no sorry, standard axioms</span>
+          <span class="chip open">3 results on paper only</span>
+        </div>
+        <ul class="status">
+          <li><span class="s ok">Lean</span><span>The second-order EP attains 2√(2/3) <i>L</i>; its 90% band is exactly [−√(2/3) <i>L</i>, √(2/3) <i>L</i>]</span></li>
+          <li><span class="s ok">Lean</span><span>29.9% of the Bode–Fano ceiling; dimer bound 2.720 <i>L</i> and its attainment</span></li>
+          <li><span class="s ok">Lean</span><span>Envelope inequality and one-sided reach for canonical EPs</span></li>
+          <li><span class="s open">Paper</span><span>Canonical-form reduction, the Bode–Fano ceiling, and the sharp ceiling for every order</span></li>
+        </ul>
+        <div class="tlinks">
+          <a href="ep-absorber/blueprint/index.html">Blueprint</a>
+          <a href="ep-absorber/blueprint/dep_graph_document.html">Dependency graph</a>
+          <a href="ep-absorber/blueprint.pdf">PDF</a>
+          <a href="https://github.com/THUHoloLab/HoloToken/tree/main/lean/EPAbsorber">Lean source</a>
+        </div>
+        <pre>cd HoloToken/lean/EPAbsorber
+lake exe cache get &amp;&amp; lake build</pre>
+      
+  </div>
+</section>
+
+<section class="sec" id="videos">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Watch the agents at work</h2>
+      <p>Each video follows one discovery through the five-step loop, showing which agent works at each step and what it adds to the research record.</p>
+    </div>
+    <div class="cols2">
+      <div class="vid">
+        <video controls preload="none" poster="assets/video/metasurface-encoder.jpg"><source src="assets/video/metasurface-encoder.mp4" type="video/mp4"></video>
+        <h3>Discovery of the metasurface encoder</h3>
+        <p>The agents correct their own objective and arrive at TiO₂ pillar dimers.</p>
+      </div>
+      <div class="vid">
+        <video controls preload="none" poster="assets/video/ep-absorber.jpg"><source src="assets/video/ep-absorber.mp4" type="video/mp4"></video>
+        <h3>The bandwidth limit of exceptional-point absorbers</h3>
+        <p>From a theory question to a sharp bound and a proposed test structure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="discoveries">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What the agents found</h2>
+      <p>A device whose objective the agents corrected themselves, and a theorem in optical absorption.</p>
+    </div>
+
+    <div class="story">
+      <div class="stxt">
         <span class="tag dev">Device design</span>
         <h3>A metasurface encoder for snapshot multispectral imaging</h3>
-        <p>Given only a request to advance research in this area, the agents first pursued high transmission.
-          Their own imaging feedback showed that the bright cells responded almost identically across the
-          spectrum, so the principal scientist replaced the objective with distinct spectral responses at
-          equal incident light.</p>
+        <p>Given only a request to advance research in this area, the agents first pursued high transmission. Their own imaging feedback showed that the bright cells responded almost identically across the spectrum, so the principal scientist replaced the objective with distinct spectral responses at equal incident light.</p>
         <div class="big">4.6 dB<small>better reconstruction</small></div>
-        <p>TiO₂ pillar dimers at four orientations halve the condition number of the sensing matrix from 201
-          to 94; independent verification confirmed the design on eight unseen test scenes.</p>
+        <p>TiO₂ pillar dimers at four orientations halve the condition number of the sensing matrix from 201 to 94; independent verification confirmed the design on eight unseen test scenes.</p>
       </div>
-      <figure class="figure">
-        <img src="assets/fig/discovery.jpg" alt="Roles of the seven agents and the stages of the metasurface encoder discovery" loading="lazy">
-      </figure>
+      <figure><img src="assets/fig/encoder.jpg" alt="Snapshot encoding with TiO2 pillar dimers, unit cell, design search, convergence, transmission matrices and reconstruction quality" loading="lazy"></figure>
     </div>
-
     <div class="interactive" id="encoder-steps">
       <div class="ihead">
         <h3>Follow the discovery step by step</h3>
@@ -443,22 +484,16 @@
       <div class="nav2"><button id="prev">← Previous</button><button id="next">Next →</button></div>
     </div>
 
-    <div class="feature rev">
-      <div class="ftext">
+    <div class="story rev">
+      <div class="stxt">
         <span class="tag theo">Theoretical optics</span>
         <h3>A bandwidth ceiling for exceptional-point absorbers</h3>
-        <p>Merging absorption zeros at an exceptional point is widely pursued for broadband absorption.
-          The agents proved that, at equal intrinsic loss <i>L</i>, a perfectly absorbing exceptional point
-          of any order cannot exceed</p>
+        <p>Merging absorption zeros at an exceptional point is widely pursued for broadband absorption. The agents proved that, at equal intrinsic loss <i>L</i>, a perfectly absorbing exceptional point of any order cannot exceed</p>
         <div class="big">1.633 <i>L</i><small>29.9% of the Bode–Fano limit</small></div>
-        <p>Splitting the zeros instead reaches 2.720 <i>L</i> with two modes. Part of this result is
-          <a href="#verification">machine-checked in Lean&nbsp;4</a>.</p>
+        <p>Splitting the zeros instead reaches 2.720 <i>L</i> with two modes. Part of this result is <a class="link-arrow" href="#lean">machine-checked in Lean 4</a>.</p>
       </div>
-      <figure class="figure">
-        <img src="assets/fig/ep.jpg" alt="Coupled-mode picture, bandwidth limit, absorption spectra and test structure of the exceptional-point absorber" loading="lazy">
-      </figure>
+      <figure><img src="assets/fig/ep.jpg" alt="Coupled-mode picture, bandwidth limit, absorption spectra and test structure of the exceptional-point absorber" loading="lazy"></figure>
     </div>
-
     <div class="interactive" id="ep-explorer">
       <div class="ihead">
         <h3>Explore the absorption band: merged versus split zeros</h3>
@@ -483,8 +518,10 @@
         (<code>EP.DimerBound.rD_normSq</code>, <code>EP.DimerBound.dimer_bound</code>, <code>EP.DimerAttained.dimer_attained</code>).</p>
     </div>
 
-    <h3>Gains of the 14 article-level methods over tuned standard methods</h3>
-    <div class="filters" id="gain-filter">
+    <div class="interactive" style="background:#fff">
+      <div class="ihead"><h3>Gains of the 14 article-level methods</h3></div>
+      <p class="note">Each method against the strongest tuned standard method it names; bar length on a logarithmic scale.</p>
+      <div class="filters" id="gain-filter">
       <button class="on" data-mode="all">All 14</button>
       <button data-mode="rf"><span class="dot rf"></span>Reframing</button>
       <button data-mode="sb"><span class="dot sb"></span>Subtraction</button>
@@ -505,58 +542,41 @@
       <div class="grow" data-mode="rf"><div>Blind-reference holography<span class="gq">reconstruction error</span></div><div class="gtrack"><div class="rf" style="width:10.2%"></div></div><div class="gv">1.4×</div></div>
       <div class="grow" data-mode="sb"><div>Three-port ridge splitter<span class="gq">efficiency</span></div><div class="gtrack"><div class="sb" style="width:5.5%"></div></div><div class="gv">1.2×</div></div>
       <div class="grow" data-mode="sb"><div>Two-port ridge splitter<span class="gq">efficiency</span></div><div class="gtrack"><div class="sb" style="width:2.1%"></div></div><div class="gv">1.07×</div></div>
+      </div>
     </div>
-    <p class="lede" style="margin-top:14px;font-size:.88rem">Bar length on a logarithmic scale. Each method is compared with the strongest tuned standard method it names, in accuracy, performance, or speed at equal or lower error.</p>
-
-    <figure class="figure">
-      <img src="assets/fig/methods.jpg" alt="Optical paths and one result for eight further methods, grouped by reframing, subtraction and recombination" loading="lazy">
-      <figcaption>Eight further methods, grouped by the kind of innovation: reframing an assumption the field shares, subtracting a component the standard method treats as necessary, and recombining known methods.</figcaption>
-    </figure>
+    <figure style="margin:0"><img src="assets/fig/methods.jpg" alt="Optical paths and one result for eight further methods, grouped by reframing, subtraction and recombination" loading="lazy"></figure>
   </div>
 </section>
 
+<section class="sec" id="faq">
+  <div class="wrap narrow">
+    <div class="sec-head"><h2>FAQ</h2></div>
+    <details>
+      <summary>What is HoloToken?</summary>
+      <p>A multi-agent system that carries optics and photonics research from an open problem to a verified result. The scientist agents identify open problems in the literature, formulate their own hypotheses and objectives, evaluate them with electromagnetic solvers and imaging evaluators, and accept a result only after an independent verification agent has recomputed it.</p>
+    </details>
+    <details>
+      <summary>Why local models instead of frontier models?</summary>
+      <p>Agents built on frontier models are proprietary or costly, which leaves research closed to scrutiny and replication and risks privacy. HoloModel runs on a single graphics card, so the research can be reproduced and can run where the data cannot leave the laboratory.</p>
+    </details>
+    <details>
+      <summary>Do people stay involved?</summary>
+      <p>People set the research field. Within it, the agents carry every stage from goal setting to data analysis, with experiments executed in simulation, so no person intervenes during a run. Afterwards, every number is linked to the passage, solver configuration or program that produced it, so a scientist can audit the work.</p>
+    </details>
+    <details>
+      <summary>What is checked in Lean?</summary>
+      <p>Fifteen theorems from the exceptional-point absorber Letter: the attainment of 2√(2/3) L at second order, the 29.9% ratio to the Bode–Fano ceiling, the dimer value 2.720 L and its attainment, and the envelope inequality with the one-sided reach for canonical EPs. The canonical-form reduction, the Bode–Fano ceiling and the sharp ceiling for every order are proved on paper and are not yet formalized.</p>
+    </details>
+  </div>
+</section>
 
-
-<section class="block" id="verification">
+<section class="sec final">
   <div class="wrap">
-    <p class="kicker">Verification</p>
-    <h2>Results are checked before they count</h2>
-    <p class="lede">
-      Every result enters the research record with its evidence, and an independent verification agent
-      recomputes it at higher fidelity before it leaves the loop. For theory, we go one step further and
-      check proofs with a machine.
-    </p>
-
-    <div class="verify">
-      <div class="card">
-        <h3>Physics verification</h3>
-        <p>The verification scientist recomputes the selected designs with code and settings the proposing agents
-          did not control: higher Fourier-order convergence tests, sensing-matrix conditioning, and reconstruction
-          on unseen test scenes. Rigorous solver rechecks set the operating conditions of each device claim.</p>
-      </div>
-      <div class="card">
-        <h3>Lean 4 formalization · EP absorber</h3>
-        <div class="chips">
-          <span class="chip ok">15 theorems checked</span>
-          <span class="chip ok">no sorry, standard axioms</span>
-          <span class="chip open">3 results on paper only</span>
-        </div>
-        <ul class="status">
-          <li><span class="s ok">Lean</span><span>The second-order EP attains 2√(2/3) <i>L</i>; its 90% band is exactly [−√(2/3) <i>L</i>, √(2/3) <i>L</i>]</span></li>
-          <li><span class="s ok">Lean</span><span>29.9% of the Bode–Fano ceiling; dimer bound 2.720 <i>L</i> and its attainment</span></li>
-          <li><span class="s ok">Lean</span><span>Envelope inequality and one-sided reach for canonical EPs</span></li>
-          <li><span class="s open">Paper</span><span>Canonical-form reduction, the Bode–Fano ceiling, and the sharp ceiling for every order</span></li>
-        </ul>
-        <div class="links">
-          <a href="ep-absorber/blueprint/index.html">Blueprint</a>
-          <a href="ep-absorber/blueprint/dep_graph_document.html">Dependency graph</a>
-          <a href="ep-absorber/blueprint.pdf">PDF</a>
-          <a href="https://github.com/THUHoloLab/HoloToken/tree/main/lean/EPAbsorber">Lean source</a>
-          <a href="https://github.com/THUHoloLab/HoloToken/actions/workflows/lean-ep-absorber.yml">Build status</a>
-        </div>
-        <pre>cd HoloToken/lean/EPAbsorber
-lake exe cache get &amp;&amp; lake build</pre>
-      </div>
+    <h2>Explore HoloToken</h2>
+    <div class="btns">
+      <a class="btn dark" href="https://github.com/THUHoloLab/HoloToken">View on GitHub</a>
+      <a class="btn soft" href="https://huggingface.co/HololabTHU/HoloModel-Research">HoloModel on Hugging Face</a>
+      <a class="btn soft" href="ep-absorber/blueprint/index.html">Lean blueprint</a>
     </div>
   </div>
 </section>
@@ -565,11 +585,6 @@ lake exe cache get &amp;&amp; lake build</pre>
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/holotoken-mark.png" alt="">HoloToken</a>
     <span>THUHoloLab · Department of Precision Instrument, Tsinghua University</span>
-    <span class="flinks">
-      <a href="https://github.com/THUHoloLab/HoloToken"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
-      <a href="https://huggingface.co/HololabTHU/HoloModel-Research"><span class="hf" aria-hidden="true">🤗</span>Hugging Face</a>
-      <a href="ep-absorber/blueprint/index.html"><span class="leanmark" aria-hidden="true">L∃∀N</span>Lean</a>
-    </span>
   </div>
 </footer>
 
