@@ -3,148 +3,484 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HoloToken</title>
-<meta name="description" content="Machine-checked results in optics theory from THUHoloLab, Tsinghua University: Lean 4 formalizations and blueprints.">
+<meta name="color-scheme" content="light">
+<title>HoloToken · Agentic Optics Scientists</title>
+<meta name="description" content="HoloToken: a team of AI scientist agents, driven by local domain post-trained language models, that carries open-ended optics research to physics-verified discoveries.">
+<link rel="icon" type="image/png" href="assets/holotoken-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #ffffff;
-    --surface: #f6f7f9;
-    --border: #dfe3e8;
-    --text: #1d232b;
-    --muted: #5a6573;
-    --accent: #2f5d8c;
-    --ok: #1c7c54;
-    --ok-bg: #e5f4ec;
-    --open: #2f6fb0;
-    --open-bg: #e6f0fa;
-    --code-bg: #eef1f4;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #12161b;
-      --surface: #1a2027;
-      --border: #2c343e;
-      --text: #e4e8ed;
-      --muted: #9aa5b1;
-      --accent: #7fb0e0;
-      --ok: #6fd3a3;
-      --ok-bg: #173226;
-      --open: #8cbcf0;
-      --open-bg: #172a3d;
-      --code-bg: #1f262e;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #12161b; --surface: #1a2027; --border: #2c343e; --text: #e4e8ed; --muted: #9aa5b1;
-    --accent: #7fb0e0; --ok: #6fd3a3; --ok-bg: #173226; --open: #8cbcf0; --open-bg: #172a3d; --code-bg: #1f262e;
+    --surface: #ffffff;
+    --surface-2: #f4f5f7;
+    --border: #e6e8eb;
+    --text: #1e2630;
+    --muted: #5b6573;
+    --blue: #4f6f95;
+    --blue-soft: #dce5ef;
+    --beige: #a67c52;
+    --beige-soft: #f3e7d9;
+    --green: #2e7d5b;
+    --green-soft: #e3f2ea;
+    --shadow: 0 1px 2px rgba(30,38,48,.05), 0 8px 24px rgba(30,38,48,.06);
+    --radius: 14px;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0; overflow-wrap: break-word; background: var(--bg); color: var(--text);
+    font: 16px/1.65 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-  main { max-width: 860px; margin: 0 auto; padding: 48px 16px 64px; }
-  header h1 { font-size: 2rem; margin: 0 0 4px; letter-spacing: -0.01em; }
-  header p { margin: 0; color: var(--muted); }
-  .lead { margin: 28px 0 36px; font-size: 1.05rem; }
-  a { color: var(--accent); }
-  .project {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-    padding: 24px; margin-bottom: 28px;
+  a { color: var(--blue); }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+  /* nav */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
   }
-  .project h2 { font-size: 1.3rem; margin: 0 0 6px; line-height: 1.35; }
-  .source { color: var(--muted); font-size: 0.92rem; margin: 0 0 16px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
-  .chip { font-size: 0.85rem; padding: 2px 10px; border-radius: 999px; }
-  .chip.ok { background: var(--ok-bg); color: var(--ok); }
-  .chip.open { background: var(--open-bg); color: var(--open); }
-  .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 4px; }
-  .links a {
-    text-decoration: none; border: 1px solid var(--border); border-radius: 6px;
-    padding: 6px 12px; background: var(--bg); font-size: 0.93rem;
+  .nav .wrap { display: flex; align-items: center; gap: 20px; height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 800; font-size: 1.12rem; letter-spacing: -.01em; }
+  .brand img { width: 30px; height: 30px; }
+  .nav-links { display: flex; gap: 22px; margin-left: auto; font-size: .93rem; }
+  .nav-links a { color: var(--muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--text); }
+  @media (max-width: 760px) { .nav-links .opt { display: none; } .nav-links { gap: 14px; } }
+  @media (max-width: 620px) { .nav-links .opt2 { display: none; } }
+
+  /* hero */
+  .hero { padding: 72px 0 40px; }
+  .hero-grid { display: block; }
+  .hero-mark { width: 300px; height: 300px; opacity: .95; filter: drop-shadow(0 18px 40px rgba(79,111,149,.18)); }
+  @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } .hero-mark { display: none; } }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; font-weight: 600; color: var(--beige); margin: 0 0 14px; }
+  .hero h1 {
+    font-family: "Source Serif 4", Georgia, serif; font-weight: 600;
+    font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.12; letter-spacing: -.015em; margin: 0 0 20px; max-width: 20ch;
   }
-  .links a:hover { border-color: var(--accent); }
-  h3 { font-size: 1rem; margin: 22px 0 8px; }
-  .table-wrap { overflow-x: auto; }
-  table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
-  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  th { color: var(--muted); font-weight: 600; }
-  td.status { white-space: nowrap; }
-  .ok-text { color: var(--ok); }
-  .open-text { color: var(--open); }
-  pre {
-    background: var(--code-bg); border-radius: 6px; padding: 12px 14px; overflow-x: auto;
-    font: 0.88rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin: 8px 0 0;
+  .hero .sub { font-size: clamp(1.02rem, 1.6vw, 1.18rem); color: var(--muted); max-width: 62ch; margin: 0 0 30px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px;
+    font-weight: 600; font-size: .93rem; text-decoration: none; border: 1px solid var(--border);
+    color: var(--text); background: var(--surface);
   }
-  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; }
-  footer { color: var(--muted); font-size: 0.88rem; border-top: 1px solid var(--border); padding-top: 18px; }
+  .btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .btn:hover { border-color: var(--blue); }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 48px 0 0; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
+  .stat b { display: block; font-family: "Source Serif 4", Georgia, serif; font-size: 2rem; font-weight: 600; line-height: 1.1; }
+  .stat span { color: var(--muted); font-size: .9rem; }
+  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  /* sections */
+  section.block { padding: 64px 0; border-top: 1px solid var(--border); }
+  .kicker { font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin: 0 0 8px; }
+  h2 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2; margin: 0 0 14px; letter-spacing: -.01em; }
+  .lede { color: var(--muted); max-width: 70ch; margin: 0 0 32px; font-size: 1.04rem; }
+  h3 { font-size: 1.08rem; margin: 0 0 8px; }
+
+  figure { margin: 0; }
+  .figure { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); }
+  .figure img { border-radius: 6px; }
+  figcaption { color: var(--muted); font-size: .86rem; margin-top: 10px; padding: 0 4px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 860px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  /* funnel */
+  .funnel { display: grid; gap: 10px; margin: 8px 0 36px; }
+  .frow { display: grid; grid-template-columns: 210px 1fr; align-items: center; gap: 14px; }
+  .frow .lab { font-size: .9rem; color: var(--muted); text-align: right; }
+  .bar { height: 30px; border-radius: 6px; display: flex; align-items: center; padding: 0 12px; font-weight: 600; font-size: .9rem; white-space: nowrap; }
+  .bar.screen { background: var(--beige-soft); color: var(--beige); }
+  .bar.keep { background: var(--blue-soft); color: var(--blue); }
+  .bar.final { background: var(--text); color: var(--bg); }
+  @media (max-width: 620px) { .frow { grid-template-columns: 1fr; gap: 4px; } .frow .lab { text-align: left; } }
+
+  /* agents */
+  .groups { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+  @media (max-width: 860px) { .groups { grid-template-columns: 1fr; } }
+  .group { border-radius: var(--radius); padding: 18px 20px; border: 1px solid var(--border); background: var(--surface); }
+  .group .gname { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; margin-bottom: 10px; }
+  .group.g1 .gname { color: var(--beige); } .group.g2 .gname { color: var(--blue); } .group.g3 .gname { color: var(--green); }
+  .agent { padding: 8px 0; border-top: 1px dashed var(--border); }
+  .agent:first-of-type { border-top: 0; }
+  .agent b { display: block; font-size: .95rem; }
+  .agent span { color: var(--muted); font-size: .86rem; }
+
+  .loop { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 32px; }
+  .step { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px 7px 7px; font-size: .9rem; font-weight: 500; }
+  .step i { font-style: normal; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: .82rem; font-weight: 700; }
+  .step.b i { background: var(--beige-soft); color: var(--beige); }
+  .step.u i { background: var(--blue-soft); color: var(--blue); }
+  .arrow { color: var(--muted); }
+
+  /* models */
+  .metric { display: flex; align-items: baseline; gap: 10px; margin: 14px 0 4px; }
+  .metric b { font-family: "Source Serif 4", Georgia, serif; font-size: 2.1rem; font-weight: 600; }
+  .metric span { color: var(--muted); font-size: .9rem; }
+  .meter { height: 8px; border-radius: 4px; background: var(--surface-2); overflow: hidden; margin: 6px 0 2px; }
+  .meter div { height: 100%; border-radius: 4px; }
+  .mlab { display: flex; justify-content: space-between; font-size: .82rem; color: var(--muted); }
+
+  /* discoveries */
+  .feature { display: grid; grid-template-columns: 1fr 1.25fr; gap: 28px; align-items: center; margin-bottom: 40px; }
+  .feature.rev { grid-template-columns: 1.25fr 1fr; }
+  .feature.rev .ftext { order: 2; }
+  @media (max-width: 860px) { .feature, .feature.rev { grid-template-columns: 1fr; } .feature.rev .ftext { order: 0; } }
+  .tag { display: inline-block; font-size: .76rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+  .tag.dev { background: var(--blue-soft); color: var(--blue); }
+  .tag.theo { background: var(--beige-soft); color: var(--beige); }
+  .ftext h3 { font-family: "Source Serif 4", Georgia, serif; font-size: 1.5rem; font-weight: 600; line-height: 1.25; margin: 0 0 12px; }
+  .ftext p { color: var(--muted); margin: 0 0 12px; }
+  .ftext .big { font-family: "Source Serif 4", Georgia, serif; font-size: 2.4rem; font-weight: 600; color: var(--text); line-height: 1; margin: 4px 0 14px; }
+  .ftext .big small { font-family: Inter, sans-serif; font-size: .9rem; font-weight: 500; color: var(--muted); margin-left: 6px; }
+
+  .gains { display: grid; gap: 7px; }
+  .grow { display: grid; grid-template-columns: minmax(150px, 230px) 1fr 52px; gap: 12px; align-items: center; font-size: .9rem; }
+  .grow .gq { color: var(--muted); font-size: .8rem; display: block; }
+  .gtrack { height: 14px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+  .gtrack div { height: 100%; border-radius: 4px; }
+  .gtrack .rf { background: #5d80a9; } .gtrack .sb { background: #b98f63; } .gtrack .rc { background: #7fa7a0; }
+  .grow .gv { font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: .85rem; color: var(--muted); margin: 0 0 16px; }
+  .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .legend .rf::before { background: #5d80a9; } .legend .sb::before { background: #b98f63; } .legend .rc::before { background: #7fa7a0; }
+  @media (max-width: 620px) { .grow { grid-template-columns: 1fr 44px; } .grow .gtrack { grid-column: 1 / -1; grid-row: 2; } }
+
+  /* videos */
+  video { width: 100%; border-radius: 10px; background: #000; display: block; }
+
+  /* verification */
+  .verify { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  @media (max-width: 860px) { .verify { grid-template-columns: 1fr; } }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 14px; }
+  .chip { font-size: .8rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+  .chip.ok { background: var(--green-soft); color: var(--green); }
+  .chip.open { background: var(--blue-soft); color: var(--blue); }
+  .status { list-style: none; padding: 0; margin: 12px 0 16px; font-size: .92rem; }
+  .status li { display: grid; grid-template-columns: 54px 1fr; gap: 10px; padding: 6px 0; border-top: 1px solid var(--border); }
+  .status li:first-child { border-top: 0; }
+  .status .s { font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding-top: 2px; }
+  .status .s.ok { color: var(--green); } .status .s.open { color: var(--blue); }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .links a { font-size: .88rem; text-decoration: none; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); }
+  .links a:hover { border-color: var(--blue); }
+  pre { background: var(--surface-2); border-radius: 8px; padding: 12px 14px; overflow-x: auto; font: .84rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin: 12px 0 0; }
+
+  .fig1 { padding: 8px 0 48px; }
+  .fig1 img { width: 100%; }
+  .fig1 figcaption { max-width: 900px; margin: 14px auto 0; text-align: left; font-size: .9rem; }
+  section.block.tight { padding-top: 48px; }
+  footer { border-top: 1px solid var(--border); padding: 36px 0 56px; color: var(--muted); font-size: .9rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
+  footer .brand { font-size: 1rem; }
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1>HoloToken</h1>
-    <p>THUHoloLab, Department of Precision Instrument, Tsinghua University</p>
-  </header>
 
-  <p class="lead">
-    Machine-checked results in optics theory. Each project states the physical model, lists which
-    results are verified in Lean&nbsp;4 with Mathlib, and shows in a blueprint which results are still
-    proved only on paper.
-  </p>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/holotoken-mark.png" alt="">HoloToken</a>
+    <div class="nav-links">
+      <a class="opt2" href="#system">System</a>
+      <a class="opt" href="#models">Models</a>
+      <a href="#discoveries">Discoveries</a>
+      <a class="opt" href="#videos">Videos</a>
+      <a class="opt2" href="#verification">Verification</a>
+      <a href="https://github.com/THUHoloLab/HoloToken">GitHub</a>
+    </div>
+  </div>
+</nav>
 
-  <section class="project" id="ep-absorber">
-    <h2>Bandwidth ceiling of perfectly absorbing exceptional points</h2>
-    <p class="source">From the Letter <em>Sharp Bandwidth Ceiling of Perfectly Absorbing Exceptional Points</em></p>
-
-    <div class="chips">
-      <span class="chip ok">15 theorems checked in Lean 4</span>
-      <span class="chip ok">no sorry, standard axioms only</span>
-      <span class="chip open">3 results not yet formalized</span>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+    <div>
+    <p class="eyebrow">Agentic Optics Scientists</p>
+    <h1>Autonomous discovery in optics with local language models</h1>
+    <p class="sub">
+      <strong>HoloToken</strong> is a team of AI scientist agents that carries open-ended optics research from the
+      literature to physics-verified results. It runs on domain post-trained models that fit on a single
+      graphics card, so the research stays open to scrutiny, can be reproduced, and can run where the
+      data cannot leave the laboratory.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#videos">Watch the videos</a>
+      <a class="btn" href="https://huggingface.co/HololabTHU/HoloModel-Research">HoloModel on Hugging Face</a>
+      <a class="btn" href="https://github.com/THUHoloLab/HoloToken">Code on GitHub</a>
+    </div>
+    </div>
     </div>
 
-    <p>
-      At equal intrinsic loss <i>L</i>, the 90% absorption band of a perfectly absorbing exceptional
-      point of any order is at most 2√(2/3)&nbsp;<i>L</i> ≈ 1.633&nbsp;<i>L</i>, which is 29.9% of the
-      Bode–Fano ceiling 4π<i>L</i>/ln&nbsp;10. Two modes with split zeros already reach 2.720&nbsp;<i>L</i>.
+    <div class="stats">
+      <div class="stat"><b>70.5 h</b><span>one autonomous run, no human intervention</span></div>
+      <div class="stat"><b>14</b><span>article-level results across optics</span></div>
+      <div class="stat"><b>27B</b><span>local models on a single graphics card</span></div>
+      <div class="stat"><b>18.5×</b><span>largest error reduction over tuned methods</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="fig1">
+  <div class="wrap">
+    <figure>
+      <img src="assets/fig/loop.jpg" alt="The research loop of seven scientist agents, with HoloModel-Knowledge supplying material data, literature and skills, design algorithms, physics solvers and imaging algorithms coded by HoloModel-Research, a grader and a verification scientist" loading="eager">
+      <figcaption><b>Figure 1 | The HoloToken research loop.</b> Seven scientist agents turn material data, literature and skills into candidates with design algorithms, physics solvers and imaging algorithms coded by HoloModel-Research; a grader scores each candidate, the principal scientist returns failures for revision, and the verification scientist recomputes the selected results before they leave the loop as verified claims.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block tight" id="videos">
+  <div class="wrap">
+    <p class="kicker">Videos</p>
+    <h2>Watch the agents at work</h2>
+    <p class="lede">Each video follows one discovery through the five-step loop, showing which agent works at each step and what it adds to the research record.</p>
+    <div class="grid-2">
+      <div class="card">
+        <video controls preload="none" poster="assets/video/metasurface-encoder.jpg">
+          <source src="assets/video/metasurface-encoder.mp4" type="video/mp4">
+        </video>
+        <h3 style="margin-top:14px">Discovery of the metasurface encoder</h3>
+        <p>The agents correct their own objective and arrive at TiO₂ pillar dimers.</p>
+      </div>
+      <div class="card">
+        <video controls preload="none" poster="assets/video/ep-absorber.jpg">
+          <source src="assets/video/ep-absorber.mp4" type="video/mp4">
+        </video>
+        <h3 style="margin-top:14px">The bandwidth limit of exceptional-point absorbers</h3>
+        <p>From a theory question to a sharp bound and a proposed test structure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="system">
+  <div class="wrap">
+    <p class="kicker">System</p>
+    <h2>From 6,157 open problems to 14 article-level results</h2>
+    <p class="lede">
+      The agents mined open problems from the optics literature, proposed ideas for them, and screened
+      and verified those ideas at scale. At every stage, a check outside the control of the proposing
+      agents decides which candidates go on.
     </p>
 
-    <div class="links">
-      <a href="ep-absorber/blueprint/index.html">Blueprint</a>
-      <a href="ep-absorber/blueprint/dep_graph_document.html">Dependency graph</a>
-      <a href="ep-absorber/blueprint.pdf">Blueprint (PDF)</a>
-      <a href="https://github.com/THUHoloLab/HoloToken/tree/main/lean/EPAbsorber">Lean source</a>
-      <a href="https://github.com/THUHoloLab/HoloToken/actions/workflows/lean-ep-absorber.yml">Build status</a>
+    <div class="funnel" aria-label="Screening funnel">
+      <div class="frow"><div class="lab">Open problems from the literature</div><div class="bar screen" style="width:80%">6,157</div></div>
+      <div class="frow"><div class="lab">Ideas proposed</div><div class="bar screen" style="width:100%">56,339</div></div>
+      <div class="frow"><div class="lab">Ideas without a fatal flaw</div><div class="bar screen" style="width:88%">15,105</div></div>
+      <div class="frow"><div class="lab">Beat their baseline in a sandbox</div><div class="bar keep" style="width:74%">3,102</div></div>
+      <div class="frow"><div class="lab">Full studies</div><div class="bar keep" style="width:36%">48</div></div>
+      <div class="frow"><div class="lab">Exceed tuned baselines</div><div class="bar keep" style="width:32%">32</div></div>
+      <div class="frow"><div class="lab">Article-level results</div><div class="bar final" style="width:25%">14</div></div>
     </div>
 
-    <h3>Status</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Result</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td>The second-order EP attains 2√(2/3) <i>L</i>: its 90% band is exactly [−√(2/3) <i>L</i>, √(2/3) <i>L</i>]</td><td class="status ok-text">Lean</td></tr>
-          <tr><td>29.9% of the Bode–Fano ceiling</td><td class="status ok-text">Lean</td></tr>
-          <tr><td>Dimer: no connected band exceeds (4/3)√(1+√10) <i>L</i> ≈ 2.720 <i>L</i>, and this value is attained</td><td class="status ok-text">Lean</td></tr>
-          <tr><td>Envelope inequality and one-sided reach <i>X<sub>N</sub></i> &lt; 2<i>L</i>/asinh 3 for canonical EPs</td><td class="status ok-text">Lean</td></tr>
-          <tr><td>Every full-order EP reduces to the canonical form</td><td class="status open-text">paper</td></tr>
-          <tr><td>Bode–Fano ceiling <i>B</i> ≤ 4π<i>L</i>/ln 10</td><td class="status open-text">paper</td></tr>
-          <tr><td>Sharp ceiling 2√(2/3) <i>L</i> for every order <i>N</i> ≥ 2</td><td class="status open-text">paper</td></tr>
-        </tbody>
-      </table>
+    <h3>Seven scientist agents divide the work as a research group would</h3>
+    <div class="groups">
+      <div class="group g1">
+        <div class="gname">Gather evidence</div>
+        <div class="agent"><b>Review scientist</b><span>surveys the literature for precedents and open issues</span></div>
+        <div class="agent"><b>Materials scientist</b><span>supplies material constants with their sources</span></div>
+        <div class="agent"><b>Design scientist</b><span>turns a hypothesis into a device geometry or an algorithm</span></div>
+      </div>
+      <div class="group g2">
+        <div class="gname">Evaluate</div>
+        <div class="agent"><b>Simulation scientist</b><span>evaluates designs with RCWA and FDTD solvers</span></div>
+        <div class="agent"><b>System scientist</b><span>builds the end-to-end imaging model and its reconstruction</span></div>
+      </div>
+      <div class="group g3">
+        <div class="gname">Decide</div>
+        <div class="agent"><b>Principal scientist</b><span>diagnoses failures and decides the next step</span></div>
+        <div class="agent"><b>Verification scientist</b><span>independently recomputes the selected results</span></div>
+      </div>
     </div>
 
-    <h3>Reproduce</h3>
-    <pre>git clone https://github.com/THUHoloLab/HoloToken.git
-cd HoloToken/lean/EPAbsorber
-lake exe cache get
-lake build
-lake env lean scripts/check_axioms.lean</pre>
-  </section>
+    <h3>Each round runs a five-step research loop</h3>
+    <div class="loop">
+      <span class="step b"><i>1</i>Literature</span><span class="arrow">→</span>
+      <span class="step u"><i>2</i>Physical hypothesis</span><span class="arrow">→</span>
+      <span class="step b"><i>3</i>Solver evaluation</span><span class="arrow">→</span>
+      <span class="step u"><i>4</i>Imaging feedback</span><span class="arrow">→</span>
+      <span class="step b"><i>5</i>Hypothesis correction</span>
+    </div>
 
-  <footer>
-    Source: <a href="https://github.com/THUHoloLab/HoloToken">github.com/THUHoloLab/HoloToken</a>.
-    The theorems are statements about the coupled-mode model given in each blueprint.
-  </footer>
-</main>
+    <figure class="figure">
+      <img src="assets/fig/autonomy.jpg" alt="Autonomy levels L0 to L5 and the contributions of humans and AI to six research stages at each level" loading="lazy">
+      <figcaption>Autonomy levels L0–L5 and who performs each of six research stages at each level. <strong>HoloToken</strong> operates at L4: within a research field set by people, agents carry every stage from goal setting to data analysis.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="models">
+  <div class="wrap">
+    <p class="kicker">Models</p>
+    <h2>The HoloModel family</h2>
+    <p class="lede">
+      Two models post-trained from the same 27-billion-parameter base, Qwen3.8-27B, run the agents.
+      HoloModel-Research writes the research code; HoloModel-Knowledge supplies source-grounded optics knowledge.
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>HoloModel-Research</h3>
+        <p>Post-trained by reinforcement learning on verified rewards. Scores highest on all five in-house
+          benchmarks, ahead of DeepSeek V4.1 Flash (552B), GLM-5.3 and Kimi K3.1 Pro.</p>
+        <div class="metric"><b>69.1%</b><span>of Optics-Phy-Bench problems solved</span></div>
+        <div class="meter"><div style="width:69.1%;background:var(--blue)"></div></div>
+        <div class="mlab"><span>HoloModel-Research 69.1%</span><span>base model 46.5%</span></div>
+        <div class="meter"><div style="width:46.5%;background:var(--beige)"></div></div>
+        <p style="margin-top:12px">Optics-Phy-Bench turns 217 papers from leading optics journals into multi-step
+          computations; a problem counts only when every step reproduces the published value.</p>
+      </div>
+      <div class="card">
+        <h3>HoloModel-Knowledge</h3>
+        <p>The knowledge model of the system, trained on 39,355 optics publications. It supplies the agents
+          with material data and with evidence linked to its source passages.</p>
+        <div class="metric"><b>39,355</b><span>optics publications</span></div>
+        <h3 style="margin-top:18px">Coordination</h3>
+        <p>On eight computational-imaging tasks, the agent team solved up to 8 of 8 against 5 for a
+          general-purpose agent framework, using 3.4- to 10-fold fewer tokens.</p>
+      </div>
+    </div>
+
+    <figure class="figure" style="margin-top:22px">
+      <img src="assets/fig/models.jpg" alt="Benchmark scores of HoloModel-Research and three larger models, and the 14 article-level results by innovation mode" loading="lazy">
+      <figcaption>Left: HoloModel-Research against three larger hosted models on five benchmarks. Right: the 14 article-level results and their gains over tuned methods.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="discoveries">
+  <div class="wrap">
+    <p class="kicker">Discoveries</p>
+    <h2>What the agents found</h2>
+    <p class="lede">Two discoveries are followed in depth: a device whose objective the agents corrected themselves, and a theorem in optical absorption.</p>
+
+    <div class="feature">
+      <div class="ftext">
+        <span class="tag dev">Device design</span>
+        <h3>A metasurface encoder for snapshot multispectral imaging</h3>
+        <p>Given only a request to advance research in this area, the agents first pursued high transmission.
+          Their own imaging feedback showed that the bright cells responded almost identically across the
+          spectrum, so the principal scientist replaced the objective with distinct spectral responses at
+          equal incident light.</p>
+        <div class="big">4.6 dB<small>better reconstruction</small></div>
+        <p>TiO₂ pillar dimers at four orientations halve the condition number of the sensing matrix from 201
+          to 94; independent verification confirmed the design on eight unseen test scenes.</p>
+      </div>
+      <figure class="figure">
+        <img src="assets/fig/discovery.jpg" alt="Roles of the seven agents and the stages of the metasurface encoder discovery" loading="lazy">
+      </figure>
+    </div>
+
+    <div class="feature rev">
+      <div class="ftext">
+        <span class="tag theo">Theoretical optics</span>
+        <h3>A bandwidth ceiling for exceptional-point absorbers</h3>
+        <p>Merging absorption zeros at an exceptional point is widely pursued for broadband absorption.
+          The agents proved that, at equal intrinsic loss <i>L</i>, a perfectly absorbing exceptional point
+          of any order cannot exceed</p>
+        <div class="big">1.633 <i>L</i><small>29.9% of the Bode–Fano limit</small></div>
+        <p>Splitting the zeros instead reaches 2.720 <i>L</i> with two modes. Part of this result is
+          <a href="#verification">machine-checked in Lean&nbsp;4</a>.</p>
+      </div>
+      <figure class="figure">
+        <img src="assets/fig/ep.jpg" alt="Coupled-mode picture, bandwidth limit, absorption spectra and test structure of the exceptional-point absorber" loading="lazy">
+      </figure>
+    </div>
+
+    <h3>Gains of the 14 article-level methods over tuned standard methods</h3>
+    <div class="legend"><span class="rf">Reframing</span><span class="sb">Subtraction</span><span class="rc">Recombination</span></div>
+    <div class="gains">
+      <div class="grow"><div>Four-bit CGH<span class="gq">computation</span></div><div class="gtrack"><div class="sb" style="width:100%"></div></div><div class="gv">27×</div></div>
+      <div class="grow"><div>Fast holographic retrieval<span class="gq">run time</span></div><div class="gtrack"><div class="rc" style="width:100%"></div></div><div class="gv">27×</div></div>
+      <div class="grow"><div>Holographic angle sensing<span class="gq">tilt error</span></div><div class="gtrack"><div class="rc" style="width:88.5%"></div></div><div class="gv">18.5×</div></div>
+      <div class="grow"><div>Scaling-law spectrometer<span class="gq">resolvable period</span></div><div class="gtrack"><div class="rf" style="width:81.8%"></div></div><div class="gv">14.8×</div></div>
+      <div class="grow"><div>Drift-tolerant spectrometer<span class="gq">spectra needed</span></div><div class="gtrack"><div class="rc" style="width:54.4%"></div></div><div class="gv">&gt;6×</div></div>
+      <div class="grow"><div>Coded-pupil phase imaging<span class="gq">phase error</span></div><div class="gtrack"><div class="rf" style="width:22.5%"></div></div><div class="gv">2.1×</div></div>
+      <div class="grow"><div>Adaptive Shack–Hartmann<span class="gq">wavefront error</span></div><div class="gtrack"><div class="rc" style="width:21%"></div></div><div class="gv">2.0×</div></div>
+      <div class="grow"><div>Metasurface spectral imager<span class="gq">reconstruction error</span></div><div class="gtrack"><div class="rf" style="width:16.1%"></div></div><div class="gv">1.7×</div></div>
+      <div class="grow"><div>Fibre-array despeckling<span class="gq">speckle contrast</span></div><div class="gtrack"><div class="rf" style="width:16.1%"></div></div><div class="gv">1.7×</div></div>
+      <div class="grow"><div>EP absorption bound<span class="gq">90% absorption band</span></div><div class="gtrack"><div class="rf" style="width:15.6%"></div></div><div class="gv">1.67×</div></div>
+      <div class="grow"><div>Kramers–Kronig switching<span class="gq">reconstruction error</span></div><div class="gtrack"><div class="rc" style="width:14.3%"></div></div><div class="gv">1.6×</div></div>
+      <div class="grow"><div>Blind-reference holography<span class="gq">reconstruction error</span></div><div class="gtrack"><div class="rf" style="width:10.2%"></div></div><div class="gv">1.4×</div></div>
+      <div class="grow"><div>Three-port ridge splitter<span class="gq">efficiency</span></div><div class="gtrack"><div class="sb" style="width:5.5%"></div></div><div class="gv">1.2×</div></div>
+      <div class="grow"><div>Two-port ridge splitter<span class="gq">efficiency</span></div><div class="gtrack"><div class="sb" style="width:2.1%"></div></div><div class="gv">1.07×</div></div>
+    </div>
+    <p class="lede" style="margin-top:14px;font-size:.88rem">Bar length on a logarithmic scale. Each method is compared with the strongest tuned standard method it names, in accuracy, performance, or speed at equal or lower error.</p>
+
+    <figure class="figure">
+      <img src="assets/fig/methods.jpg" alt="Optical paths and one result for eight further methods, grouped by reframing, subtraction and recombination" loading="lazy">
+      <figcaption>Eight further methods, grouped by the kind of innovation: reframing an assumption the field shares, subtracting a component the standard method treats as necessary, and recombining known methods.</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+
+<section class="block" id="verification">
+  <div class="wrap">
+    <p class="kicker">Verification</p>
+    <h2>Results are checked before they count</h2>
+    <p class="lede">
+      Every result enters the research record with its evidence, and an independent verification agent
+      recomputes it at higher fidelity before it leaves the loop. For theory, we go one step further and
+      check proofs with a machine.
+    </p>
+
+    <div class="verify">
+      <div class="card">
+        <h3>Physics verification</h3>
+        <p>The verification scientist recomputes the selected designs with code and settings the proposing agents
+          did not control: higher Fourier-order convergence tests, sensing-matrix conditioning, and reconstruction
+          on unseen test scenes. Rigorous solver rechecks set the operating conditions of each device claim.</p>
+      </div>
+      <div class="card">
+        <h3>Lean 4 formalization · EP absorber</h3>
+        <div class="chips">
+          <span class="chip ok">15 theorems checked</span>
+          <span class="chip ok">no sorry, standard axioms</span>
+          <span class="chip open">3 results on paper only</span>
+        </div>
+        <ul class="status">
+          <li><span class="s ok">Lean</span><span>The second-order EP attains 2√(2/3) <i>L</i>; its 90% band is exactly [−√(2/3) <i>L</i>, √(2/3) <i>L</i>]</span></li>
+          <li><span class="s ok">Lean</span><span>29.9% of the Bode–Fano ceiling; dimer bound 2.720 <i>L</i> and its attainment</span></li>
+          <li><span class="s ok">Lean</span><span>Envelope inequality and one-sided reach for canonical EPs</span></li>
+          <li><span class="s open">Paper</span><span>Canonical-form reduction, the Bode–Fano ceiling, and the sharp ceiling for every order</span></li>
+        </ul>
+        <div class="links">
+          <a href="ep-absorber/blueprint/index.html">Blueprint</a>
+          <a href="ep-absorber/blueprint/dep_graph_document.html">Dependency graph</a>
+          <a href="ep-absorber/blueprint.pdf">PDF</a>
+          <a href="https://github.com/THUHoloLab/HoloToken/tree/main/lean/EPAbsorber">Lean source</a>
+          <a href="https://github.com/THUHoloLab/HoloToken/actions/workflows/lean-ep-absorber.yml">Build status</a>
+        </div>
+        <pre>cd HoloToken/lean/EPAbsorber
+lake exe cache get &amp;&amp; lake build</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/holotoken-mark.png" alt="">HoloToken</a>
+    <span>THUHoloLab · Department of Precision Instrument, Tsinghua University</span>
+    <span><a href="https://github.com/THUHoloLab/HoloToken">GitHub</a> · <a href="https://huggingface.co/HololabTHU/HoloModel-Research">Hugging Face</a></span>
+  </div>
+</footer>
+
 </body>
 </html>
