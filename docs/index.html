@@ -59,12 +59,12 @@
   .hero-grid { display: block; }
   .hero-mark { width: 300px; height: 300px; opacity: .95; filter: drop-shadow(0 18px 40px rgba(79,111,149,.18)); }
   @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } .hero-mark { display: none; } }
-  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; font-weight: 600; color: var(--beige); margin: 0 0 14px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 1.02rem; font-weight: 600; color: var(--beige); margin: 0 0 14px; }
   .hero h1 {
     font-family: "Source Serif 4", Georgia, serif; font-weight: 600;
     font-size: clamp(1.9rem, 4.2vw, 3.1rem); line-height: 1.14; letter-spacing: -.015em; margin: 0 0 20px; max-width: 32ch;
   }
-  .hero .sub { font-size: clamp(1.02rem, 1.6vw, 1.18rem); color: var(--muted); max-width: 72ch; margin: 0 0 30px; }
+  .hero .sub { font-size: clamp(1.1rem, 1.9vw, 1.3rem); line-height: 1.6; color: #3d4753; max-width: 70ch; margin: 0 0 30px; }
   .cta { display: flex; flex-wrap: wrap; gap: 10px; }
   .btn {
     display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px;
@@ -74,24 +74,13 @@
   .btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
   .btn:hover { border-color: var(--blue); }
 
-  .badges { display: flex; flex-wrap: wrap; gap: 10px; }
-  .badge {
-    display: inline-flex; align-items: center; gap: 9px; padding: 9px 16px 9px 13px; border-radius: 10px;
-    background: var(--text); color: #fff; text-decoration: none; font-weight: 600; font-size: .93rem;
-  }
-  .badge:hover { background: #33404f; }
-  .badge.play { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
-  .badge .hf { font-size: 1.15rem; line-height: 1; }
-  .leanmark { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: .86rem; letter-spacing: .04em; padding: 1px 5px; border-radius: 4px; background: #fff; color: var(--text); }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .badges img { height: 30px; width: auto; }
+  .leanmark { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: .86rem; letter-spacing: .04em; padding: 1px 5px; border-radius: 4px; background: var(--surface-2); color: var(--text); }
   .flinks { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
   .flinks a { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; }
   .flinks a:hover { color: var(--text); }
   .flinks .leanmark { background: var(--surface-2); }
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 48px 0 0; }
-  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
-  .stat b { display: block; font-family: "Source Serif 4", Georgia, serif; font-size: 2rem; font-weight: 600; line-height: 1.1; }
-  .stat span { color: var(--muted); font-size: .9rem; }
-  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 
   /* sections */
   section.block { padding: 64px 0; border-top: 1px solid var(--border); }
@@ -197,6 +186,49 @@
   .fig1 img { width: 100%; }
   .fig1 figcaption { max-width: 900px; margin: 14px auto 0; text-align: left; font-size: .9rem; }
   section.block.tight { padding-top: 48px; }
+  /* interactive */
+  .interactive { border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin: 0 0 44px; background: #fff; box-shadow: var(--shadow); }
+  .ihead { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .ihead h3 { margin: 0; }
+  .interactive button { font: inherit; cursor: pointer; }
+  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; padding: 3px; }
+  .seg button { border: 0; background: none; padding: 5px 14px; border-radius: 999px; font-size: .88rem; color: var(--muted); }
+  .seg button.on { background: var(--text); color: #fff; }
+  .objective { font-size: .92rem; color: var(--muted); margin: 0 0 14px; }
+  .objective b { color: var(--text); }
+  .steps { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .steps button { display: flex; align-items: center; gap: 8px; border: 1px solid var(--border); background: #fff; border-radius: 999px; padding: 6px 14px 6px 6px; font-size: .9rem; color: var(--text); }
+  .steps button i { font-style: normal; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: .8rem; font-weight: 700; background: var(--surface-2); }
+  .steps button.on { border-color: var(--blue); background: var(--blue-soft); }
+  .steps button.on i { background: var(--blue); color: #fff; }
+  .detail { background: var(--surface-2); border-radius: 10px; padding: 16px 18px; min-height: 96px; }
+  .detail .who { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--beige); margin-bottom: 6px; }
+  .detail p { margin: 0; }
+  .nav2 { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
+  .nav2 button { border: 1px solid var(--border); background: #fff; border-radius: 8px; padding: 6px 12px; font-size: .88rem; }
+  .note { color: var(--muted); font-size: .93rem; margin: 0 0 12px; }
+  .note.small { font-size: .82rem; margin-top: 12px; }
+  .note code { font-size: .8rem; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+  .ctrl { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 6px 0 10px; }
+  .ctrl label { font-size: .95rem; min-width: 150px; }
+  .ctrl input[type=range] { flex: 1 1 220px; accent-color: var(--blue); }
+  .ctrl button { border: 1px solid var(--border); background: #fff; border-radius: 8px; padding: 5px 11px; font-size: .86rem; }
+  #plot { width: 100%; height: auto; display: block; }
+  .readout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .readout div { background: var(--surface-2); border-radius: 8px; padding: 8px 12px; }
+  .readout span { display: block; font-size: .78rem; color: var(--muted); }
+  .readout b { font-family: "Source Serif 4", Georgia, serif; font-size: 1.25rem; }
+  @media (max-width: 700px) { .readout { grid-template-columns: repeat(2, 1fr); } }
+  .bars { margin-top: 12px; display: grid; gap: 6px; }
+  .bars .br { display: grid; grid-template-columns: 150px 1fr; gap: 10px; align-items: center; font-size: .84rem; color: var(--muted); }
+  .bars .bt { height: 12px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+  .bars .bt div { height: 100%; border-radius: 4px; transition: width .15s; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+  .filters button { font: inherit; font-size: .88rem; cursor: pointer; border: 1px solid var(--border); background: #fff; border-radius: 999px; padding: 5px 13px; display: inline-flex; align-items: center; gap: 7px; }
+  .filters button.on { background: var(--text); color: #fff; border-color: var(--text); }
+  .dot { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+  .dot.rf { background: #5d80a9; } .dot.sb { background: #b98f63; } .dot.rc { background: #7fa7a0; }
+  .grow.hide { display: none; }
   footer { border-top: 1px solid var(--border); padding: 36px 0 56px; color: var(--muted); font-size: .9rem; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
   footer .brand { font-size: 1rem; }
@@ -231,22 +263,22 @@
       optical-physics benchmarks, so the research stays open to scrutiny, can be reproduced, and can run
       where the data cannot leave the laboratory.
     </p>
+    <p class="sub">
+      In a single <strong>70.5-hour</strong> run without human intervention, the agents turned
+      <strong>6,157</strong> open problems from the optics literature into <strong>14</strong> article-level
+      results, cutting error up to <strong>18.5-fold</strong>, or computation up to <strong>27-fold</strong>,
+      versus tuned conventional methods.
+    </p>
     <div class="badges">
-      <a class="badge" href="https://thuhololab.github.io/HoloToken/"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c2.6 2.6 3.9 5.7 3.9 9.2s-1.3 6.6-3.9 9.2c-2.6-2.6-3.9-5.7-3.9-9.2S9.4 5.4 12 2.8z"/></svg><span>Project page</span></a>
-      <a class="badge" href="https://huggingface.co/HololabTHU/HoloModel-Research"><span class="hf" aria-hidden="true">🤗</span><span>Hugging Face</span></a>
-      <a class="badge" href="https://github.com/THUHoloLab/HoloToken"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a>
-      <a class="badge" href="ep-absorber/blueprint/index.html"><span class="leanmark" aria-hidden="true">L∃∀N</span><span>Lean proofs</span></a>
-      <a class="badge play" href="#videos"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg><span>Videos</span></a>
+      <a href="https://thuhololab.github.io/HoloToken/"><img src="https://img.shields.io/badge/Project-Page-1e2630?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Project page"></a>
+      <a href="https://huggingface.co/HololabTHU/HoloModel-Research"><img src="https://img.shields.io/badge/Hugging%20Face-HoloModel-ffd21e?style=for-the-badge&amp;logo=huggingface&amp;logoColor=black" alt="Hugging Face: HoloModel"></a>
+      <a href="https://github.com/THUHoloLab/HoloToken"><img src="https://img.shields.io/badge/GitHub-Code-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub: code"></a>
+      <a href="ep-absorber/blueprint/index.html"><img src="https://img.shields.io/badge/Lean%204-Formal%20proofs-4f6f95?style=for-the-badge" alt="Lean 4: formal proofs"></a>
+      <a href="#videos"><img src="https://img.shields.io/badge/Videos-2-b98f63?style=for-the-badge&amp;logo=youtube&amp;logoColor=white" alt="Videos"></a>
     </div>
     </div>
     </div>
 
-    <div class="stats">
-      <div class="stat"><b>70.5 h</b><span>one autonomous run, no human intervention</span></div>
-      <div class="stat"><b>14</b><span>article-level results across optics</span></div>
-      <div class="stat"><b>27B</b><span>local models on a single graphics card</span></div>
-      <div class="stat"><b>18.5×</b><span>largest error reduction over tuned methods</span></div>
-    </div>
   </div>
 </header>
 
@@ -323,19 +355,6 @@
       </div>
     </div>
 
-    <h3>Each round runs a five-step research loop</h3>
-    <div class="loop">
-      <span class="step b"><i>1</i>Literature</span><span class="arrow">→</span>
-      <span class="step u"><i>2</i>Physical hypothesis</span><span class="arrow">→</span>
-      <span class="step b"><i>3</i>Solver evaluation</span><span class="arrow">→</span>
-      <span class="step u"><i>4</i>Imaging feedback</span><span class="arrow">→</span>
-      <span class="step b"><i>5</i>Hypothesis correction</span>
-    </div>
-
-    <figure class="figure">
-      <img src="assets/fig/autonomy.jpg" alt="Autonomy levels L0 to L5 and the contributions of humans and AI to six research stages at each level" loading="lazy">
-      <figcaption>Autonomy levels L0–L5 and who performs each of six research stages at each level. <strong>HoloToken</strong> operates at L4: within a research field set by people, agents carry every stage from goal setting to data analysis.</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -401,6 +420,28 @@
       </figure>
     </div>
 
+    <div class="interactive" id="encoder-steps">
+      <div class="ihead">
+        <h3>Follow the discovery step by step</h3>
+        <div class="seg" role="tablist">
+          <button class="on" data-round="1">Round 1</button><button data-round="2">Round 2</button>
+        </div>
+      </div>
+      <div class="objective">Objective: <b id="obj">High transmission</b></div>
+      <div class="steps" role="tablist">
+        <button class="on" data-step="0"><i>1</i>Literature</button>
+        <button data-step="1"><i>2</i>Physical hypothesis</button>
+        <button data-step="2"><i>3</i>Solver evaluation</button>
+        <button data-step="3"><i>4</i>Imaging feedback</button>
+        <button data-step="4"><i>5</i>Hypothesis correction</button>
+      </div>
+      <div class="detail">
+        <div class="who" id="who"></div>
+        <p id="what"></p>
+      </div>
+      <div class="nav2"><button id="prev">← Previous</button><button id="next">Next →</button></div>
+    </div>
+
     <div class="feature rev">
       <div class="ftext">
         <span class="tag theo">Theoretical optics</span>
@@ -417,23 +458,52 @@
       </figure>
     </div>
 
+    <div class="interactive" id="ep-explorer">
+      <div class="ihead">
+        <h3>Explore the absorption band: merged versus split zeros</h3>
+      </div>
+      <p class="note">A two-mode absorber with intrinsic loss <i>L</i> = 1 and coupling <i>g</i>. At <i>g</i> = 1 its two
+        CPA zeros merge into a second-order exceptional point; for <i>g</i> &gt; 1 they split to ±√(<i>g</i>² − 1).
+        Drag the slider and watch the 90% band (shaded) change.</p>
+      <div class="ctrl">
+        <label for="g">Coupling <i>g</i> = <b id="gval"></b></label>
+        <input type="range" id="g" min="1" max="2" step="any">
+        <button id="gopt">Optimal <i>g</i></button><button id="gep">EP (<i>g</i> = 1)</button>
+      </div>
+      <svg id="plot" viewBox="0 0 640 320" role="img" aria-label="Absorption versus detuning"></svg>
+      <div class="readout">
+        <div><span>90% band</span><b id="bw"></b></div>
+        <div><span>EP ceiling</span><b>1.633 <i>L</i></b></div>
+        <div><span>Best split zeros (dimer)</span><b>2.720 <i>L</i></b></div>
+        <div><span>Bode–Fano limit</span><b>5.458 <i>L</i></b></div>
+      </div>
+      <div class="bars" id="bars"></div>
+      <p class="note small">The absorption, band edges and the 2.720 <i>L</i> optimum follow the theorems checked in Lean
+        (<code>EP.DimerBound.rD_normSq</code>, <code>EP.DimerBound.dimer_bound</code>, <code>EP.DimerAttained.dimer_attained</code>).</p>
+    </div>
+
     <h3>Gains of the 14 article-level methods over tuned standard methods</h3>
-    <div class="legend"><span class="rf">Reframing</span><span class="sb">Subtraction</span><span class="rc">Recombination</span></div>
+    <div class="filters" id="gain-filter">
+      <button class="on" data-mode="all">All 14</button>
+      <button data-mode="rf"><span class="dot rf"></span>Reframing</button>
+      <button data-mode="sb"><span class="dot sb"></span>Subtraction</button>
+      <button data-mode="rc"><span class="dot rc"></span>Recombination</button>
+    </div>
     <div class="gains">
-      <div class="grow"><div>Four-bit CGH<span class="gq">computation</span></div><div class="gtrack"><div class="sb" style="width:100%"></div></div><div class="gv">27×</div></div>
-      <div class="grow"><div>Fast holographic retrieval<span class="gq">run time</span></div><div class="gtrack"><div class="rc" style="width:100%"></div></div><div class="gv">27×</div></div>
-      <div class="grow"><div>Holographic angle sensing<span class="gq">tilt error</span></div><div class="gtrack"><div class="rc" style="width:88.5%"></div></div><div class="gv">18.5×</div></div>
-      <div class="grow"><div>Scaling-law spectrometer<span class="gq">resolvable period</span></div><div class="gtrack"><div class="rf" style="width:81.8%"></div></div><div class="gv">14.8×</div></div>
-      <div class="grow"><div>Drift-tolerant spectrometer<span class="gq">spectra needed</span></div><div class="gtrack"><div class="rc" style="width:54.4%"></div></div><div class="gv">&gt;6×</div></div>
-      <div class="grow"><div>Coded-pupil phase imaging<span class="gq">phase error</span></div><div class="gtrack"><div class="rf" style="width:22.5%"></div></div><div class="gv">2.1×</div></div>
-      <div class="grow"><div>Adaptive Shack–Hartmann<span class="gq">wavefront error</span></div><div class="gtrack"><div class="rc" style="width:21%"></div></div><div class="gv">2.0×</div></div>
-      <div class="grow"><div>Metasurface spectral imager<span class="gq">reconstruction error</span></div><div class="gtrack"><div class="rf" style="width:16.1%"></div></div><div class="gv">1.7×</div></div>
-      <div class="grow"><div>Fibre-array despeckling<span class="gq">speckle contrast</span></div><div class="gtrack"><div class="rf" style="width:16.1%"></div></div><div class="gv">1.7×</div></div>
-      <div class="grow"><div>EP absorption bound<span class="gq">90% absorption band</span></div><div class="gtrack"><div class="rf" style="width:15.6%"></div></div><div class="gv">1.67×</div></div>
-      <div class="grow"><div>Kramers–Kronig switching<span class="gq">reconstruction error</span></div><div class="gtrack"><div class="rc" style="width:14.3%"></div></div><div class="gv">1.6×</div></div>
-      <div class="grow"><div>Blind-reference holography<span class="gq">reconstruction error</span></div><div class="gtrack"><div class="rf" style="width:10.2%"></div></div><div class="gv">1.4×</div></div>
-      <div class="grow"><div>Three-port ridge splitter<span class="gq">efficiency</span></div><div class="gtrack"><div class="sb" style="width:5.5%"></div></div><div class="gv">1.2×</div></div>
-      <div class="grow"><div>Two-port ridge splitter<span class="gq">efficiency</span></div><div class="gtrack"><div class="sb" style="width:2.1%"></div></div><div class="gv">1.07×</div></div>
+      <div class="grow" data-mode="sb"><div>Four-bit CGH<span class="gq">computation</span></div><div class="gtrack"><div class="sb" style="width:100%"></div></div><div class="gv">27×</div></div>
+      <div class="grow" data-mode="rc"><div>Fast holographic retrieval<span class="gq">run time</span></div><div class="gtrack"><div class="rc" style="width:100%"></div></div><div class="gv">27×</div></div>
+      <div class="grow" data-mode="rc"><div>Holographic angle sensing<span class="gq">tilt error</span></div><div class="gtrack"><div class="rc" style="width:88.5%"></div></div><div class="gv">18.5×</div></div>
+      <div class="grow" data-mode="rf"><div>Scaling-law spectrometer<span class="gq">resolvable period</span></div><div class="gtrack"><div class="rf" style="width:81.8%"></div></div><div class="gv">14.8×</div></div>
+      <div class="grow" data-mode="rc"><div>Drift-tolerant spectrometer<span class="gq">spectra needed</span></div><div class="gtrack"><div class="rc" style="width:54.4%"></div></div><div class="gv">&gt;6×</div></div>
+      <div class="grow" data-mode="rf"><div>Coded-pupil phase imaging<span class="gq">phase error</span></div><div class="gtrack"><div class="rf" style="width:22.5%"></div></div><div class="gv">2.1×</div></div>
+      <div class="grow" data-mode="rc"><div>Adaptive Shack–Hartmann<span class="gq">wavefront error</span></div><div class="gtrack"><div class="rc" style="width:21%"></div></div><div class="gv">2.0×</div></div>
+      <div class="grow" data-mode="rf"><div>Metasurface spectral imager<span class="gq">reconstruction error</span></div><div class="gtrack"><div class="rf" style="width:16.1%"></div></div><div class="gv">1.7×</div></div>
+      <div class="grow" data-mode="rf"><div>Fibre-array despeckling<span class="gq">speckle contrast</span></div><div class="gtrack"><div class="rf" style="width:16.1%"></div></div><div class="gv">1.7×</div></div>
+      <div class="grow" data-mode="rf"><div>EP absorption bound<span class="gq">90% absorption band</span></div><div class="gtrack"><div class="rf" style="width:15.6%"></div></div><div class="gv">1.67×</div></div>
+      <div class="grow" data-mode="rc"><div>Kramers–Kronig switching<span class="gq">reconstruction error</span></div><div class="gtrack"><div class="rc" style="width:14.3%"></div></div><div class="gv">1.6×</div></div>
+      <div class="grow" data-mode="rf"><div>Blind-reference holography<span class="gq">reconstruction error</span></div><div class="gtrack"><div class="rf" style="width:10.2%"></div></div><div class="gv">1.4×</div></div>
+      <div class="grow" data-mode="sb"><div>Three-port ridge splitter<span class="gq">efficiency</span></div><div class="gtrack"><div class="sb" style="width:5.5%"></div></div><div class="gv">1.2×</div></div>
+      <div class="grow" data-mode="sb"><div>Two-port ridge splitter<span class="gq">efficiency</span></div><div class="gtrack"><div class="sb" style="width:2.1%"></div></div><div class="gv">1.07×</div></div>
     </div>
     <p class="lede" style="margin-top:14px;font-size:.88rem">Bar length on a logarithmic scale. Each method is compared with the strongest tuned standard method it names, in accuracy, performance, or speed at equal or lower error.</p>
 
@@ -502,5 +572,101 @@ lake exe cache get &amp;&amp; lake build</pre>
   </div>
 </footer>
 
+<script>
+(function () {
+  // encoder stepper
+  var S = {
+    1: { obj: "High transmission", steps: [
+      ["Review and materials scientists", "Retrieve prior metasurface encoders and decoders, and the measured dispersion of TiO₂ and SiO₂."],
+      ["Design scientist", "For a spectral filter the usual goal is high transmission, so the agents first propose bright, high-transmission cells."],
+      ["Simulation scientist", "Rigorous coupled-wave analysis (RCWA) gives the transmission spectrum of every candidate cell."],
+      ["System scientist", "Scenes reconstructed from simulated measurements reveal the problem: the cells are bright but respond almost identically across the spectrum, so different spectra give nearly the same measurements."],
+      ["Principal scientist", "Replaces the objective: four distinct, well-conditioned states at equal incident light. The figure of merit moves from device transmission to reconstructed image quality."]]},
+    2: { obj: "Distinct spectral responses at equal incident light", steps: [
+      ["Review and materials scientists", "The research record keeps the sourced precedents and material dispersion; the new objective changes what the agents look for."],
+      ["Design scientist", "Proposes pairs of TiO₂ pillars (dimers) at four orientations, tiled as 2 × 2 macro-pixels."],
+      ["Simulation scientist", "An RCWA search over 344 candidate designs selects the set that halves the condition number κ of the sensing matrix, from 201 to 94."],
+      ["System scientist", "Reconstruction from the four distinct states is 4.6 dB better."],
+      ["Verification scientist", "Independently recomputes the encoder at higher numerical accuracy and on eight unseen test scenes, and confirms the design."]]}
+  };
+  var root = document.getElementById("encoder-steps");
+  if (root) {
+    var round = 1, step = 0;
+    var rb = root.querySelectorAll(".seg button"), sb = root.querySelectorAll(".steps button");
+    function draw() {
+      rb.forEach(function (b) { b.classList.toggle("on", +b.dataset.round === round); });
+      sb.forEach(function (b) { b.classList.toggle("on", +b.dataset.step === step); });
+      document.getElementById("obj").textContent = S[round].obj;
+      document.getElementById("who").textContent = "Step " + (step + 1) + " · " + S[round].steps[step][0];
+      document.getElementById("what").textContent = S[round].steps[step][1];
+    }
+    rb.forEach(function (b) { b.onclick = function () { round = +b.dataset.round; step = 0; draw(); }; });
+    sb.forEach(function (b) { b.onclick = function () { step = +b.dataset.step; draw(); }; });
+    document.getElementById("next").onclick = function () { if (step < 4) step++; else if (round === 1) { round = 2; step = 0; } draw(); };
+    document.getElementById("prev").onclick = function () { if (step > 0) step--; else if (round === 2) { round = 1; step = 4; } draw(); };
+    draw();
+  }
+
+  // EP explorer (L = 1): |r|^2 = u^2/(u^2 + 4g^2), u = w^2 - (g^2 - 1)
+  var gIn = document.getElementById("g");
+  if (gIn) {
+    var GOPT = (1 + Math.sqrt(10)) / 3, svg = document.getElementById("plot");
+    var W = 640, H = 320, m = { l: 44, r: 14, t: 40, b: 36 }, X0 = -3, X1 = 3;
+    function xs(w) { return m.l + (w - X0) / (X1 - X0) * (W - m.l - m.r); }
+    function ys(a) { return m.t + (1 - a) * (H - m.t - m.b); }
+    function A(w, g) { var u = w * w - (g * g - 1); return 4 * g * g / (u * u + 4 * g * g); }
+    function band(g) {
+      var a2 = g * g - 1, hi = Math.sqrt(a2 + 2 * g / 3), lo2 = a2 - 2 * g / 3;
+      return lo2 <= 0 ? [-hi, hi] : [Math.sqrt(lo2), hi];
+    }
+    function path(g) {
+      var d = "";
+      for (var i = 0; i <= 300; i++) { var w = X0 + (X1 - X0) * i / 300; d += (i ? "L" : "M") + xs(w).toFixed(1) + " " + ys(A(w, g)).toFixed(1); }
+      return d;
+    }
+    function render() {
+      var g = +gIn.value, b = band(g), B = b[1] - b[0];
+      document.getElementById("gval").textContent = g.toFixed(3);
+      document.getElementById("bw").innerHTML = B.toFixed(3) + " <i>L</i>";
+      var s = "";
+      for (var k = 0; k <= 4; k++) { var yv = k / 4; s += '<line x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + ys(yv) + '" y2="' + ys(yv) + '" stroke="#eef0f3"/><text x="' + (m.l - 8) + '" y="' + (ys(yv) + 4) + '" font-size="11" text-anchor="end" fill="#1e2630">' + yv.toFixed(2).replace(/0$/, "") + '</text>'; }
+      for (var x = -3; x <= 3; x++) s += '<text x="' + xs(x) + '" y="' + (H - m.b + 18) + '" font-size="11" text-anchor="middle" fill="#1e2630">' + x + '</text>';
+      s += '<text x="' + (W / 2) + '" y="' + (H - 2) + '" font-size="12" text-anchor="middle" fill="#1e2630">detuning ω / L</text>';
+      s += '<rect x="' + xs(b[0]) + '" y="' + m.t + '" width="' + (xs(b[1]) - xs(b[0])) + '" height="' + (H - m.t - m.b) + '" fill="#dce5ef" opacity=".7"/>';
+      if (b[0] > 0) s += '<rect x="' + xs(-b[1]) + '" y="' + m.t + '" width="' + (xs(-b[0]) - xs(-b[1])) + '" height="' + (H - m.t - m.b) + '" fill="#dce5ef" opacity=".35"/>';
+      s += '<line x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + ys(0.9) + '" y2="' + ys(0.9) + '" stroke="#1e2630" stroke-dasharray="4 4"/><text x="' + (W - m.r - 4) + '" y="' + (ys(0.9) - 6) + '" font-size="11" text-anchor="end" fill="#1e2630">90%</text>';
+      if (Math.abs(g - 1) > 1e-6) s += '<path d="' + path(1) + '" fill="none" stroke="#b98f63" stroke-width="2" stroke-dasharray="6 4"/>';
+      s += '<path d="' + path(g) + '" fill="none" stroke="#4f6f95" stroke-width="2.6"/>';
+      var z = Math.sqrt(g * g - 1);
+      [z, -z].forEach(function (zz) { s += '<circle cx="' + xs(zz) + '" cy="' + ys(1) + '" r="4.5" fill="#1e2630"/>'; });
+      var ly = 16, lx = m.l;
+      s += '<g font-size="11.5" fill="#1e2630"><line x1="' + lx + '" x2="' + (lx + 24) + '" y1="' + ly + '" y2="' + ly + '" stroke="#4f6f95" stroke-width="2.6"/><text x="' + (lx + 30) + '" y="' + (ly + 4) + '">g = ' + g.toFixed(3) + '</text>';
+      lx += 110;
+      if (Math.abs(g - 1) > 1e-6) { s += '<line x1="' + lx + '" x2="' + (lx + 24) + '" y1="' + ly + '" y2="' + ly + '" stroke="#b98f63" stroke-width="2" stroke-dasharray="6 4"/><text x="' + (lx + 30) + '" y="' + (ly + 4) + '">exceptional point (g = 1)</text>'; lx += 190; }
+      s += '<circle cx="' + (lx + 8) + '" cy="' + ly + '" r="4" fill="#1e2630"/><text x="' + (lx + 18) + '" y="' + (ly + 4) + '">CPA zeros</text>';
+      s += '<rect x="' + (lx + 100) + '" y="' + (ly - 6) + '" width="20" height="12" fill="#dce5ef"/><text x="' + (lx + 126) + '" y="' + (ly + 4) + '">90% band</text></g>';
+      svg.innerHTML = s;
+      var rows = [["This absorber", B, "#4f6f95"], ["EP ceiling", 1.633, "#b98f63"], ["Best dimer", 2.720, "#7fa7a0"], ["Bode–Fano limit", 5.458, "#1e2630"]];
+      document.getElementById("bars").innerHTML = rows.map(function (r) {
+        return '<div class="br"><span>' + r[0] + ' · ' + r[1].toFixed(3) + ' L</span><div class="bt"><div style="width:' + (r[1] / 5.458 * 100).toFixed(1) + '%;background:' + r[2] + '"></div></div></div>';
+      }).join("");
+    }
+    gIn.value = GOPT;
+    gIn.oninput = render;
+    document.getElementById("gopt").onclick = function () { gIn.value = GOPT; render(); };
+    document.getElementById("gep").onclick = function () { gIn.value = 1; render(); };
+    render();
+  }
+
+  // gains filter
+  var gf = document.getElementById("gain-filter");
+  if (gf) gf.querySelectorAll("button").forEach(function (b) {
+    b.onclick = function () {
+      gf.querySelectorAll("button").forEach(function (x) { x.classList.toggle("on", x === b); });
+      document.querySelectorAll(".grow").forEach(function (r) { r.classList.toggle("hide", b.dataset.mode !== "all" && r.dataset.mode !== b.dataset.mode); });
+    };
+  });
+})();
+</script>
 </body>
 </html>
